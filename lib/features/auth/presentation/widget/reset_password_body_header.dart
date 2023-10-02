@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+
+import '../../../../core/utils/global/app_colors.dart';
+import '../../../../core/utils/global/custom_text_styles.dart';
+import '../../../../core/widgets/vertical_space.dart';
+
+class ResetPasswordBodyHeader extends StatelessWidget {
+  const ResetPasswordBodyHeader({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Reset Password',
+          style: CustomTextStyles.h2Medium.copyWith(
+            color: AppColors.neutral[900],
+          ),
+        ),
+        const VerticalSpace(space: 8),
+        Text(
+          'Enter the email address you used when you joined and we’ll send you instructions to reset your password.',
+          style: CustomTextStyles.textLRegular.copyWith(
+            color: AppColors.neutral[500],
+          ),
+        ),
+      ],
+    );
+  }
+}
