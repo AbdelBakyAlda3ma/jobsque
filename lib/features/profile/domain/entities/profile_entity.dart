@@ -43,9 +43,9 @@ class ProfileEntity extends HiveObject {
   int numbersOfPortfolios;
 
   bool get isCompleted =>
-      personalDetailed == null &&
-      education == null &&
-      experience == null &&
+      personalDetailed != null &&
+      education != null &&
+      experience != null &&
       numbersOfPortfolios == 0;
 
   ProfileEntity({

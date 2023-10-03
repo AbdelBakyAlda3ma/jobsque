@@ -12,11 +12,13 @@ abstract class ProfileRepository {
       {required ExperienceModel experience});
   Future<Either<Failure, EducationEntity>> addEducation(
       {required EducationModel education});
-  Future<Either<Failure, ProfileEntity>> addPresonalDetails(
+  Future<Either<Failure, ProfileEntity>> addPersonalDetails(
       {required Map<String, String> personalDetails});
 
   Future<Either<Failure, PortfolioEntity>> addPortfolio(
       {required String pathOfcV, required String portfolioName});
+  Future<Either<Failure, Unit>> deletePortfolio(
+      {required PortfolioEntity portfolio});
   Future<Either<Failure, String?>> changeProfileImage();
   Future<Either<Failure, ProfileEntity>> addProfileLanguage(
       {required String language});
@@ -26,5 +28,5 @@ abstract class ProfileRepository {
       {required Map<String, String> workPreferences});
 
   Future<Either<Failure, ProfileEntity>> getProfile();
-  Future<Either<Failure, List<PortfolioEntity>>> getPortofolios();
+  Future<Either<Failure, List<PortfolioEntity>>> getPortfolios();
 }

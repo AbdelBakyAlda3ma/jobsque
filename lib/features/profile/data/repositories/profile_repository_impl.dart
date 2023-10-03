@@ -89,7 +89,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<Either<Failure, ProfileEntity>> addPresonalDetails({
+  Future<Either<Failure, ProfileEntity>> addPersonalDetails({
     required Map<String, String> personalDetails,
   }) async {
     try {
@@ -145,7 +145,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<Either<Failure, List<PortfolioEntity>>> getPortofolios() async {
+  Future<Either<Failure, List<PortfolioEntity>>> getPortfolios() async {
     try {
       List<PortfolioEntity> portfoliosList = [];
       bool? isNeedToRefresh =
@@ -213,6 +213,19 @@ class ProfileRepositoryImpl extends ProfileRepository {
       return Right(updatedProfile);
     } on NoProfileExistException {
       return Left(NoProfileExistFailure());
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDio(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> deletePortfolio(
+      {required PortfolioEntity portfolio}) async {
+    try {
+      await profileRemoteDataSource.deletePortfolio(portfolioID: portfolio.id!);
+      await profileLocalDataSource.deletePortfolio(
+          portfolioToDeleted: portfolio);
+      return const Right(unit);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
     }

@@ -32,6 +32,24 @@ class ApiService {
     return response.data;
   }
 
+  Future<dynamic> delete({
+    required String path,
+    @required dynamic body,
+    @required String? token,
+  }) async {
+    var response = await _dio.delete(
+      path,
+      data: body,
+      options: Options(
+        headers: {
+          HttpHeaders.authorizationHeader:
+              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+        },
+      ),
+    );
+    return response.data;
+  }
+
   Future<dynamic> post(
       {required String path,
       @required dynamic body,

@@ -29,7 +29,7 @@ abstract class ProfileRemoteDataSource {
     required PortfolioModel portfolio,
   });
   Future<PortfolioEntity> deletePortfolio({
-    required PortfolioModel portfolio,
+    required int portfolioID,
   });
   Future<ProfileEntity> addProfileLanguage({
     required ProfileModel profileWithLanguage,
@@ -164,8 +164,12 @@ class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
   }
 
   @override
-  Future<PortfolioEntity> deletePortfolio({required PortfolioModel portfolio}) {
-    // TODO: implement deletePortfolio
-    throw UnimplementedError();
+  Future<PortfolioEntity> deletePortfolio({
+    required int portfolioID,
+  }) async {
+    var deletedPortfolio = await apiService.delete(
+      path: '/user/profile/portofolios/$portfolioID',
+    );
+    return deletedPortfolio;
   }
 }

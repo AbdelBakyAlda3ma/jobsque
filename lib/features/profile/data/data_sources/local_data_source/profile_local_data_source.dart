@@ -19,6 +19,9 @@ abstract class ProfileLocalDataSource {
   Future<void> addPortfolio({
     required PortfolioEntity portfolioToCached,
   });
+  Future<void> deletePortfolio({
+    required PortfolioEntity portfolioToDeleted,
+  });
   List<PortfolioEntity> getPortofolios();
 }
 
@@ -69,5 +72,13 @@ class ProfileLocalDataSourceImpl extends ProfileLocalDataSource {
   }) async {
     var box = Hive.box<PortfolioEntity>(kPortfolioBox);
     await box.add(portfolioToCached);
+  }
+
+  @override
+  Future<void> deletePortfolio({
+    required PortfolioEntity portfolioToDeleted,
+  }) async {
+    var box = Hive.box<PortfolioEntity>(kPortfolioBox);
+    await box.delete(portfolioToDeleted);
   }
 }
