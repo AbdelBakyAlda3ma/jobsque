@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 import '../../../../core/widgets/primary_button.dart';
-import '../../../auth/presentation/screens/account_has_been_set_up_screen.dart';
 
 class WorkLocationBodyPrimaryButton extends StatelessWidget {
   const WorkLocationBodyPrimaryButton({
@@ -12,13 +12,19 @@ class WorkLocationBodyPrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: PrimaryButton.large(
-        text: 'Next',
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const AccountHasBeenSetUpScreen(),
-            ),
+      child: BlocBuilder<WorkPrefrencesBloc, WorkPrefrencesState>(
+        builder: (context, state) {
+          return PrimaryButton.large(
+            text: 'Next',
+            onPressed: () {
+              BlocProvider.of<WorkPrefrencesBloc>(context)
+                  .add(WorkPrefrencesEvent());
+            },
+            child: state is WorkPrefrencesLoading
+                ? const CircularProgressIndicator(
+                    color: Colors.white,
+                  )
+                : null,
           );
         },
       ),

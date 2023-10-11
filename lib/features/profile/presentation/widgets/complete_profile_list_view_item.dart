@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
@@ -9,9 +10,11 @@ class CompleteProfileListViewItem extends StatefulWidget {
     super.key,
     required this.title,
     required this.subTitle,
+    required this.route,
   });
   final String title;
   final String subTitle;
+  final PageRouteInfo<dynamic> route;
 
   @override
   State<CompleteProfileListViewItem> createState() =>
@@ -25,9 +28,12 @@ class _CompleteProfileListViewItemState
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          isCompleted = !isCompleted;
-        });
+        setState(
+          () {
+            isCompleted = !isCompleted;
+            context.router.push(widget.route);
+          },
+        );
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),

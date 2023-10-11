@@ -59,7 +59,7 @@ class NoProfileImageYetFailure extends Failure {
 }
 
 class NoProfileExistFailure extends Failure {
-  NoProfileExistFailure() : super(errorMessage: NO_PROFILE_IMAGE_FAILURE);
+  NoProfileExistFailure() : super(errorMessage: NO_PROFILE_Exist_FAILURE);
 }
 
 class ServerFailure extends Failure {
@@ -109,7 +109,9 @@ class ServerFailure extends Failure {
       );
     } else {
       return ServerFailure(
-          errorMessage: 'There was an error , please try again');
+        errorMessage: statusCode.toString(),
+        // 'There was an error , please try again',
+      );
     }
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
-import '../../data/models/education_model.dart';
-import '../../data/models/experience_model.dart';
+import '../../../education/data/models/education_model.dart';
+import '../../../experience/data/models/experience_model.dart';
 
 part 'profile_entity.g.dart';
 
@@ -26,7 +26,7 @@ class ProfileEntity extends HiveObject {
   @HiveField(8)
   List<String>? offlinePlace;
   @HiveField(9)
-  bool? remotePlace;
+  dynamic remotePlace;
   @HiveField(10)
   String? bio;
   @HiveField(11)

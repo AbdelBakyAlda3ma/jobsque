@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/profile/presentation/screens/work_location_screen.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 
 import '../../../../core/widgets/primary_button.dart';
 
@@ -15,11 +16,10 @@ class WorkTypeBodyPrimaryButton extends StatelessWidget {
       child: PrimaryButton.large(
         text: 'Next',
         onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (context) => const WorkLocationScreen(),
-              ),
-              (Route<dynamic> route) => false);
+          context.router.pushAndPopUntil(
+            const WorkLocationRoute(),
+            predicate: (Route<dynamic> route) => false,
+          );
         },
       ),
     );

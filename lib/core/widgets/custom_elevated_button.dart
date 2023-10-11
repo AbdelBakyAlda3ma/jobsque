@@ -8,6 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final TextStyle? style;
   final OutlinedBorder? shape;
+  final Widget? child;
 
   const CustomElevatedButton({
     super.key,
@@ -18,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.backgroundColor,
     required this.style,
     required this.shape,
+    this.child,
   });
 
   @override
@@ -32,10 +34,11 @@ class CustomElevatedButton extends StatelessWidget {
         minimumSize: minimumSize,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
-      child: Text(
-        text,
-        style: style,
-      ),
+      child: child ??
+          Text(
+            text,
+            style: style,
+          ),
     );
   }
 }

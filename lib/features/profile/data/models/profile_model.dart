@@ -2,8 +2,8 @@
 import 'dart:convert';
 
 import '../../domain/entities/profile_entity.dart';
-import 'education_model.dart';
-import 'experience_model.dart';
+import '../../../education/data/models/education_model.dart';
+import '../../../experience/data/models/experience_model.dart';
 
 class ProfileModel extends ProfileEntity {
   ProfileModel({
@@ -33,8 +33,8 @@ class ProfileModel extends ProfileEntity {
         mobile: data['mobile'] as dynamic,
         address: data['address'] as dynamic,
         language: data['language'] as dynamic,
-        interestedWork: data['interested_work'] as dynamic,
-        offlinePlace: data['offline_place'] as dynamic,
+        interestedWork: data['interested_work'].toString().split(''),
+        offlinePlace: data['offline_place'].toString().split(''),
         remotePlace: data['remote_place'] as dynamic,
         bio: data['bio'] as dynamic,
         education: data['education'] as dynamic,
@@ -74,6 +74,27 @@ class ProfileModel extends ProfileEntity {
   ///
   /// Converts [ProfileModel] to a JSON string.
   String toJson() => json.encode(toMap());
+
+  ProfileModel downCasting({required ProfileEntity profileEntity}) {
+    return ProfileModel(
+      id: profileEntity.id,
+      userId: profileEntity.userId,
+      name: profileEntity.name,
+      email: profileEntity.email,
+      mobile: profileEntity.mobile,
+      address: profileEntity.address,
+      language: profileEntity.language,
+      interestedWork: profileEntity.interestedWork,
+      offlinePlace: profileEntity.offlinePlace,
+      remotePlace: profileEntity.remotePlace,
+      bio: profileEntity.bio,
+      education: profileEntity.education,
+      experience: profileEntity.experience,
+      personalDetailed: profileEntity.personalDetailed,
+      createdAt: profileEntity.createdAt,
+      updatedAt: profileEntity.updatedAt,
+    );
+  }
 
   ProfileModel copyWith({
     int? id,

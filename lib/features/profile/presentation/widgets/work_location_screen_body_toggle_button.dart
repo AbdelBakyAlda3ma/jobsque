@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/widgets/custom_toggle_button.dart';
 import 'package:jobseque/core/widgets/custom_toggle_button_child.dart';
-import 'package:jobseque/features/profile/presentation/manager/blocs/profile_block.dart/profile_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 
 class WorkLocationScreenBodyToggleButton extends StatefulWidget {
   const WorkLocationScreenBodyToggleButton({super.key});
@@ -18,8 +18,7 @@ class _WorkLocationScreenBodyToggleButtonState
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ProfileBloc>(context).profileModel.remotePlace =
-        isSelected[1];
+    BlocProvider.of<WorkPrefrencesBloc>(context).isRemote = isSelected[1];
     return CustomToggleButton(
       isSelected: isSelected,
       onPressed: (index) {

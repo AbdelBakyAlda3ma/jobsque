@@ -26,7 +26,7 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
       language: fields[6] as String?,
       interestedWork: (fields[7] as List?)?.cast<String>(),
       offlinePlace: (fields[8] as List?)?.cast<String>(),
-      remotePlace: fields[9] as bool?,
+      remotePlace: fields[9] as dynamic,
       bio: fields[10] as String?,
       education: fields[11] as EducationModel?,
       experience: fields[12] as ExperienceModel?,
@@ -40,7 +40,7 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
   @override
   void write(BinaryWriter writer, ProfileEntity obj) {
     writer
-      ..writeByte(16)
+      ..writeByte(17)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)

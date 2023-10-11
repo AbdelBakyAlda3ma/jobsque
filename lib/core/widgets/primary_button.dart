@@ -9,6 +9,7 @@ class PrimaryButton extends CustomElevatedButton {
   PrimaryButton({
     super.key,
     super.onPressed,
+    super.child,
     required super.style,
     required super.text,
     required super.minimumSize,
@@ -22,8 +23,11 @@ class PrimaryButton extends CustomElevatedButton {
           ),
         );
 
-  factory PrimaryButton.large(
-      {required void Function()? onPressed, required String text}) {
+  factory PrimaryButton.large({
+    required void Function()? onPressed,
+    required String text,
+    Widget? child,
+  }) {
     return onPressed == null
         ? DisabledButton.large(text: text)
         : PrimaryButton(
@@ -32,26 +36,35 @@ class PrimaryButton extends CustomElevatedButton {
             minimumSize: const Size(150, 48),
             padding: const EdgeInsets.symmetric(horizontal: 14),
             style: CustomTextStyles.textLMedium.copyWith(color: Colors.white),
+            child: child,
           );
   }
-  factory PrimaryButton.medium(
-      {required void Function() onPressed, required String text}) {
+  factory PrimaryButton.medium({
+    required void Function() onPressed,
+    required String text,
+    Widget? child,
+  }) {
     return PrimaryButton(
       onPressed: onPressed,
       text: text,
       minimumSize: const Size(150, 48),
       padding: const EdgeInsets.all(14),
       style: CustomTextStyles.textMMedium.copyWith(color: Colors.white),
+      child: child,
     );
   }
-  factory PrimaryButton.small(
-      {required void Function() onPressed, required String text}) {
+  factory PrimaryButton.small({
+    required void Function() onPressed,
+    required String text,
+    Widget? child,
+  }) {
     return PrimaryButton(
       onPressed: onPressed,
       text: text,
       minimumSize: const Size(96, 32),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 0),
       style: CustomTextStyles.textSMedium.copyWith(color: Colors.white),
+      child: child,
     );
   }
 }

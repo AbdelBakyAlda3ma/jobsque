@@ -54,8 +54,7 @@ class AccountHasBeenSetUpScreen extends StatelessWidget {
               child: PrimaryButton.large(
                 text: 'Get Started',
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
+                  Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
                     MaterialPageRoute(
                       builder: (context) => const WhichWillLaunchWidget(),
                     ),

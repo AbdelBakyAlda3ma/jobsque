@@ -5,7 +5,7 @@ sealed class GetCurrentUserState {}
 
 final class GetCurrentUserInitial extends GetCurrentUserState {}
 
-final class GetCurrentUserLoding extends GetCurrentUserState {}
+final class GetCurrentUserLoading extends GetCurrentUserState {}
 
 final class GetCurrentUserSuccess extends GetCurrentUserState {
   final UserEntity user;

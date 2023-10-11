@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/features/profile/presentation/manager/blocs/profile_block.dart/profile_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 import 'package:jobseque/models/work_type_model.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
@@ -29,13 +29,11 @@ class _WorkTypeCardState extends State<WorkTypeCard> {
             isSelected = !isSelected;
           });
           if (isSelected) {
-            BlocProvider.of<ProfileBloc>(context)
-                .profileModel
+            BlocProvider.of<WorkPrefrencesBloc>(context)
                 .interestedWork!
                 .add(widget.workTypeModel.work);
           } else {
-            BlocProvider.of<ProfileBloc>(context)
-                .profileModel
+            BlocProvider.of<WorkPrefrencesBloc>(context)
                 .interestedWork!
                 .remove(widget.workTypeModel.work);
           }

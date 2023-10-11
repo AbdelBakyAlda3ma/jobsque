@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:jobseque/features/auth/domain/entities/user_entity.dart';
 import 'package:jobseque/features/auth/domain/use_cases/get_curren_user_use_case.dart';
 import 'package:meta/meta.dart';
-
 part 'get_current_user_event.dart';
 part 'get_current_user_state.dart';
 
@@ -13,7 +12,7 @@ class GetCurrentUserBloc
     required this.getCurrenUserUseCase,
   }) : super(GetCurrentUserInitial()) {
     on<GetCurrentUserEvent>((event, emit) async {
-      emit(GetCurrentUserLoding());
+      emit(GetCurrentUserLoading());
       var result = await getCurrenUserUseCase();
 
       result.fold(

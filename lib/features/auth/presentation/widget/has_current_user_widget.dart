@@ -13,26 +13,32 @@ class HasCurrenUserWidget extends StatelessWidget {
     return BlocConsumer<GetCurrentUserBloc, GetCurrentUserState>(
       listener: (context, state) {
         if (state is GetCurrentUserSuccess) {
-          Future.delayed(const Duration(milliseconds: 2000), () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (context) => HomeScreen(
-                  user: state.user,
+          Future.delayed(
+            const Duration(milliseconds: 2000),
+            () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(
+                    user: state.user,
+                  ),
                 ),
-              ),
-              (Route<dynamic> route) => false,
-            );
-          });
+                (Route<dynamic> route) => false,
+              );
+            },
+          );
         }
         if (state is GetCurrentUserFailure) {
-          Future.delayed(const Duration(milliseconds: 2000), () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-              (Route<dynamic> route) => false,
-            );
-          });
+          Future.delayed(
+            const Duration(milliseconds: 2000),
+            () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+                (Route<dynamic> route) => false,
+              );
+            },
+          );
         }
       },
       builder: (context, state) {
