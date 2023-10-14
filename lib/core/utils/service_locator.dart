@@ -5,7 +5,8 @@ import 'package:jobseque/features/jobs/data/repositories/job_repository_impl.dar
 import 'package:jobseque/features/jobs/domain/use_cases/filter_jobs_use_case.dart';
 import 'package:jobseque/features/jobs/domain/use_cases/get_all_jobs_use_case.dart';
 import 'package:jobseque/features/jobs/domain/use_cases/search_jobs_use_case.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 import 'package:jobseque/features/profile/data/data_sources/profile_local_data_source.dart';
 import 'package:jobseque/features/profile/data/data_sources/profile_remote_data_source.dart';
 import 'package:jobseque/features/profile/data/repositories/profile_repository_impl.dart';
@@ -14,8 +15,8 @@ import 'package:jobseque/features/profile/domain/use_cases/work_prefrences_use_c
 import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_bloc/get_profile_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 
-import '../../features/auth/data/data_sources/local_data_source/auth_local_data_source.dart';
-import '../../features/auth/data/data_sources/remote_data_source/auth_remote_data_source.dart';
+import '../../features/auth/data/data_sources/auth_local_data_source.dart';
+import '../../features/auth/data/data_sources/auth_remote_data_source.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/use_cases/get_curren_user_use_case.dart';
 import '../../features/auth/presentation/manager/blocs/get_current_user_bloc/get_current_user_bloc.dart';
@@ -34,12 +35,18 @@ void setUpServiceLocator() {
 
   sL.registerFactory<JobBloc>(
     () => JobBloc(
-        getAllJobsUseCase:
-            GetAllJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>()),
-        searchJobsUseCase:
-            SearchJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>()),
-        filterJobsUseCase:
-            FilterJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>())),
+      getAllJobsUseCase:
+          GetAllJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>()),
+    ),
+  );
+
+  sL.registerFactory<SearchBloc>(
+    () => SearchBloc(
+      searchJobsUseCase:
+          SearchJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>()),
+      filterJobsUseCase:
+          FilterJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>()),
+    ),
   );
 
   sL.registerFactory<WorkPrefrencesBloc>(

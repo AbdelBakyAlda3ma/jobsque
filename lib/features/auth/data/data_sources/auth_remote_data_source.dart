@@ -22,6 +22,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final userData = await apiService.post(
       path: '/auth/login',
       body: loginData,
+      contentType: 'multipart/form-data',
     );
     final UserModel userModel = UserModel.fromServerForLogin(userData);
     return userModel;

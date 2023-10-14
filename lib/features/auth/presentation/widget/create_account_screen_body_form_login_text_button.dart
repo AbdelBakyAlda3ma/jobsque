@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/auth/presentation/screens/login_screen.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/widgets/helper_text_and_text_button.dart';
 
 class CreateAccountScreenBodyFormLoginTextButton extends StatelessWidget {
@@ -13,11 +14,9 @@ class CreateAccountScreenBodyFormLoginTextButton extends StatelessWidget {
       helperText: 'Already have an account?',
       textButtonLabel: 'Login',
       onTap: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
-          ),
+        context.router.pushAndPopUntil(
+          const LoginRoute(),
+          predicate: (route) => route.isCurrent,
         );
       },
     );

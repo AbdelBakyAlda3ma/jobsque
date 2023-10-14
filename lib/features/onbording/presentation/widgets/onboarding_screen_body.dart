@@ -1,9 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/core/utils/service_locator.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/auth/presentation/manager/blocs/get_current_user_bloc/get_current_user_bloc.dart';
-import 'package:jobseque/features/auth/presentation/widget/has_current_user_widget.dart';
 import 'package:jobseque/features/onbording/presentation/widgets/onboarding_step_three.dart';
 import 'package:jobseque/features/onbording/presentation/widgets/onboarding_step_two.dart';
 import 'package:jobseque/features/onbording/presentation/widgets/onboarding_step_one.dart';
@@ -41,16 +39,10 @@ class _OnboardingScreenBodyState extends State<OnboardingScreenBody> {
     );
   }
 
-  void getStarted() {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => BlocProvider<GetCurrentUserBloc>(
-          create: (context) =>
-              sL.get<GetCurrentUserBloc>()..add(GetCurrentUserEvent()),
-          child: const HasCurrenUserWidget(),
-        ),
-      ),
-      (Route<dynamic> route) => false,
+  void getStarted(BuildContext context) {
+    context.router.pushAndPopUntil(
+      const HasCurrenUserWidgetRoute(),
+      predicate: (route) => route.isCurrent,
     );
   }
 
@@ -80,7 +72,9 @@ class _OnboardingScreenBodyState extends State<OnboardingScreenBody> {
         const VerticalSpace(space: 20),
         OnboardingPrimaryButton(
           text: isLast ? 'Get Started' : 'Next',
-          onPressed: isLast ? getStarted : next,
+          onPressed: () {
+            isLast ? getStarted(context) : next();
+          },
         ),
         const VerticalSpace(space: 25),
       ],

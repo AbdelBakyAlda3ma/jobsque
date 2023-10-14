@@ -69,10 +69,15 @@ class PortfolioRepoImpl extends PortfolioRepo {
   Future<Either<Failure, Unit>> deletePortfolio(
       {required PortfolioEntity portfolio}) async {
     try {
+      var profile = _profileLocalDataSource.getProfile();
+
       await portfolioRemoteDataSource.deletePortfolio(
           portfolioID: portfolio.id!);
       await portfolioLocalDataSource.deletePortfolio(
           portfolioToDeleted: portfolio);
+      await JobsqueSharedPrefrences.setBool(
+          kPortfolioAddedAndNeedToRefresh, true);
+      profile.numbersOfPortfolios--;
       return const Right(unit);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));

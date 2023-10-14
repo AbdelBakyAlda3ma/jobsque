@@ -23,6 +23,7 @@ class _ContentPeopleDropDownTextFieldState
     _controller = SingleValueDropDownController(
       data: jobsDropDownList[0],
     );
+
     super.initState();
   }
 
@@ -49,10 +50,9 @@ class _ContentPeopleDropDownTextFieldState
       ),
       controller: _controller,
       clearOption: false,
-      dropDownItemCount: 2,
+      dropDownItemCount: 4,
       searchShowCursor: false,
-      enableSearch: true,
-      searchKeyboardType: TextInputType.number,
+      enableSearch: false,
       dropDownList: jobsDropDownList,
       onChanged: (value) {
         setState(() {});

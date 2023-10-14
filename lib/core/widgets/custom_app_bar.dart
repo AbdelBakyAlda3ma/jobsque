@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
-          context.router.back();
+          context.router.pop();
         },
         child: const Icon(
           IconsJobeque.arrowleft,

@@ -1,7 +1,7 @@
-import '../../../../../core/errors/exception.dart';
-import '../../../../../core/utils/constances.dart';
-import '../../../../../core/utils/user_data_using_shared_preferences.dart';
-import '../../models/user_model.dart';
+import '../../../../core/errors/exception.dart';
+import '../../../../core/utils/constances.dart';
+import '../../../../core/utils/user_data_using_shared_preferences.dart';
+import '../models/user_model.dart';
 
 abstract class AuthLocalDataSource {
   Future<UserModel> getCurrentUser();

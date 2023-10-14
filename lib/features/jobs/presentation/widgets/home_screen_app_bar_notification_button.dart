@@ -1,6 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/notifications/presentation/screens/notifications_screen.dart';
-
+import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 
@@ -16,12 +16,7 @@ class HomeScreenAppBarNotificationButton extends StatelessWidget {
       width: 48,
       child: IconButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const NotificationScreen(),
-            ),
-          );
+          context.router.push(const NotificationRoute());
         },
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.zero,

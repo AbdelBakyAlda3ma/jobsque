@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/widgets/custom_app_bar.dart';
 import 'package:jobseque/features/auth/presentation/widget/email_address_profile_screen_body.dart';
 
+@RoutePage()
 class EmailAddressProfileScreen extends StatelessWidget {
   const EmailAddressProfileScreen({super.key});
 

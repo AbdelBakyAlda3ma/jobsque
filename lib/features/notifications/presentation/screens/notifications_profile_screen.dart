@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/widgets/custom_app_bar.dart';
 import 'package:jobseque/features/notifications/presentation/widgets/notifications_profile_screen_body.dart';
 
+@RoutePage()
 class NotificationsProfileScreen extends StatelessWidget {
   const NotificationsProfileScreen({super.key});
 

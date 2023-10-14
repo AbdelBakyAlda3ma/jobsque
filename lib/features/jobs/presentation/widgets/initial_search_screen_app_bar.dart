@@ -1,6 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/jobs/presentation/screens/search_screen.dart';
-
+import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 import '../../../../core/widgets/custom_search_text_field.dart';
 import '../../../../core/widgets/horizontal_space.dart';
@@ -18,7 +18,7 @@ class InitialSearchScreenAppBar extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.pop(context, true);
+              context.router.pop();
             },
             child: const Icon(
               IconsJobeque.arrowleft,
@@ -27,14 +27,10 @@ class InitialSearchScreenAppBar extends StatelessWidget {
           const HorizontalSpace(space: 12),
           Expanded(
             child: CustomSearchTextField(
+              readOnly: true,
               hintText: 'Type something...',
               onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SearchScreen(),
-                  ),
-                );
+                context.router.popAndPush(const SearchRoute());
               },
             ),
           ),

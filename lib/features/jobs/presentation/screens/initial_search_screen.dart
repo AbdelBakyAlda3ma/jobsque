@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/initial_search_screen_app_bar.dart';
 import '../widgets/initial_search_screen_body.dart';
 
+@RoutePage()
 class InitialSearchScreen extends StatelessWidget {
   const InitialSearchScreen({super.key});
 

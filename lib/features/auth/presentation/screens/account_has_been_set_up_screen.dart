@@ -1,7 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jobseque/core/widgets/which_will_launch_widget.dart';
-
+import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/assets_images.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
@@ -9,6 +9,7 @@ import '../../../../core/utils/global/icons_jobeque_icons.dart';
 import '../../../../core/widgets/primary_button.dart';
 import '../../../../core/widgets/vertical_space.dart';
 
+@RoutePage()
 class AccountHasBeenSetUpScreen extends StatelessWidget {
   const AccountHasBeenSetUpScreen({super.key});
 
@@ -19,7 +20,7 @@ class AccountHasBeenSetUpScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(IconsJobeque.arrowleft),
           onPressed: () {
-            Navigator.pop(context);
+            context.router.pop();
           },
         ),
       ),
@@ -54,11 +55,9 @@ class AccountHasBeenSetUpScreen extends StatelessWidget {
               child: PrimaryButton.large(
                 text: 'Get Started',
                 onPressed: () {
-                  Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) => const WhichWillLaunchWidget(),
-                    ),
-                    (route) => false,
+                  context.router.pushAndPopUntil(
+                    const WhichWillLaunchWidgetRoute(),
+                    predicate: (route) => route.isCurrent,
                   );
                 },
               ),

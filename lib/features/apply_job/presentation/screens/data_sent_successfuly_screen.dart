@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 
+@RoutePage()
 class DataSentSuccessfulyScreen extends StatelessWidget {
   const DataSentSuccessfulyScreen({super.key});
 

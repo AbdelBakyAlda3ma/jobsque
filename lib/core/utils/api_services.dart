@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/utils/user_data_using_shared_preferences.dart';
-
 import 'constances.dart';
 
 class ApiService {
@@ -25,9 +24,7 @@ class ApiService {
       options: Options(
         headers: {
           HttpHeaders.authorizationHeader:
-              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1",
-          //  HttpHeaders.authorizationHeader:
-          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );
@@ -45,21 +42,20 @@ class ApiService {
       options: Options(
         headers: {
           HttpHeaders.authorizationHeader:
-              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1",
-          //  HttpHeaders.authorizationHeader:
-          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );
     return response.data;
   }
 
-  Future<dynamic> post(
-      {required String path,
-      @required dynamic body,
-      @required String? token,
-      Map<String, dynamic>? queryParameters,
-      String? contentType}) async {
+  Future<dynamic> post({
+    required String path,
+    @required dynamic body,
+    @required String? token,
+    Map<String, dynamic>? queryParameters,
+    String? contentType,
+  }) async {
     var response = await _dio.post(
       path,
       queryParameters: queryParameters,
@@ -67,11 +63,9 @@ class ApiService {
       options: Options(
         headers: {
           HttpHeaders.authorizationHeader:
-              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1",
-          //  HttpHeaders.authorizationHeader:
-          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
-          HttpHeaders.contentTypeHeader:
-              contentType ?? 'application/x-www-form-urlencoded',
+              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+          // HttpHeaders.contentTypeHeader:
+          //     contentType ?? 'application/x-www-form-urlencoded',
         },
       ),
     );
@@ -90,9 +84,7 @@ class ApiService {
       options: Options(
         headers: {
           HttpHeaders.authorizationHeader:
-              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1",
-          //  HttpHeaders.authorizationHeader:
-          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );

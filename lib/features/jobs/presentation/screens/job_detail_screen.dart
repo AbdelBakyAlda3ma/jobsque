@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 
 import '../widgets/job_datail_body.dart';
 import '../widgets/job_detail_app_bar.dart';
 
+@RoutePage()
 class JobDetailScreen extends StatelessWidget {
   final JobEntity job;
   const JobDetailScreen({

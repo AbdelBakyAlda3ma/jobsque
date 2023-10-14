@@ -1,7 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jobseque/features/auth/presentation/screens/login_screen.dart';
-
+import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/assets_logos.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
@@ -23,11 +23,9 @@ class OnboardingScreenAppBar extends StatelessWidget
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
+            context.router.pushAndPopUntil(
+              const LoginRoute(),
+              predicate: (route) => route.isCurrent,
             );
           },
           style: TextButton.styleFrom(

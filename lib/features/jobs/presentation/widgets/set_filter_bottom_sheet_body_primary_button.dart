@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/bloc/job_bloc.dart';
-
+import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 import '../../../../core/widgets/primary_button.dart';
 
 class SetFilterBottomSheetBodyPrimaryButton extends StatelessWidget {
@@ -15,7 +14,7 @@ class SetFilterBottomSheetBodyPrimaryButton extends StatelessWidget {
       width: double.infinity,
       child: PrimaryButton.large(
         onPressed: () {
-          BlocProvider.of<JobBloc>(context).add(FilterJobsEvent());
+          BlocProvider.of<SearchBloc>(context).add(FilterSearchEvent());
         },
         text: 'Show result',
       ),

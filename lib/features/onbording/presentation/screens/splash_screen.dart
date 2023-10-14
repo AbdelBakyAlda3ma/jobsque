@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/onbording/presentation/screens/onboarding_screen.dart';
-
+import 'package:jobseque/core/routing/routes.gr.dart';
 import '../widgets/splash_screen_body.dart';
 
+@RoutePage()
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -15,11 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 5),
       () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const OnboardingScreen(),
-          ),
+        AutoRouter.of(context).pushAndPopUntil(
+          const OnboardingRoute(),
+          predicate: (route) => false,
         );
       },
     );

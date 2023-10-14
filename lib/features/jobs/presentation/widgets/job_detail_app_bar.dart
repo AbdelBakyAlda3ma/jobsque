@@ -1,5 +1,5 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
@@ -21,7 +21,7 @@ class JobDetailAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 8),
         child: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            context.router.pop();
           },
           child: const Icon(
             IconsJobeque.arrowleft,

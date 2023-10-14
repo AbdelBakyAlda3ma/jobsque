@@ -64,7 +64,7 @@ class CustomDropDownTextField extends StatelessWidget {
       clearOption: clearOption ?? true,
       textFieldFocusNode: textFieldFocusNode,
       searchFocusNode: searchFocusNode,
-      // searchAutofocus: true,
+      searchAutofocus: false,
       dropDownItemCount: dropDownItemCount ?? 6,
       searchShowCursor: searchShowCursor,
       enableSearch: enableSearch ?? false,

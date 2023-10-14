@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/utils/global/assets_images.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/core/widgets/which_will_launch_widget.dart';
 
+@RoutePage()
 class ChangePasswordSuccessfullyScreen extends StatelessWidget {
   const ChangePasswordSuccessfullyScreen({super.key});
 
@@ -44,12 +46,9 @@ class ChangePasswordSuccessfullyScreen extends StatelessWidget {
               child: PrimaryButton.large(
                 text: 'Continue',
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const WhichWillLaunchWidget(),
-                    ),
-                    (route) => false,
+                  context.router.pushAndPopUntil(
+                    const WhichWillLaunchWidgetRoute(),
+                    predicate: (route) => route.isCurrent,
                   );
                 },
               ),

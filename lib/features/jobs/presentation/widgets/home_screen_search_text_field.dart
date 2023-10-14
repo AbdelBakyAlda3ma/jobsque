@@ -1,8 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/widgets/custom_search_text_field.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/bloc/job_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/screens/initial_search_screen.dart';
 
 class HomeScreenSearchTextField extends StatefulWidget {
   const HomeScreenSearchTextField({super.key});
@@ -13,6 +12,8 @@ class HomeScreenSearchTextField extends StatefulWidget {
 }
 
 class _HomeScreenSearchTextFieldState extends State<HomeScreenSearchTextField> {
+  FocusNode searchFocus = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,21 +25,14 @@ class _HomeScreenSearchTextFieldState extends State<HomeScreenSearchTextField> {
       child: Column(
         children: [
           CustomSearchTextField(
+            readOnly: true,
+            focusNode: searchFocus,
             hintText: 'Search....',
             onTapOutside: (envet) {
-              FocusManager.instance.primaryFocus?.unfocus();
+              searchFocus.unfocus();
             },
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const InitialSearchScreen(),
-                ),
-              ).then(
-                (value) => setState(() {
-                  BlocProvider.of<JobBloc>(context).add(GetAllJobsEvent());
-                }),
-              );
+              context.router.push(const InitialSearchRoute());
             },
           ),
         ],

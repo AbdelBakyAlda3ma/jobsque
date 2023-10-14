@@ -116,9 +116,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
     required Map<String, dynamic> workPreferences,
   }) async {
     try {
-      var profileEntity = profileLocalDataSource.getProfile();
-      var profile = ProfileModel().downCasting(profileEntity: profileEntity);
-      profile = ProfileModel().copyWith(
+      var profile = ProfileModel().copyWith(
         interestedWork: workPreferences['interestedWork'],
         offlinePlace: workPreferences['offlinePlace'] as List<String>,
         remotePlace: workPreferences['remotePlace'] as bool,
@@ -128,8 +126,6 @@ class ProfileRepositoryImpl extends ProfileRepository {
       );
       profileLocalDataSource.saveProfile(profileToCached: updatedProfile);
       return Right(updatedProfile);
-    } on NoProfileExistException {
-      return Left(NoProfileExistFailure());
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
     }

@@ -18,7 +18,7 @@ class WorkTypeBodyPrimaryButton extends StatelessWidget {
         onPressed: () {
           context.router.pushAndPopUntil(
             const WorkLocationRoute(),
-            predicate: (Route<dynamic> route) => false,
+            predicate: (route) => route.isCurrent,
           );
         },
       ),

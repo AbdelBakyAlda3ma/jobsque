@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 
@@ -34,7 +34,7 @@ class _SetFilterBottmSheetJobTitleTextFieldState
         CustomTextField(
           onChanged: (value) {
             setState(() {
-              BlocProvider.of<JobBloc>(context).jobName = value;
+              BlocProvider.of<SearchBloc>(context).jobName = value;
             });
           },
           prefixIcon: const Icon(

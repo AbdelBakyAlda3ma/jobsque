@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_recent_job_section_heading.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_shimmer_loding.dart';
 

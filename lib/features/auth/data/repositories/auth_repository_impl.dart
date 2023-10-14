@@ -8,8 +8,8 @@ import '../../../../core/errors/exception.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/network/network_info.dart';
 import '../../domain/repositories/auth_repository.dart';
-import '../data_sources/local_data_source/auth_local_data_source.dart';
-import '../data_sources/remote_data_source/auth_remote_data_source.dart';
+import '../data_sources/auth_local_data_source.dart';
+import '../data_sources/auth_remote_data_source.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
