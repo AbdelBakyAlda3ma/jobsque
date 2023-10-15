@@ -9,7 +9,7 @@ const String NO_JOBS_POSTED_YET_FAILURE_MESSAGE = 'No Jobs Posted Yet';
 const String SEARCH_NOT_FOUND_FAILURE_MESSAGE = 'Search Not Found';
 const String FILTERED_SEARCH_NOT_FOUND_FAILURE_MESSAGE =
     'Filtered Search Not Found';
-const String FILTERED_SEARCH_FAILURE_MESSAGE = 'One Field Is Required At Least';
+const String FILTERED_SEARCH_FAILURE_MESSAGE = 'One field is required at least';
 const String INVALID_DATE_FAILURE_MESSAGE =
     'Invalid time , Please select a date and time after now !';
 const String PLATFORM_FAILURE_MESSAGE =

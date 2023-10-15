@@ -20,6 +20,13 @@ class AppRouter extends $AppRouter {
           ],
         ),
         AutoRoute(
+          page: SearchWrapper.page,
+          children: [
+            AutoRoute(page: SearchRoute.page),
+            AutoRoute(page: SetFilterModalBottomSheetRoute.page),
+          ],
+        ),
+        AutoRoute(
           page: WorkPreferencesWrapper.page,
           children: [
             AutoRoute(page: WorkTypeRoute.page),
@@ -47,7 +54,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: HasCurrenUserWidgetRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: JobDetailRoute.page),
-        AutoRoute(page: SearchRoute.page),
         AutoRoute(page: InitialSearchRoute.page),
       ];
 }

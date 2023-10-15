@@ -10,7 +10,7 @@ class WorkPreferencesWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<WorkPrefrencesBloc>(
       create: (context) => sL.get<WorkPrefrencesBloc>(),
       child: const AutoRouter(),
     );

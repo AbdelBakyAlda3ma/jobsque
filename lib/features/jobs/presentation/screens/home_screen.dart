@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/utils/service_locator.dart';
 import 'package:jobseque/features/auth/domain/entities/user_entity.dart';
 import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_bloc/get_profile_bloc.dart';
 import '../../../../core/widgets/custom_bottom_navigation_bar.dart';
 import '../widgets/home_screen_app_bar.dart';
 import '../widgets/home_screen_body.dart';
@@ -17,8 +18,15 @@ class HomeScreen extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<JobBloc>(
-      create: (context) => sL.get<JobBloc>()..add(GetAllJobsEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<JobBloc>(
+          create: (context) => sL.get<JobBloc>()..add(GetAllJobsEvent()),
+        ),
+        BlocProvider<GetProfileBloc>(
+          create: (context) => sL.get<GetProfileBloc>()..add(GetProfileEvent()),
+        )
+      ],
       child: SafeArea(
         child: Scaffold(
           body: Column(

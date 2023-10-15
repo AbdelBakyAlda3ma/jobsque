@@ -6,6 +6,7 @@ part 'get_profile_state.dart';
 
 class GetProfileBloc extends Bloc<GetProfileEvent, GetProfileState> {
   final GetProfileUseCase getProfileUseCase;
+  ProfileEntity? profile;
 
   GetProfileBloc({required this.getProfileUseCase})
       : super(GetProfileInitial()) {
