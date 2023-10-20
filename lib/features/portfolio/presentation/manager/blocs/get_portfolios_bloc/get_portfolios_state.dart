@@ -17,3 +17,9 @@ class GetPortfoliosFailure extends GetPortfoliosState {
 
   GetPortfoliosFailure({required this.errorMsg});
 }
+
+class GetPortfoliosNoPortfoliosAddedYet extends GetPortfoliosState {
+  final String errorMsg;
+
+  GetPortfoliosNoPortfoliosAddedYet({required this.errorMsg});
+}

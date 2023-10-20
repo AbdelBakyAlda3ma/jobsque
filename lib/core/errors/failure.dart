@@ -62,6 +62,14 @@ class NoProfileExistFailure extends Failure {
   NoProfileExistFailure() : super(errorMessage: NO_PROFILE_Exist_FAILURE);
 }
 
+class NoPortfoliosYetFailure extends Failure {
+  NoPortfoliosYetFailure() : super(errorMessage: NO_PORTFOLIOS_YET_FAILURE);
+}
+
+class CanceledFailure extends Failure {
+  CanceledFailure() : super(errorMessage: CANCELED_BY_USER_FAILURE_MESSAGE);
+}
+
 class ServerFailure extends Failure {
   ServerFailure({
     required super.errorMessage,
@@ -100,6 +108,10 @@ class ServerFailure extends Failure {
     } else if (statusCode == 500) {
       return ServerFailure(
           errorMessage: 'There is a problem with server, please try later');
+    } else if (statusCode == 413) {
+      return ServerFailure(
+        errorMessage: 'Max size is 300 KB, the file is too large!',
+      );
     } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       log(response.toString());
       return ServerFailure(

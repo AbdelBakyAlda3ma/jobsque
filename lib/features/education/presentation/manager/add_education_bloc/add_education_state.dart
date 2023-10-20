@@ -6,7 +6,11 @@ final class AddEducationInitial extends AddEducationState {}
 
 class AddEducationLoading extends AddEducationState {}
 
-class AddEducationSuccess extends AddEducationState {}
+class AddEducationSuccess extends AddEducationState {
+  final String successMsg;
+
+  AddEducationSuccess({required this.successMsg});
+}
 
 class AddEducationFailure extends AddEducationState {
   final String errorMsg;

@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import '../../domain/entities/profile_entity.dart';
 import '../../../education/data/models/education_model.dart';
 import '../../../experience/data/models/experience_model.dart';
@@ -37,8 +36,12 @@ class ProfileModel extends ProfileEntity {
         offlinePlace: data['offline_place'].toString().split(''),
         remotePlace: data['remote_place'] as dynamic,
         bio: data['bio'] as dynamic,
-        education: data['education'] as dynamic,
-        experience: data['experience'] as dynamic,
+        education: data['education'] != null
+            ? EducationModel.fromJson(data['education'])
+            : null,
+        experience: data['experience'] != null
+            ? ExperienceModel.fromJson(data['experience'])
+            : null,
         personalDetailed: data['personal_detailed'] as dynamic,
         createdAt: data['created_at'] as String?,
         updatedAt: data['updated_at'] as String?,
@@ -56,8 +59,13 @@ class ProfileModel extends ProfileEntity {
         'offline_place': offlinePlace,
         'remote_place': remotePlace,
         'bio': bio,
-        'education': education?.toJson(),
-        'experience': experience?.toJson(),
+        'education': education != null
+            ? EducationModel.downCasting(educationEntity: education!).toJson()
+            : null,
+        'experience': experience != null
+            ? ExperienceModel.downCasting(experienceEntity: experience!)
+                .toJson()
+            : null,
         'personal_detailed': personalDetailed,
         'created_at': createdAt,
         'updated_at': updatedAt,
@@ -75,7 +83,7 @@ class ProfileModel extends ProfileEntity {
   /// Converts [ProfileModel] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  ProfileModel downCasting({required ProfileEntity profileEntity}) {
+  factory ProfileModel.downCasting({required ProfileEntity profileEntity}) {
     return ProfileModel(
       id: profileEntity.id,
       userId: profileEntity.userId,

@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/core/widgets/custom_app_bar.dart';
-import 'package:jobseque/features/profile/presentation/widgets/edit_profile_screen_body.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/core/utils/service_locator.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/add_personal_details_bloc/add_personal_details_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/change_profile_image_bloc/change_profile_image_bloc.dart';
+import 'package:jobseque/features/profile/presentation/widgets/personal_details_screen_safe_area.dart';
 
 @RoutePage()
 class PersonalDetailsScreen extends StatelessWidget {
@@ -9,11 +12,16 @@ class PersonalDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(title: 'Personal Details'),
-        body: EditProfileScreenBody(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AddPersonalDetailsBloc>(
+          create: (context) => sL.get<AddPersonalDetailsBloc>(),
+        ),
+        BlocProvider<ChangeProfileImageBloc>(
+          create: (context) => sL.get<ChangeProfileImageBloc>(),
+        ),
+      ],
+      child: const PersonalDetailsScreenSafeArea(),
     );
   }
 }

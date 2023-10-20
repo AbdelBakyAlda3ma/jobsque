@@ -1,12 +1,12 @@
 // ignore_for_file: missing_required_param
 
 import 'package:jobseque/core/utils/api_services.dart';
-import 'package:jobseque/features/experience/data/models/experience_model.dart';
-import 'package:jobseque/features/experience/domain/entities/experience_entity.dart';
+import 'package:jobseque/features/profile/data/models/profile_model.dart';
+import 'package:jobseque/features/profile/domain/entities/profile_entity.dart';
 
 abstract class ExperienceRemoteDataSource {
-  Future<ExperienceEntity> addExperience({
-    required ExperienceModel experience,
+  Future<ProfileEntity> addExperience({
+    required ProfileModel profileWithExperience,
   });
 }
 
@@ -17,14 +17,14 @@ class ExperienceRemoteDataSourceImpl extends ExperienceRemoteDataSource {
     required this.apiService,
   });
   @override
-  Future<ExperienceEntity> addExperience({
-    required ExperienceModel experience,
+  Future<ProfileEntity> addExperience({
+    required ProfileModel profileWithExperience,
   }) async {
-    var experienceData = await apiService.post(
-      path: '/education',
-      queryParameters: experience.toMap(),
+    var profileWithEducationData = await apiService.put(
+      path: '/user/profile/edit',
+      queryParameters: profileWithExperience.toMap(),
     );
-    var experienceModel = ExperienceModel.fromMap(experienceData);
-    return experienceModel;
+    var updatedProfile = ProfileModel.fromMap(profileWithEducationData['data']);
+    return updatedProfile;
   }
 }

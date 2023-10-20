@@ -5,10 +5,12 @@ import 'custom_text_form_field.dart';
 class TextFormFieldOfUserName extends StatefulWidget {
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
+  final String? Function(String?)? validator;
   const TextFormFieldOfUserName({
     super.key,
     this.onChanged,
     this.onFieldSubmitted,
+    this.validator,
   });
 
   @override
@@ -21,6 +23,7 @@ class _TextFormFieldOfUserNameState extends State<TextFormFieldOfUserName> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
+      validator: widget.validator,
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onFieldSubmitted,
       focusNode: userNameFocus,

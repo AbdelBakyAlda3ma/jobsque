@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
@@ -26,7 +25,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
     required Map<String, String> personalDetails,
   }) async {
     try {
-      var profile = profileLocalDataSource.getProfile() as ProfileModel;
+      var profileEntity = profileLocalDataSource.getProfile();
+      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
       profile = ProfileModel().copyWith(
         personalDetailed: jsonEncode(personalDetails),
       );
@@ -46,7 +46,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
   Future<Either<Failure, ProfileEntity>> addProfileLanguage(
       {required String language}) async {
     try {
-      var profile = profileLocalDataSource.getProfile() as ProfileModel;
+      var profileEntity = profileLocalDataSource.getProfile();
+      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
       profile = ProfileModel().copyWith(
         language: language,
       );
@@ -89,29 +90,6 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<Either<Failure, ProfileEntity>> editProfile(
-      {required Map<String, String> profileInfo}) async {
-    try {
-      var profile = profileLocalDataSource.getProfile() as ProfileModel;
-      profile = ProfileModel().copyWith(
-        name: profileInfo['name'],
-        bio: profileInfo['bio'],
-        address: profileInfo['address'],
-        mobile: profileInfo['mobile'],
-      );
-      var updatedProfile = await profileRemoteDataSource.editProfile(
-        profileWithEditData: profile,
-      );
-      profileLocalDataSource.saveProfile(profileToCached: updatedProfile);
-      return Right(updatedProfile);
-    } on NoProfileExistException {
-      return Left(NoProfileExistFailure());
-    } on DioException catch (e) {
-      return Left(ServerFailure.fromDio(e));
-    }
-  }
-
-  @override
   Future<Either<Failure, ProfileEntity>> workPreferences({
     required Map<String, dynamic> workPreferences,
   }) async {
@@ -129,5 +107,11 @@ class ProfileRepositoryImpl extends ProfileRepository {
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
     }
+  }
+
+  @override
+  ProfileEntity completeProfile() {
+    var profile = profileLocalDataSource.getProfile();
+    return profile;
   }
 }

@@ -5,8 +5,8 @@ import 'package:jobseque/core/utils/service_locator.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 
 @RoutePage()
-class WorkPreferencesWrapper extends StatelessWidget {
-  const WorkPreferencesWrapper({super.key});
+class WorkPreferencesWrapperScreen extends StatelessWidget {
+  const WorkPreferencesWrapperScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 
-class UploadPortfolioStepContentUploadedCVTitle extends StatelessWidget {
-  const UploadPortfolioStepContentUploadedCVTitle({
+class UploadPortfolioStepContentUploadedCvHeader extends StatelessWidget {
+  const UploadPortfolioStepContentUploadedCvHeader({
     super.key,
   });
 

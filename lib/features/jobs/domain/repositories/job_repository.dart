@@ -12,4 +12,5 @@ abstract class JobRepository {
     String? jobLocation,
     String? jobSalary,
   });
+  // List<JobEntity> showSubmittedJobs();
 }

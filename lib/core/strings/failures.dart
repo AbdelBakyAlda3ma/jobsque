@@ -16,3 +16,4 @@ const String PLATFORM_FAILURE_MESSAGE =
     'Error With Platform, Please Try Again !';
 const String NO_PROFILE_IMAGE_FAILURE = 'Please Add Profile Image First';
 const String NO_PROFILE_Exist_FAILURE = 'No Profile Exist !';
+const String NO_PORTFOLIOS_YET_FAILURE = 'No portfolios added yet !';

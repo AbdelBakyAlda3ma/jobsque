@@ -27,7 +27,7 @@ class LoginScreenSafeArea extends StatelessWidget {
               HomeRoute(
                 user: state.user,
               ),
-              predicate: (route) => route.isCurrent,
+              predicate: (route) => false,
             );
           } else if (state is LoginFailure) {
             showErrorSnackBar(

@@ -25,7 +25,7 @@ class OnboardingScreenAppBar extends StatelessWidget
           onPressed: () {
             context.router.pushAndPopUntil(
               const LoginRoute(),
-              predicate: (route) => route.isCurrent,
+              predicate: (route) => false,
             );
           },
           style: TextButton.styleFrom(

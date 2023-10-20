@@ -12,6 +12,8 @@ class UploadPortfolioListTileSubTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'CV.pdf 300KB',
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: CustomTextStyles.textSRegular.copyWith(
         color: AppColors.neutral[500],
       ),

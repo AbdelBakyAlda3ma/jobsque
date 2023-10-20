@@ -49,7 +49,7 @@ class UploadFileArea extends StatelessWidget {
                 ),
                 const VerticalSpace(space: 8),
                 Text(
-                  'Max. file size 10 MB',
+                  'Max. file size 300 KB',
                   style: CustomTextStyles.textSRegular.copyWith(
                     color: AppColors.neutral[500],
                   ),

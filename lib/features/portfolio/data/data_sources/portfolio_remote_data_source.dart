@@ -1,13 +1,13 @@
 // ignore_for_file: missing_required_param
-
 import 'package:dio/dio.dart';
+import 'package:jobseque/core/errors/exception.dart';
 import 'package:jobseque/core/utils/api_services.dart';
 import 'package:jobseque/features/portfolio/data/models/portfolio_model.dart';
 import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dart';
 
 abstract class PortfolioRemoteDataSource {
   Future<List<PortfolioEntity>> getPortofolios();
-  Future<PortfolioEntity> deletePortfolio({
+  Future<void> deletePortfolio({
     required int portfolioID,
   });
   Future<PortfolioEntity> addPortfolio({
@@ -25,15 +25,19 @@ class PortfolioRemoteDataSourceImpl extends PortfolioRemoteDataSource {
     required PortfolioModel portfolio,
   }) async {
     final payload = FormData.fromMap({
-      'name': portfolio.name,
-      'cv_file': await MultipartFile.fromFile(portfolio.cvFile!),
-      'image': await MultipartFile.fromFile(portfolio.image!),
+      'cv_file': await MultipartFile.fromFile(
+        portfolio.cvFile!,
+      ),
+      'image': await MultipartFile.fromFile(portfolio.cvFile!),
+      'name': portfolio.cvFile!.split('/').last,
     });
+
     var portfolioData = await apiService.post(
       path: '/user/profile/portofolios/',
       body: payload,
     );
     var addedPortfolio = PortfolioModel.fromMap(portfolioData['data']);
+
     return addedPortfolio;
   }
 
@@ -43,21 +47,25 @@ class PortfolioRemoteDataSourceImpl extends PortfolioRemoteDataSource {
       path: '/user/profile/portofolios/',
     );
     List<PortfolioModel> portfoliosList = [];
-    for (var portfolio in portfoliosListData) {
+    for (var portfolio in portfoliosListData['data']['portfolio']) {
       portfoliosList.add(
         PortfolioModel.fromMap(portfolio),
       );
     }
-    return portfoliosList;
+
+    if (portfoliosList.isNotEmpty) {
+      return portfoliosList;
+    } else {
+      throw NoPortfoliosYetException();
+    }
   }
 
   @override
-  Future<PortfolioEntity> deletePortfolio({
+  Future<void> deletePortfolio({
     required int portfolioID,
   }) async {
-    var deletedPortfolio = await apiService.delete(
+    await apiService.delete(
       path: '/user/profile/portofolios/$portfolioID',
     );
-    return deletedPortfolio;
   }
 }

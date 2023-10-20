@@ -8,27 +8,40 @@ import 'experience_screen_body_form_currently_work_in_this_role_check_box.dart';
 import 'experience_screen_body_form_location_text_field.dart';
 import 'experience_screen_body_form_type_of_work_drop_down_menu.dart';
 
-class ExperienceScreenBodyForm extends StatelessWidget {
+class ExperienceScreenBodyForm extends StatefulWidget {
   const ExperienceScreenBodyForm({super.key});
 
   @override
+  State<ExperienceScreenBodyForm> createState() =>
+      _ExperienceScreenBodyFormState();
+}
+
+class _ExperienceScreenBodyFormState extends State<ExperienceScreenBodyForm> {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        ExperienceScreenBodyFormJobPositionTextField(),
-        VerticalSpace(space: 16),
-        ExperienceScreenBodyFormTypeOfWorkDropDownMenu(),
-        VerticalSpace(space: 16),
-        ExperienceScreenBodyFormCompanyNameTextField(),
-        VerticalSpace(space: 16),
-        ExperienceScreenBodyFormLocationTextField(),
-        VerticalSpace(space: 6),
-        ExperienceScreenBodyFormCurrentlyWorkInThisRoleCheckBox(),
-        VerticalSpace(space: 16),
-        ExperienceScreenBodyFormStartYearTextField(),
-        VerticalSpace(space: 32),
-        ExperienceScreenBodyFormSaveButton(),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          const ExperienceScreenBodyFormJobPositionTextField(),
+          const VerticalSpace(space: 16),
+          const ExperienceScreenBodyFormTypeOfWorkDropDownMenu(),
+          const VerticalSpace(space: 16),
+          const ExperienceScreenBodyFormCompanyNameTextField(),
+          const VerticalSpace(space: 16),
+          const ExperienceScreenBodyFormLocationTextField(),
+          const VerticalSpace(space: 6),
+          const ExperienceScreenBodyFormCurrentlyWorkInThisRoleCheckBox(),
+          const VerticalSpace(space: 16),
+          const ExperienceScreenBodyFormStartYearTextField(),
+          const VerticalSpace(space: 32),
+          ExperienceScreenBodyFormSaveButton(
+            formKey: _formKey,
+          ),
+        ],
+      ),
     );
   }
 }

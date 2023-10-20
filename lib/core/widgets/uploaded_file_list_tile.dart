@@ -5,11 +5,16 @@ import 'package:jobseque/core/widgets/uploaded_file_list_tile_actions.dart';
 import 'package:jobseque/core/widgets/uploaded_file_list_tile_leading_icon.dart';
 import 'package:jobseque/core/widgets/uploaded_file_list_tile_sub_title.dart';
 import 'package:jobseque/core/widgets/uploaded_file_list_tile_title.dart';
-
+import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dart';
 import '../utils/global/app_colors.dart';
 
 class UploadedFileListTile extends StatelessWidget {
-  const UploadedFileListTile({super.key});
+  final PortfolioEntity portfolio;
+
+  const UploadedFileListTile({
+    super.key,
+    required this.portfolio,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +27,22 @@ class UploadedFileListTile extends StatelessWidget {
           color: AppColors.neutral[300]!,
         ),
       ),
-      child: const Row(
+      child: Row(
         children: [
-          UploadPortfolioListTileLeadingIcon(),
-          HorizontalSpace(space: 8),
-          Column(
-            children: [
-              UploadPortfolioListTileTitle(),
-              VerticalSpace(space: 4),
-              UploadPortfolioListTileSubTitle(),
-            ],
+          const UploadPortfolioListTileLeadingIcon(),
+          const HorizontalSpace(space: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UploadPortfolioListTileTitle(
+                    name: portfolio.cvFile!.split('_').first),
+                const VerticalSpace(space: 4),
+                const UploadPortfolioListTileSubTitle(),
+              ],
+            ),
           ),
-          Spacer(),
-          UploadPortfolioListTileActins(),
+          UploadPortfolioListTileActins(portfolio: portfolio),
         ],
       ),
     );

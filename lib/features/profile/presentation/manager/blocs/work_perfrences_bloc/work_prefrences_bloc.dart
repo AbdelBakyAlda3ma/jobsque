@@ -14,7 +14,7 @@ class WorkPrefrencesBloc
       : super(WorkPrefrencesInitial()) {
     on<WorkPrefrencesEvent>((event, emit) async {
       emit(WorkPrefrencesLoading());
-      final result = await workPreferencesUseCase.call(
+      final result = await workPreferencesUseCase(
         workPreferences: {
           'interestedWork': interestedWork,
           'offlinePlace': preferedCountriesToWork,

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
+import 'package:jobseque/features/education/domain/entities/education_entity.dart';
+import 'package:jobseque/features/experience/domain/entities/experience_entity.dart';
 import '../../../education/data/models/education_model.dart';
 import '../../../experience/data/models/experience_model.dart';
 
@@ -30,9 +32,9 @@ class ProfileEntity extends HiveObject {
   @HiveField(10)
   String? bio;
   @HiveField(11)
-  EducationModel? education;
+  EducationEntity? education;
   @HiveField(12)
-  ExperienceModel? experience;
+  ExperienceEntity? experience;
   @HiveField(13)
   String? personalDetailed;
   @HiveField(14)
@@ -46,7 +48,7 @@ class ProfileEntity extends HiveObject {
       personalDetailed != null &&
       education != null &&
       experience != null &&
-      numbersOfPortfolios == 0;
+      numbersOfPortfolios != 0;
 
   ProfileEntity({
     this.id,

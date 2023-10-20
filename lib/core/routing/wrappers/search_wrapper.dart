@@ -5,8 +5,8 @@ import 'package:jobseque/core/utils/service_locator.dart';
 import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 
 @RoutePage()
-class SearchWrapper extends StatelessWidget {
-  const SearchWrapper({super.key});
+class SearchWrapperScreen extends StatelessWidget {
+  const SearchWrapperScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

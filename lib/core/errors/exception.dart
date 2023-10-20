@@ -17,3 +17,7 @@ class NoJobsYetException implements Exception {}
 class NoProfileExistException implements Exception {}
 
 class NoProfileImageYetException implements Exception {}
+
+class NoPortfoliosYetException implements Exception {}
+
+class CanceldExeption implements Exception {}

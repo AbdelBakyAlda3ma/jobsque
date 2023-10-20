@@ -74,4 +74,19 @@ class ExperienceModel extends ExperienceEntity {
       id: id ?? super.id,
     );
   }
+
+  factory ExperienceModel.downCasting(
+      {required ExperienceEntity experienceEntity}) {
+    return ExperienceModel(
+      id: experienceEntity.id,
+      postion: experienceEntity.postion,
+      typeWork: experienceEntity.typeWork,
+      start: experienceEntity.start,
+      compName: experienceEntity.compName,
+      userId: experienceEntity.userId,
+      location: experienceEntity.location,
+      createdAt: experienceEntity.createdAt,
+      updatedAt: experienceEntity.updatedAt,
+    );
+  }
 }

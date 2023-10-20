@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:jobseque/core/errors/exception.dart';
 import 'package:jobseque/core/utils/constances.dart';
 import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dart';
 
@@ -16,7 +17,12 @@ class PortfolioLocalDataSourceImpl extends PortfolioLocalDataSource {
   @override
   List<PortfolioEntity> getPortofolios() {
     var box = Hive.box<PortfolioEntity>(kPortfolioBox);
-    return box.values.toList();
+    var portfoliosList = box.values.toList();
+    if (portfoliosList.isNotEmpty) {
+      return portfoliosList;
+    } else {
+      throw NoPortfoliosYetException();
+    }
   }
 
   @override

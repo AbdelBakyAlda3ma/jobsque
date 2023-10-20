@@ -16,7 +16,7 @@ class CreateAccountScreenBodyFormLoginTextButton extends StatelessWidget {
       onTap: () {
         context.router.pushAndPopUntil(
           const LoginRoute(),
-          predicate: (route) => route.isCurrent,
+          predicate: (route) => false,
         );
       },
     );

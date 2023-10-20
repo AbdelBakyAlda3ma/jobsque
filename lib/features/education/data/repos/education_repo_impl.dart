@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 import 'package:jobseque/core/errors/failure.dart';
 import 'package:jobseque/features/education/data/data_sources/education_remote_data_source.dart';
 import 'package:jobseque/features/education/data/models/education_model.dart';
-import 'package:jobseque/features/education/domain/entities/education_entity.dart';
 import 'package:jobseque/features/education/domain/repos/education_repo.dart';
 import 'package:jobseque/features/profile/data/data_sources/profile_local_data_source.dart';
 import 'package:jobseque/features/profile/data/models/profile_model.dart';
@@ -19,18 +18,17 @@ class EducationRepoImpl extends EducationRepo {
   }) : _profileLocalDataSource = ProfileLocalDataSourceImpl();
 
   @override
-  Future<Either<Failure, EducationEntity>> addEducation(
+  Future<Either<Failure, Unit>> addEducation(
       {required EducationModel education}) async {
     try {
       var profileEntity = _profileLocalDataSource.getProfile();
-      ProfileModel profile =
-          ProfileModel().downCasting(profileEntity: profileEntity);
-      var educationModel =
-          await educationRemoteDataSource.addEducation(education: education);
-      var updatedProfile = profile.copyWith(education: education);
+      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
+      var profileWithEducation = profile.copyWith(education: education);
+      var updatedProfile = await educationRemoteDataSource.addEducation(
+          profileWitheducation: profileWithEducation);
       await _profileLocalDataSource.saveProfile(
           profileToCached: updatedProfile);
-      return Right(educationModel);
+      return const Right(unit);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
     }

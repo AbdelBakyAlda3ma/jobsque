@@ -15,7 +15,7 @@ class WhichWillLaunchWidget extends StatelessWidget {
       JobsqueSharedPrefrences.setBool('isFirstLaunch', false);
       return const SplashScreen();
     } else {
-      return const HasCurrenUserWidget();
+      return const HasCurrenUserScreen();
     }
   }
 }

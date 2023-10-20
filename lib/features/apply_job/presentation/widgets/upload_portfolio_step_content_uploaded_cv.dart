@@ -10,9 +10,9 @@ class UploadPortfolioStepContentUploadedCV extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        UploadPortfolioStepContentUploadedCVTitle(),
+        UploadPortfolioStepContentUploadedCvHeader(),
         VerticalSpace(space: 12),
-        UploadedFileListTile(),
+        // UploadedFileListTile(),
       ],
     );
   }

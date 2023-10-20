@@ -13,9 +13,16 @@ class ChangeProfileImageBloc
       emit(ChangeProfileImageLoading());
       final result = await changeProfileImageUseCase.call();
       result.fold(
-        (failure) =>
-            emit(ChangeProfileImageFailure(errorMsg: failure.errorMessage)),
-        (_) => emit(ChangeProfileImageSuccess()),
+        (failure) => emit(
+          ChangeProfileImageFailure(
+            errorMsg: failure.errorMessage,
+          ),
+        ),
+        (profileImagePath) => emit(
+          ChangeProfileImageSuccess(
+            profileImage: profileImagePath,
+          ),
+        ),
       );
     });
   }

@@ -1,6 +1,8 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/widgets/custom_drop_down_text_field.dart';
+import 'package:jobseque/features/experience/presentation/manager/add_experience_bloc/add_experience_bloc.dart';
 import '../../../../core/dummy/jobs_type_drop_down_list.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
@@ -49,13 +51,19 @@ class _ExperienceScreenBodyFormTypeOfWorkDropDownMenuState
         CustomDropDownTextField(
           textStyle: CustomTextStyles.textMMedium,
           clearOption: false,
-          dropDownItemCount: 2,
+          dropDownItemCount: 3,
           searchShowCursor: false,
           enableSearch: true,
           controller: _controller,
           dropDownList: jobsTypeDropDownList,
-          onChanged: (value) {
-            setState(() {});
+          onChanged: (jobType) {
+            if (jobType is DropDownValueModel) {
+              BlocProvider.of<AddExperienceBloc>(context).experience.typeWork =
+                  jobType.name;
+            } else {
+              BlocProvider.of<AddExperienceBloc>(context).experience.typeWork =
+                  null;
+            }
           },
         ),
       ],

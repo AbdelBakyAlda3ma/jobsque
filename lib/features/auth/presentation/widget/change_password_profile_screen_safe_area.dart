@@ -26,7 +26,7 @@ class ChangePasswordProfileScreenSafeArea extends StatelessWidget {
 
             context.router.pushAndPopUntil(
               const ChangePasswordSuccessfullyRoute(),
-              predicate: (route) => route.isCurrent,
+              predicate: (route) => false,
             );
           }
           if (state is ChangePasswordFailure) {

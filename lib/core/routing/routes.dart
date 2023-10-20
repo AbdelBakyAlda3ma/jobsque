@@ -10,7 +10,7 @@ class AppRouter extends $AppRouter {
           initial: true,
         ),
         AutoRoute(
-          page: CompleteProfileWrapper.page,
+          page: CompleteProfileWrapperRoute.page,
           children: [
             AutoRoute(page: CompleteProfileRoute.page),
             AutoRoute(page: PersonalDetailsRoute.page),
@@ -20,14 +20,14 @@ class AppRouter extends $AppRouter {
           ],
         ),
         AutoRoute(
-          page: SearchWrapper.page,
+          page: SearchWrapperRoute.page,
           children: [
             AutoRoute(page: SearchRoute.page),
             AutoRoute(page: SetFilterModalBottomSheetRoute.page),
           ],
         ),
         AutoRoute(
-          page: WorkPreferencesWrapper.page,
+          page: WorkPreferencesWrapperRoute.page,
           children: [
             AutoRoute(page: WorkTypeRoute.page),
             AutoRoute(page: WorkLocationRoute.page),
@@ -51,8 +51,8 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: NotificationsProfileRoute.page),
         AutoRoute(page: OnboardingRoute.page),
         AutoRoute(page: SplashRoute.page),
-        AutoRoute(page: HasCurrenUserWidgetRoute.page),
         AutoRoute(page: HomeRoute.page),
+        AutoRoute(page: HasCurrenUserRoute.page),
         AutoRoute(page: JobDetailRoute.page),
         AutoRoute(page: InitialSearchRoute.page),
       ];

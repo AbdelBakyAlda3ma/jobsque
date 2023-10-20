@@ -6,23 +6,36 @@ import 'package:jobseque/features/education/presentation/widgets/education_scree
 import 'package:jobseque/features/education/presentation/widgets/education_screen_body_form_university_text_field.dart';
 import '../../../../core/widgets/vertical_space.dart';
 
-class EducationScreenBodyForm extends StatelessWidget {
+class EducationScreenBodyForm extends StatefulWidget {
   const EducationScreenBodyForm({super.key});
 
   @override
+  State<EducationScreenBodyForm> createState() =>
+      _EducationScreenBodyFormState();
+}
+
+class _EducationScreenBodyFormState extends State<EducationScreenBodyForm> {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        EducationScreenBodyFormUniversityTextField(),
-        VerticalSpace(space: 16),
-        EducationScreenBodyFormTitleTextField(),
-        VerticalSpace(space: 16),
-        EducationScreenBodyFormStartYearTextField(),
-        VerticalSpace(space: 16),
-        EducationScreenBodyFormEndYearTextField(),
-        VerticalSpace(space: 32),
-        EducationScreenBodyFormSaveButton(),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          const EducationScreenBodyFormUniversityTextField(),
+          const VerticalSpace(space: 16),
+          const EducationScreenBodyFormTitleTextField(),
+          const VerticalSpace(space: 16),
+          const EducationScreenBodyFormStartYearTextField(),
+          const VerticalSpace(space: 16),
+          const EducationScreenBodyFormEndYearTextField(),
+          const VerticalSpace(space: 32),
+          EducationScreenBodyFormSaveButton(
+            formKey: _formKey,
+          ),
+        ],
+      ),
     );
   }
 }

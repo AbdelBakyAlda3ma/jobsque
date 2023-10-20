@@ -1,34 +1,21 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
 
-class ApplyJobModel extends Equatable {
-  final String? cvFile;
-  final String? name;
-  final String? email;
-  final String? mobile;
-  final String? workType;
-  final String? otherFile;
-  final String? jobsId;
-  final String? userId;
-  final bool? reviewed;
-  final DateTime? updatedAt;
-  final DateTime? createdAt;
-  final int? id;
-
-  const ApplyJobModel({
-    this.cvFile,
-    this.name,
-    this.email,
-    this.mobile,
-    this.workType,
-    this.otherFile,
-    this.jobsId,
-    this.userId,
-    this.reviewed,
-    this.updatedAt,
-    this.createdAt,
-    this.id,
+class ApplyJobModel extends ApplyJobEntity {
+  ApplyJobModel({
+    super.cvFile,
+    super.name,
+    super.email,
+    super.mobile,
+    super.workType,
+    super.otherFile,
+    super.jobsId,
+    super.userId,
+    super.reviewed,
+    super.updatedAt,
+    super.createdAt,
+    super.id,
   });
 
   factory ApplyJobModel.fromMap(Map<String, dynamic> data) => ApplyJobModel(
@@ -92,36 +79,18 @@ class ApplyJobModel extends Equatable {
     int? id,
   }) {
     return ApplyJobModel(
-      cvFile: cvFile ?? this.cvFile,
-      name: name ?? this.name,
-      email: email ?? this.email,
-      mobile: mobile ?? this.mobile,
-      workType: workType ?? this.workType,
-      otherFile: otherFile ?? this.otherFile,
-      jobsId: jobsId ?? this.jobsId,
-      userId: userId ?? this.userId,
-      reviewed: reviewed ?? this.reviewed,
-      updatedAt: updatedAt ?? this.updatedAt,
-      createdAt: createdAt ?? this.createdAt,
-      id: id ?? this.id,
+      cvFile: cvFile ?? super.cvFile,
+      name: name ?? super.name,
+      email: email ?? super.email,
+      mobile: mobile ?? super.mobile,
+      workType: workType ?? super.workType,
+      otherFile: otherFile ?? super.otherFile,
+      jobsId: jobsId ?? super.jobsId,
+      userId: userId ?? super.userId,
+      reviewed: reviewed ?? super.reviewed,
+      updatedAt: updatedAt ?? super.updatedAt,
+      createdAt: createdAt ?? super.createdAt,
+      id: id ?? super.id,
     );
-  }
-
-  @override
-  List<Object?> get props {
-    return [
-      cvFile,
-      name,
-      email,
-      mobile,
-      workType,
-      otherFile,
-      jobsId,
-      userId,
-      reviewed,
-      updatedAt,
-      createdAt,
-      id,
-    ];
   }
 }

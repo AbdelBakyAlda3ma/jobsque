@@ -57,7 +57,7 @@ class AccountHasBeenSetUpScreen extends StatelessWidget {
                 onPressed: () {
                   context.router.pushAndPopUntil(
                     const WhichWillLaunchWidgetRoute(),
-                    predicate: (route) => route.isCurrent,
+                    predicate: (route) => false,
                   );
                 },
               ),

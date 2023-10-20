@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/functions/snackbar_message.dart';
-import 'package:jobseque/features/auth/presentation/screens/account_has_been_set_up_screen.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 import '../widgets/work_location_screen_body.dart';
 
@@ -20,10 +20,8 @@ class _WorkLocationScreenState extends State<WorkLocationScreen> {
     return BlocListener<WorkPrefrencesBloc, WorkPrefrencesState>(
       listener: (context, state) {
         if (state is WorkPrefrencesSuccess) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const AccountHasBeenSetUpScreen(),
-            ),
+          context.router.push(
+            const AccountHasBeenSetUpRoute(),
           );
         }
         if (state is WorkPrefrencesFailure) {

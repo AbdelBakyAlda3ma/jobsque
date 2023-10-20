@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
-import 'package:jobseque/core/widgets/loding_screen.dart';
+import 'package:jobseque/core/widgets/loding_widget.dart';
 import 'package:jobseque/features/auth/presentation/manager/blocs/get_current_user_bloc/get_current_user_bloc.dart';
 
 class HasCurrentUserWidgetBlocConsumer extends StatelessWidget {
@@ -22,7 +22,7 @@ class HasCurrentUserWidgetBlocConsumer extends StatelessWidget {
                 HomeRoute(
                   user: state.user,
                 ),
-                predicate: (route) => route.isCurrent,
+                predicate: (route) => false,
               );
             },
           );
@@ -33,14 +33,14 @@ class HasCurrentUserWidgetBlocConsumer extends StatelessWidget {
             () {
               context.router.pushAndPopUntil(
                 const LoginRoute(),
-                predicate: (route) => route.isCurrent,
+                predicate: (route) => false,
               );
             },
           );
         }
       },
       builder: (context, state) {
-        return const LoadingScreen();
+        return const LoadingWidget();
       },
     );
   }

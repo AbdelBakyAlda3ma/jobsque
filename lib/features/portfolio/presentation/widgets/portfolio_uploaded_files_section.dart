@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/widgets/uploaded_file_list_tile.dart';
-import '../../../../core/widgets/vertical_space.dart';
+import 'package:jobseque/features/portfolio/presentation/widgets/portfolio_uploaded_files_section_bloc_consumer.dart';
 
 class PortfolioUploadedFilesSection extends StatelessWidget {
   const PortfolioUploadedFilesSection({
@@ -9,12 +8,6 @@ class PortfolioUploadedFilesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.separated(
-        itemBuilder: ((context, index) => const UploadedFileListTile()),
-        separatorBuilder: ((context, index) => const VerticalSpace(space: 16)),
-        itemCount: 3,
-      ),
-    );
+    return const PortfolioUploadedFilesSectionBlocConsumer();
   }
 }

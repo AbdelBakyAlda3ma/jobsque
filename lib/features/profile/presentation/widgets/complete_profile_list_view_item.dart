@@ -5,35 +5,24 @@ import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/horizontal_space.dart';
 
-class CompleteProfileListViewItem extends StatefulWidget {
+class CompleteProfileListViewItem extends StatelessWidget {
   const CompleteProfileListViewItem({
     super.key,
     required this.title,
     required this.subTitle,
     required this.route,
+    required this.isCompleted,
   });
   final String title;
   final String subTitle;
   final PageRouteInfo<dynamic> route;
+  final bool isCompleted;
 
-  @override
-  State<CompleteProfileListViewItem> createState() =>
-      _CompleteProfileListViewItemState();
-}
-
-class _CompleteProfileListViewItemState
-    extends State<CompleteProfileListViewItem> {
-  bool isCompleted = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(
-          () {
-            isCompleted = !isCompleted;
-            context.router.push(widget.route);
-          },
-        );
+        context.router.push(route);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
@@ -64,13 +53,13 @@ class _CompleteProfileListViewItemState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.title,
+                          title,
                           style: CustomTextStyles.textLMedium.copyWith(
                             color: AppColors.neutral[900],
                           ),
                         ),
                         Text(
-                          widget.subTitle,
+                          subTitle,
                           style: CustomTextStyles.textSRegular.copyWith(
                             color: AppColors.neutral[500],
                           ),

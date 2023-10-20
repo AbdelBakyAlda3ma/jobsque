@@ -31,12 +31,10 @@ class CreateAccountScreen extends StatelessWidget {
                 context: context,
                 message: REGISTER_SUCCESS_MESSAGE,
               );
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                context.router.pushAndPopUntil(
-                  const WorkTypeRoute(),
-                  predicate: (route) => route.isCurrent,
-                );
-              });
+              context.router.pushAndPopUntil(
+                const WorkTypeRoute(),
+                predicate: (route) => false,
+              );
             } else if (state is RegisterFailure) {
               showErrorSnackBar(
                 context: context,

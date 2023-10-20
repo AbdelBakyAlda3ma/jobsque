@@ -6,7 +6,11 @@ final class AddExperienceInitial extends AddExperienceState {}
 
 class AddExperienceLoading extends AddExperienceState {}
 
-class AddExperienceSuccess extends AddExperienceState {}
+class AddExperienceSuccess extends AddExperienceState {
+  final String successMsg;
+
+  AddExperienceSuccess({required this.successMsg});
+}
 
 class AddExperienceFailure extends AddExperienceState {
   final String errorMsg;

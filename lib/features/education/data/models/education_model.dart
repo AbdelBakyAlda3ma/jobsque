@@ -76,4 +76,19 @@ class EducationModel extends EducationEntity {
       updatedAt: updatedAt ?? super.updatedAt,
     );
   }
+
+  factory EducationModel.downCasting(
+      {required EducationEntity educationEntity}) {
+    return EducationModel(
+      id: educationEntity.id,
+      universty: educationEntity.universty,
+      title: educationEntity.title,
+      start: educationEntity.start,
+      end: educationEntity.end,
+      userId: educationEntity.userId,
+      profileId: educationEntity.profileId,
+      createdAt: educationEntity.createdAt,
+      updatedAt: educationEntity.updatedAt,
+    );
+  }
 }

@@ -3,44 +3,32 @@ import 'package:flutter/material.dart';
 import 'custom_date_picker_icon.dart';
 import 'custom_text_form_field.dart';
 
-class TextFormFieldOfDate extends StatefulWidget {
+class TextFormFieldOfDate extends StatelessWidget {
   final String? hintText;
+  final String? Function(String?)? validator;
+  final void Function(int, String) onTapped;
+  final TextEditingController? controller;
+  final void Function(String)? onChanged;
   const TextFormFieldOfDate({
     super.key,
     this.hintText,
+    this.validator,
+    required this.onTapped,
+    this.controller,
+    this.onChanged,
   });
-
-  @override
-  State<TextFormFieldOfDate> createState() => _TextFormFieldOfDateState();
-}
-
-class _TextFormFieldOfDateState extends State<TextFormFieldOfDate> {
-  late TextEditingController textEditingController;
-  @override
-  void initState() {
-    textEditingController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    textEditingController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      controller: textEditingController,
-      hintText: widget.hintText,
+      validator: validator,
+      hintText: hintText,
       focusNode: FocusNode(),
+      controller: controller,
       suffixIcon: CustomDatePickerIcon(
-        onTapped: ((year, month) {
-          setState(() {
-            textEditingController.text = '$month $year';
-          });
-        }),
+        onTapped: onTapped,
       ),
+      onChanged: onChanged,
     );
   }
 }
