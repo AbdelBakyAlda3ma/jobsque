@@ -1,5 +1,14 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:jobseque/features/apply_job/data/data_sources/apply_job_local_data_source.dart';
+import 'package:jobseque/features/apply_job/data/data_sources/apply_job_remote_data_source.dart';
+import 'package:jobseque/features/apply_job/data/repo/apply_job_repo_impl.dart';
+import 'package:jobseque/features/apply_job/domain/use_cases/add_active_application_use_case.dart';
+import 'package:jobseque/features/apply_job/domain/use_cases/apply_job_use_case.dart';
+import 'package:jobseque/features/apply_job/domain/use_cases/show_active_applied_jobs_use_case.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/add_active_application_bloc/add_active_application_bloc.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/show_active_applied_jobs_bloc/show_active_applied_jobs_bloc.dart';
 import 'package:jobseque/features/education/data/data_sources/education_remote_data_source.dart';
 import 'package:jobseque/features/education/data/repos/education_repo_impl.dart';
 import 'package:jobseque/features/education/domain/use_cases/add_education_use_case.dart';
@@ -48,6 +57,14 @@ final sL = GetIt.instance;
 
 void setUpServiceLocator() {
   sL.registerSingleton<ApiService>(ApiService());
+  sL.registerSingleton<ApplyJobRepoImpl>(
+    ApplyJobRepoImpl(
+      applyJobLocalDataSource: ApplyJobLocalDataSourceImpl(),
+      applyJobRemoteDataSource: ApplyJobRemoteDataSourceImpl(
+        apiService: sL.get<ApiService>(),
+      ),
+    ),
+  );
   sL.registerSingleton<PortfolioRepoImpl>(
     PortfolioRepoImpl(
       portfolioLocalDataSource: PortfolioLocalDataSourceImpl(),
@@ -211,6 +228,27 @@ void setUpServiceLocator() {
     () => ChangeProfileImageBloc(
       changeProfileImageUseCase: ChangeProfileImageUseCase(
         profileRepository: sL.get<ProfileRepositoryImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<AddActiveApplicationBloc>(
+    () => AddActiveApplicationBloc(
+      activeApplicationUseCase: AddActiveApplicationUseCase(
+        applyJobRepo: sL.get<ApplyJobRepoImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<ShowActiveAppliedJobsBloc>(
+    () => ShowActiveAppliedJobsBloc(
+      showActiveAppliedJobsUseCase: ShowActiveAppliedJobsUseCase(
+        applyJobRepo: sL.get<ApplyJobRepoImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<ApplyJobBloc>(
+    () => ApplyJobBloc(
+      applyJobUseCase: ApplyJobUseCase(
+        applyJobRepo: sL.get<ApplyJobRepoImpl>(),
       ),
     ),
   );

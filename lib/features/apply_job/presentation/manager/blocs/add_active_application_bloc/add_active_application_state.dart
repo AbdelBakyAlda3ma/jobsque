@@ -1,10 +1,7 @@
 part of 'add_active_application_bloc.dart';
 
-sealed class AddActiveApplicationState extends Equatable {
-  const AddActiveApplicationState();
-  
-  @override
-  List<Object> get props => [];
-}
+sealed class AddActiveApplicationState {}
 
 final class AddActiveApplicationInitial extends AddActiveApplicationState {}
+
+final class AddActiveApplicationSuccess extends AddActiveApplicationState {}
