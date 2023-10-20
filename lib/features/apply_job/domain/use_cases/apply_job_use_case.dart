@@ -3,9 +3,9 @@ import 'package:jobseque/core/errors/failure.dart';
 import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
 import 'package:jobseque/features/apply_job/domain/repos/apply_job_repo.dart';
 
-class ApplyUseCase {
+class ApplyJobUseCase {
   ApplyJobRepo applyJobRepo;
-  ApplyUseCase({required this.applyJobRepo});
+  ApplyJobUseCase({required this.applyJobRepo});
   Future<Either<Failure, Unit>> call({
     required ApplyJobEntity applyJobEntity,
   }) {

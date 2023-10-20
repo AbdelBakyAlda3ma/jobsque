@@ -4,6 +4,9 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:jobseque/core/routing/routes.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/utils/service_locator.dart';
+import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
+import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import 'core/utils/constances.dart';
 import 'core/utils/simple_bloc_observer.dart';
 import 'core/utils/user_data_using_shared_preferences.dart';
@@ -17,12 +20,18 @@ void main() async {
 
   await JobsqueSharedPrefrences.init();
   await Hive.initFlutter();
+  Hive.registerAdapter(JobEntityAdapter());
+  Hive.registerAdapter(ApplyJobEntityAdapter());
+  Hive.registerAdapter(ActiveAppliedJobEntityAdapter());
   Hive.registerAdapter(EducationEntityAdapter());
   Hive.registerAdapter(ExperienceEntityAdapter());
   Hive.registerAdapter(ProfileEntityAdapter());
   Hive.registerAdapter(PortfolioEntityAdapter());
   await Hive.openBox<ProfileEntity>(kProfileBox);
   await Hive.openBox<PortfolioEntity>(kPortfolioBox);
+  await Hive.openBox<ApplyJobEntity>(kApplyJobBox);
+  await Hive.openBox<JobEntity>(kJoBBox);
+  await Hive.openBox<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
 
   Bloc.observer = SimpleBlocObserver();
   setUpServiceLocator();
@@ -34,7 +43,6 @@ class Jobsque extends StatelessWidget {
   Jobsque({super.key});
   final _router = AppRouter();
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

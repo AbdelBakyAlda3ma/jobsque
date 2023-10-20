@@ -2,8 +2,6 @@
 import 'package:hive/hive.dart';
 import 'package:jobseque/features/education/domain/entities/education_entity.dart';
 import 'package:jobseque/features/experience/domain/entities/experience_entity.dart';
-import '../../../education/data/models/education_model.dart';
-import '../../../experience/data/models/experience_model.dart';
 
 part 'profile_entity.g.dart';
 
