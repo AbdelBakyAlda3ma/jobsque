@@ -1,3 +1,8 @@
 part of 'apply_job_bloc.dart';
 
-class ApplyJobEvent {}
+class ApplyJobEvent {
+  ApplyJobEntity applyJobEntity;
+  ApplyJobEvent({
+    required this.applyJobEntity,
+  });
+}

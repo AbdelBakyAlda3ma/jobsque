@@ -6,14 +6,14 @@ part 'apply_job_state.dart';
 
 class ApplyJobBloc extends Bloc<ApplyJobEvent, ApplyJobState> {
   ApplyJobUseCase applyJobUseCase;
-  ApplyJobEntity applyJobEntity;
   ApplyJobBloc({
     required this.applyJobUseCase,
-  })  : applyJobEntity = ApplyJobEntity(),
-        super(ApplyJobInitial()) {
+  }) : super(ApplyJobInitial()) {
     on<ApplyJobEvent>((event, emit) async {
       emit(ApplyJobLoading());
-      var result = await applyJobUseCase(applyJobEntity: applyJobEntity);
+      var result = await applyJobUseCase(
+        applyJobEntity: event.applyJobEntity,
+      );
       result.fold(
         (failure) => emit(
           ApplyJobFailure(

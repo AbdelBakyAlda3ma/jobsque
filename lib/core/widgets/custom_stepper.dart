@@ -10,14 +10,12 @@ class CustomStepper extends StatefulWidget {
   final List<CustomStep> customSteps;
   final int currentStep;
   final void Function(int) onStepTapped;
-  final VoidCallback onStepContinue;
 
   const CustomStepper({
     super.key,
     required this.customSteps,
     required this.onStepTapped,
     this.currentStep = 0,
-    required this.onStepContinue,
   }) : assert(0 <= currentStep && currentStep < customSteps.length);
 
   @override
@@ -66,14 +64,7 @@ class _CustomStepperState extends State<CustomStepper> {
         ),
         const VerticalSpace(space: 9),
         CustomStepperControlButton(
-          onStepContinue: () {
-            widget.onStepContinue();
-            if (_pageController.hasClients) {
-              _pageController.nextPage(
-                  duration: const Duration(milliseconds: 60),
-                  curve: Curves.linear);
-            }
-          },
+          pageController: _pageController,
           isLastStep: _isLastStep(),
         ),
         const VerticalSpace(space: 9),

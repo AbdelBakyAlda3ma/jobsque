@@ -10,21 +10,21 @@ part 'add_active_application_state.dart';
 class AddActiveApplicationBloc
     extends Bloc<AddActiveApplicationEvent, AddActiveApplicationState> {
   final ActiveAppliedJobEntity _activeAppliedJobEntity;
-  int applicationStepProgress;
+  int currentStep;
   ApplyJobEntity applyJobEntity;
 
   AddActiveApplicationUseCase activeApplicationUseCase;
   AddActiveApplicationBloc({
     required this.activeApplicationUseCase,
   })  : _activeAppliedJobEntity = ActiveAppliedJobEntity(),
-        applicationStepProgress = 0,
+        currentStep = 0,
         applyJobEntity = ApplyJobEntity(),
         super(AddActiveApplicationInitial()) {
     on<AddActiveApplicationEvent>((event, emit) {
       activeApplicationUseCase(
         activeAppliedJob: _activeAppliedJobEntity.copyWith(
           job: event.job,
-          applicationStepProgress: applicationStepProgress,
+          applicationStepProgress: currentStep,
           applyJobEntity: applyJobEntity,
         ),
       );

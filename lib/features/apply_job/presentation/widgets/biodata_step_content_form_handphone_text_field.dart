@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/core/utils/global/app_colors.dart';
+import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/custom_phoen_text_field.dart';
-
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/add_active_application_bloc/add_active_application_bloc.dart';
 import '../../../../core/widgets/vertical_space.dart';
-import 'biodata_step_content_form_handphone_text_field_label.dart';
 
 class BiodataStepContentFormHandphoneTextField extends StatelessWidget {
   const BiodataStepContentFormHandphoneTextField({
@@ -11,11 +13,32 @@ class BiodataStepContentFormHandphoneTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        BiodataStepContentFormHandphoneTextFieldLabel(),
-        VerticalSpace(space: 8),
-        CustomPhoneTextField(),
+        Row(
+          children: [
+            Text(
+              "No.Handphone",
+              style: CustomTextStyles.textLRegular.copyWith(
+                color: AppColors.neutral[900],
+              ),
+            ),
+            Text(
+              '*',
+              style: CustomTextStyles.textLRegular.copyWith(
+                color: AppColors.danger[500],
+              ),
+            ),
+          ],
+        ),
+        const VerticalSpace(space: 8),
+        CustomPhoneTextField(
+          onChanged: (value) {
+            BlocProvider.of<AddActiveApplicationBloc>(context)
+                .applyJobEntity
+                .mobile = value;
+          },
+        ),
       ],
     );
   }
