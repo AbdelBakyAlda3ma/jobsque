@@ -5,7 +5,10 @@ import 'package:jobseque/features/apply_job/domain/repos/apply_job_repo.dart';
 class AddActiveApplicationUseCase {
   ApplyJobRepo applyJobRepo;
   AddActiveApplicationUseCase({required this.applyJobRepo});
-  Future<Unit> call({required ActiveAppliedJobEntity activeAppliedJob}) {
-    return call(activeAppliedJob: activeAppliedJob);
+  Future<Unit> call({required ActiveAppliedJobEntity activeAppliedJob}) async {
+    applyJobRepo.addActiveApplication(
+      activeAppliedJob: activeAppliedJob,
+    );
+    return Future.value(unit);
   }
 }

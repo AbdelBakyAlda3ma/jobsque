@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../models/employee_model.dart';
+import 'package:jobseque/core/dummy/list_of_company_jobs_employees.dart';
 
 class ContentPeopleEmployeeListViewItemImage extends StatelessWidget {
   const ContentPeopleEmployeeListViewItemImage({

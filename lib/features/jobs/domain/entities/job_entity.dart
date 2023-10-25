@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
 
 part 'job_entity.g.dart';
@@ -63,4 +64,52 @@ class JobEntity extends HiveObject {
     this.expired,
     this.isSaved = false,
   });
+
+  @override
+  bool operator ==(covariant JobEntity other) {
+    if (identical(this, other)) return true;
+
+    return other.name == name &&
+        other.image == image &&
+        other.jobTimeType == jobTimeType &&
+        other.jobType == jobType &&
+        other.jobLevel == jobLevel &&
+        other.jobDescription == jobDescription &&
+        other.jobSkill == jobSkill &&
+        other.compName == compName &&
+        other.compEmail == compEmail &&
+        other.compWebsite == compWebsite &&
+        other.aboutCompany == aboutCompany &&
+        other.location == location &&
+        other.salary == salary &&
+        other.id == id &&
+        other.favorites == favorites &&
+        other.expired == expired &&
+        other.createdAt == createdAt &&
+        other.updatedAt == updatedAt &&
+        other.isSaved == isSaved;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^
+        image.hashCode ^
+        jobTimeType.hashCode ^
+        jobType.hashCode ^
+        jobLevel.hashCode ^
+        jobDescription.hashCode ^
+        jobSkill.hashCode ^
+        compName.hashCode ^
+        compEmail.hashCode ^
+        compWebsite.hashCode ^
+        aboutCompany.hashCode ^
+        location.hashCode ^
+        salary.hashCode ^
+        id.hashCode ^
+        favorites.hashCode ^
+        expired.hashCode ^
+        createdAt.hashCode ^
+        updatedAt.hashCode ^
+        isSaved.hashCode;
+  }
 }

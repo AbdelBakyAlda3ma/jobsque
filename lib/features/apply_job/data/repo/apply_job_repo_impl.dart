@@ -37,7 +37,7 @@ class ApplyJobRepoImpl extends ApplyJobRepo {
   @override
   List<ActiveAppliedJobEntity> showActiveAppliedJobs() {
     var listOfActiveAppliedJobs =
-        applyJobLocalDataSource.showActiveAppliedJobs();
+        applyJobLocalDataSource.getActiveAppliedJobs();
     return listOfActiveAppliedJobs;
   }
 }

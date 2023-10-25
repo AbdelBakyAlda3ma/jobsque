@@ -20,24 +20,22 @@ class JobCard extends StatelessWidget {
       onTap: () {
         context.router.push(JobDetailRoute(job: job));
       },
-      child: IntrinsicHeight(
-        child: Column(
-          children: [
-            JobCardTitleAndImageAndSavedIcon(
-              job: job,
-            ),
-            const VerticalSpace(space: 16),
-            JobCardCategoryAndSalary(
-              job: job,
-            ),
-            const VerticalSpace(space: 16),
-            Divider(
-              thickness: 1,
-              color: AppColors.neutral[200],
-              height: 0,
-            )
-          ],
-        ),
+      child: Column(
+        children: [
+          JobCardTitleAndImageAndSavedIcon(
+            job: job,
+          ),
+          const VerticalSpace(space: 16),
+          JobCardCategoryAndSalary(
+            job: job,
+          ),
+          const VerticalSpace(space: 16),
+          Divider(
+            thickness: 1,
+            color: AppColors.neutral[200],
+            height: 0,
+          )
+        ],
       ),
     );
   }

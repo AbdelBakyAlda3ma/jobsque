@@ -6,17 +6,20 @@ part 'get_profile_state.dart';
 
 class GetProfileBloc extends Bloc<GetProfileEvent, GetProfileState> {
   final GetProfileUseCase getProfileUseCase;
-  ProfileEntity? profile;
+  bool isCompletedProfile;
 
   GetProfileBloc({required this.getProfileUseCase})
-      : super(GetProfileInitial()) {
+      : isCompletedProfile = false,
+        super(GetProfileInitial()) {
     on<GetProfileEvent>((event, emit) async {
       emit(GetProfileLoading());
       final result = await getProfileUseCase.call();
       result.fold(
-        (failure) => emit(GetProfileFailure(errorMsg: failure.errorMessage)),
-        (profile) => emit(GetProfileSuccess(profile: profile)),
-      );
+          (failure) => emit(GetProfileFailure(errorMsg: failure.errorMessage)),
+          (profile) {
+        isCompletedProfile = profile.isCompleted;
+        emit(GetProfileSuccess(profile: profile));
+      });
     });
   }
 }

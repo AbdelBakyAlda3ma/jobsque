@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jobseque/core/dummy/list_of_company_jobs_employees.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/widgets/horizontal_space.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/content_people_employee_list_view_item_name_and_job_title.dart';
-import 'package:jobseque/models/employee_model.dart';
 import 'content_people_employee_list_view_item_work_during.dart';
 import 'content_people_employee_list_view_item_image.dart';
 

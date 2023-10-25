@@ -18,15 +18,16 @@ class ActiveAppliedJobEntityAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ActiveAppliedJobEntity(
-      job: fields[0] as JobEntity,
-      applicationStepProgress: fields[1] as int,
-      applyJobEntity: fields[2] as ApplyJobEntity,
+      job: fields[0] as JobEntity?,
+      applicationStepProgress: fields[1] as int?,
+      applyJobEntity: fields[2] as ApplyJobEntity?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ActiveAppliedJobEntity obj) {
     writer
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.job)
       ..writeByte(1)

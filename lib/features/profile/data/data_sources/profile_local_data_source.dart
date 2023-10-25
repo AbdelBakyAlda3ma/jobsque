@@ -8,7 +8,7 @@ abstract class ProfileLocalDataSource {
   Future<void> saveProfile({
     required ProfileEntity profileToCached,
   });
-  ProfileEntity getProfile();
+  ProfileEntity? getProfile();
 
   Future<bool> saveProfileImage({
     required String imageFilePath,
@@ -18,14 +18,11 @@ abstract class ProfileLocalDataSource {
 
 class ProfileLocalDataSourceImpl extends ProfileLocalDataSource {
   @override
-  ProfileEntity getProfile() {
+  ProfileEntity? getProfile() {
     var box = Hive.box<ProfileEntity>(kProfileBox);
     var profile = box.get(kCurrentProfile);
-    if (profile != null) {
-      return profile;
-    } else {
-      throw NoProfileExistException();
-    }
+
+    return profile;
   }
 
   @override

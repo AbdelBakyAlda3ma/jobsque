@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:hive/hive.dart';
 
 import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
@@ -32,4 +32,18 @@ class ActiveAppliedJobEntity {
       applyJobEntity: applyJobEntity ?? this.applyJobEntity,
     );
   }
+
+  @override
+  bool operator ==(covariant ActiveAppliedJobEntity other) {
+    if (identical(this, other)) return true;
+
+    return other.job == job;
+  }
+
+  @override
+  int get hashCode => job.hashCode;
+
+  @override
+  String toString() =>
+      'ActiveAppliedJobEntity(job: $job, applicationStepProgress: $applicationStepProgress, applyJobEntity: $applyJobEntity)';
 }

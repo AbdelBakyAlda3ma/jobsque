@@ -17,7 +17,9 @@ class PortfolioOperationBloc
     on<PortfolioOperationEvent>((event, emit) async {
       emit(PortFolioOperationLoading());
       if (event is AddPortfolioEvent) {
+        emit(AddingPortfolioState());
         final result = await addPortfolioUseCase.call();
+
         result.fold(
           (failure) => emit(
             AddPortfolioFailure(errorMsg: failure.errorMessage),

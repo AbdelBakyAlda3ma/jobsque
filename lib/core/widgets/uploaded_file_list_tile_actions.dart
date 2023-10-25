@@ -7,11 +7,11 @@ import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dar
 import 'package:jobseque/features/portfolio/presentation/manager/blocs/portfolio_operation_bloc/portfolio_operation_bloc.dart';
 
 class UploadPortfolioListTileActins extends StatelessWidget {
-  final PortfolioEntity portfolio;
+  final PortfolioEntity? portfolio;
 
   const UploadPortfolioListTileActins({
     super.key,
-    required this.portfolio,
+    this.portfolio,
   });
 
   @override
@@ -26,9 +26,11 @@ class UploadPortfolioListTileActins extends StatelessWidget {
         const HorizontalSpace(space: 8),
         GestureDetector(
           onTap: () {
-            BlocProvider.of<PortfolioOperationBloc>(context).add(
-              DeletePortfolioEvent(portfolio: portfolio),
-            );
+            if (portfolio != null) {
+              BlocProvider.of<PortfolioOperationBloc>(context).add(
+                DeletePortfolioEvent(portfolio: portfolio!),
+              );
+            }
           },
           child: Icon(
             IconsJobeque.closecircle,

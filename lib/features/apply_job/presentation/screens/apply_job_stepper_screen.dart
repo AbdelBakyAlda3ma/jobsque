@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/utils/service_locator.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/add_active_application_bloc/add_active_application_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
-import 'package:jobseque/features/apply_job/presentation/manager/blocs/show_active_applied_jobs_bloc/show_active_applied_jobs_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/cubits/compelete_job_application_cubit/compelete_job_application_cubit.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/apply_job_stepper_screen_safe_area.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
@@ -18,27 +17,20 @@ class ApplyJobStepperScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AddActiveApplicationBloc>(
+        BlocProvider<CompeleteJobApplicationCubit>(
           lazy: false,
-          create: (context) => sL.get<AddActiveApplicationBloc>()
-            ..add(
-              AddActiveApplicationEvent(
-                job: job,
-              ),
-            ),
+          create: (context) => CompeleteJobApplicationCubit(),
         ),
-        BlocProvider<ShowActiveAppliedJobsBloc>(
-          create: (context) => sL.get<ShowActiveAppliedJobsBloc>(),
-        ),
+        BlocProvider<AddActiveApplicationBloc>(
+            lazy: false,
+            create: (context) => sL.get<AddActiveApplicationBloc>()),
         BlocProvider<ApplyJobBloc>(
           create: (context) => sL.get<ApplyJobBloc>(),
         ),
-        BlocProvider<CompeleteJobApplicationCubit>(
-          create: (context) => CompeleteJobApplicationCubit(),
-          child: Container(),
-        )
       ],
-      child: const ApplyJobStepperScreenSafeArea(),
+      child: ApplyJobStepperScreenSafeArea(
+        job: job,
+      ),
     );
   }
 }

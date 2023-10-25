@@ -12,7 +12,7 @@ class CompleteProfileScreenBodyBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CompleteProfileCubit, CompleteProfileState>(
         builder: (context, state) {
-      if (state is InCompletionState) {
+      if (state is InCompletedProfileState) {
         return CompleteProfileScreenBodyListView(
           educationCompletion: state.educationCompletion,
           experienceCompletion: state.experienceCompletion,

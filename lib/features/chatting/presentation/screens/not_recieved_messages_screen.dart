@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/chatting/presentation/widgets/custom_messages_app_bar.dart';
 import 'package:jobseque/features/chatting/presentation/widgets/messages_search_bar.dart';
 
+@RoutePage()
 class NotRecievedMessagesScreen extends StatelessWidget {
   const NotRecievedMessagesScreen({super.key});
 

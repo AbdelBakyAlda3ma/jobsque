@@ -14,5 +14,5 @@ abstract class ProfileRepository {
       {required Map<String, dynamic> workPreferences});
 
   Future<Either<Failure, ProfileEntity>> getProfile();
-  ProfileEntity completeProfile();
+  Future<Either<Failure, ProfileEntity>> completeProfile();
 }

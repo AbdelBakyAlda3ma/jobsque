@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/jobs/presentation/widgets/set_filter_modal_bottom_sheet.dart';
+import 'package:jobseque/features/jobs/presentation/widgets/set_filter_modal_bottom_sheet_widget.dart';
 import '../../../../core/utils/functions/show_filter_modal_bottom_sheet.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 
@@ -14,7 +14,7 @@ class FilterSearchSectionSettingButton extends StatelessWidget {
       onTap: () {
         showAppCustomBottomSheet(
           context,
-          bottomSheetView: const SetFilterModalBottomSheet(),
+          bottomSheetView: const SetFilterModalBottomSheetWidget(),
         );
       },
       child: const Icon(IconsJobeque.setting),

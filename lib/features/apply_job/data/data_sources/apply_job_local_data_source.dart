@@ -6,7 +6,7 @@ abstract class ApplyJobLocalDataSource {
   void addActiveApplication({
     required ActiveAppliedJobEntity activeAppliedJobEntity,
   });
-  List<ActiveAppliedJobEntity> showActiveAppliedJobs();
+  List<ActiveAppliedJobEntity> getActiveAppliedJobs();
 }
 
 class ApplyJobLocalDataSourceImpl extends ApplyJobLocalDataSource {
@@ -15,13 +15,17 @@ class ApplyJobLocalDataSourceImpl extends ApplyJobLocalDataSource {
     required ActiveAppliedJobEntity activeAppliedJobEntity,
   }) async {
     var box = Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
-    await box.add(activeAppliedJobEntity);
+    await box.put(
+      activeAppliedJobEntity.job!.id,
+      activeAppliedJobEntity,
+    );
   }
 
   @override
-  List<ActiveAppliedJobEntity> showActiveAppliedJobs() {
+  List<ActiveAppliedJobEntity> getActiveAppliedJobs() {
     var box = Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
-    List<ActiveAppliedJobEntity> listOfActiveAppliedJobs = box.values.toList();
+    List<ActiveAppliedJobEntity> listOfActiveAppliedJobs =
+        box.values.toSet().toList();
     return listOfActiveAppliedJobs;
   }
 }

@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:hive/hive.dart';
+
 import 'package:jobseque/features/education/domain/entities/education_entity.dart';
 import 'package:jobseque/features/experience/domain/entities/experience_entity.dart';
 
@@ -42,11 +45,12 @@ class ProfileEntity extends HiveObject {
   @HiveField(16)
   int numbersOfPortfolios;
 
-  bool get isCompleted =>
-      personalDetailed != null &&
-      education != null &&
-      experience != null &&
-      numbersOfPortfolios != 0;
+  bool get isCompleted {
+    return personalDetailed != null &&
+        education != null &&
+        experience != null &&
+        numbersOfPortfolios != 0;
+  }
 
   ProfileEntity({
     this.id,
@@ -67,4 +71,44 @@ class ProfileEntity extends HiveObject {
     this.updatedAt,
     this.numbersOfPortfolios = 0,
   });
+
+  ProfileEntity copyWith({
+    int? id,
+    int? userId,
+    String? name,
+    String? email,
+    String? mobile,
+    String? address,
+    String? language,
+    List<String>? interestedWork,
+    List<String>? offlinePlace,
+    dynamic remotePlace,
+    String? bio,
+    EducationEntity? education,
+    ExperienceEntity? experience,
+    String? personalDetailed,
+    String? createdAt,
+    String? updatedAt,
+    int? numbersOfPortfolios,
+  }) {
+    return ProfileEntity(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      mobile: mobile ?? this.mobile,
+      address: address ?? this.address,
+      language: language ?? this.language,
+      interestedWork: interestedWork ?? this.interestedWork,
+      offlinePlace: offlinePlace ?? this.offlinePlace,
+      remotePlace: remotePlace ?? this.remotePlace,
+      bio: bio ?? this.bio,
+      education: education ?? this.education,
+      experience: experience ?? this.experience,
+      personalDetailed: personalDetailed ?? this.personalDetailed,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      numbersOfPortfolios: numbersOfPortfolios ?? this.numbersOfPortfolios,
+    );
+  }
 }

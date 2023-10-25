@@ -8,8 +8,11 @@ import '../utils/global/custom_text_styles.dart';
 import '../utils/global/icons_jobeque_icons.dart';
 
 class UploadFileArea extends StatelessWidget {
+  final void Function() onPressed;
+
   const UploadFileArea({
     super.key,
+    required this.onPressed,
   });
 
   @override
@@ -55,7 +58,9 @@ class UploadFileArea extends StatelessWidget {
                   ),
                 ),
                 const VerticalSpace(space: 24),
-                const UploadFileAreaButton(),
+                UploadFileAreaButton(
+                  onPressed: onPressed,
+                ),
               ],
             ),
           ),

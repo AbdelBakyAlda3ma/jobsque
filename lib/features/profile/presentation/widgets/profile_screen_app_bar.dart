@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 
@@ -18,7 +19,13 @@ class ProfileScreenAppBar extends StatelessWidget
       },
       backgroundColor: AppColors.primary[100],
       elevation: 0,
-      leading: const Icon(IconsJobeque.arrowleft),
+      automaticallyImplyLeading: false,
+      leading: GestureDetector(
+        onTap: () {
+          context.router.pop();
+        },
+        child: const Icon(IconsJobeque.arrowleft),
+      ),
       title: Text(
         'Profile',
         style: CustomTextStyles.h4Medium.copyWith(

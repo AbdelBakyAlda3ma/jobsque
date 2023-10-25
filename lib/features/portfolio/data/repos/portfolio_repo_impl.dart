@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
@@ -70,14 +68,10 @@ class PortfolioRepoImpl extends PortfolioRepo {
       } else {
         portfoliosList = portfolioLocalDataSource.getPortofolios();
       }
-      profile.numbersOfPortfolios = portfoliosList.length;
-      print(profile.numbersOfPortfolios.toString());
-      log(profile.numbersOfPortfolios.toString());
+      profile!.numbersOfPortfolios = portfoliosList.length;
       return Right(portfoliosList);
     } on NoPortfoliosYetException {
-      profile.numbersOfPortfolios = 0;
-      print(profile.numbersOfPortfolios.toString());
-      log(profile.numbersOfPortfolios.toString());
+      profile!.numbersOfPortfolios = 0;
       return Left(NoPortfoliosYetFailure());
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));

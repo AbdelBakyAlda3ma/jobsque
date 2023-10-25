@@ -55,9 +55,8 @@ class AccountHasBeenSetUpScreen extends StatelessWidget {
               child: PrimaryButton.large(
                 text: 'Get Started',
                 onPressed: () {
-                  context.router.pushAndPopUntil(
-                    const WhichWillLaunchWidgetRoute(),
-                    predicate: (route) => false,
+                  context.router.push(
+                    const HasCurrenUserRoute(),
                   );
                 },
               ),

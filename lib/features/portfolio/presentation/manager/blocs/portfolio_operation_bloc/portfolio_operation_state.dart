@@ -8,6 +8,8 @@ class PortFolioOperationLoading extends PortFolioOperationState {}
 
 class AddPortfolioSuccess extends PortFolioOperationState {}
 
+class AddingPortfolioState extends PortFolioOperationState {}
+
 class AddPortfolioFailure extends PortFolioOperationState {
   final String errorMsg;
 

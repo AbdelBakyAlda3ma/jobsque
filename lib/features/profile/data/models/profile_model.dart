@@ -104,44 +104,6 @@ class ProfileModel extends ProfileEntity {
     );
   }
 
-  ProfileModel copyWith({
-    int? id,
-    int? userId,
-    String? name,
-    String? email,
-    String? mobile,
-    String? address,
-    String? language,
-    List<String>? interestedWork,
-    List<String>? offlinePlace,
-    bool? remotePlace,
-    String? bio,
-    EducationModel? education,
-    ExperienceModel? experience,
-    String? personalDetailed,
-    String? createdAt,
-    String? updatedAt,
-  }) {
-    return ProfileModel(
-      id: id ?? super.id,
-      userId: userId ?? super.userId,
-      name: name ?? super.name,
-      email: email ?? super.email,
-      mobile: mobile ?? super.mobile,
-      address: address ?? super.address,
-      language: language ?? super.language,
-      interestedWork: interestedWork ?? super.interestedWork,
-      offlinePlace: offlinePlace ?? super.offlinePlace,
-      remotePlace: remotePlace ?? super.remotePlace,
-      bio: bio ?? super.bio,
-      education: education ?? super.education,
-      experience: experience ?? super.experience,
-      personalDetailed: personalDetailed ?? super.personalDetailed,
-      createdAt: createdAt ?? super.createdAt,
-      updatedAt: updatedAt ?? super.updatedAt,
-    );
-  }
-
   @override
   String toString() {
     return 'ProfileModel(id: $id, userId: $userId, name: $name, email: $email, mobile: $mobile, address: $address, language: $language, interestedWork: $interestedWork, offlinePlace: $offlinePlace, remotePlace: $remotePlace, bio: $bio, education: $education, experience: $experience, personalDetailed: $personalDetailed, createdAt: $createdAt, updatedAt: $updatedAt)';

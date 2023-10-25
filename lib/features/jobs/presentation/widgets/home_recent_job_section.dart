@@ -5,7 +5,7 @@ import 'package:jobseque/features/jobs/presentation/widgets/home_recent_job_sect
 import 'package:jobseque/features/jobs/presentation/widgets/home_shimmer_loding.dart';
 
 import 'home_error_widget.dart';
-import 'home_recent_job_section_List_view.dart';
+import 'home_recent_job_section_list_view.dart';
 
 class HomeRecentJobSection extends StatelessWidget {
   const HomeRecentJobSection({super.key});

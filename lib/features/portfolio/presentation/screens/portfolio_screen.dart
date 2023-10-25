@@ -15,6 +15,7 @@ class PortfolioScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<GetPortfoliosBloc>(
+          lazy: false,
           create: (context) =>
               sL.get<GetPortfoliosBloc>()..add(GetPortfoliosEvent()),
         ),

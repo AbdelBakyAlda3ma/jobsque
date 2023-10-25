@@ -17,18 +17,17 @@ class LoginScreenSafeArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is LoginSuccess) {
             showSuccessSnackBar(
               context: context,
               message: LOGIN_SUCCESS_MESSAGE,
             );
-            context.router.pushAndPopUntil(
-              HomeRoute(
-                user: state.user,
-              ),
-              predicate: (route) => false,
-            );
+            await Future.delayed(const Duration(seconds: 1), () {
+              context.router.popAndPush(
+                const HasCurrenUserRoute(),
+              );
+            });
           } else if (state is LoginFailure) {
             showErrorSnackBar(
               context: context,

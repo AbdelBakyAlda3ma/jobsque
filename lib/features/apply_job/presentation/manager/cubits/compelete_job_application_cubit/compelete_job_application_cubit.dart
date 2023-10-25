@@ -1,12 +1,18 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:jobseque/core/errors/exception.dart';
+import 'package:jobseque/core/utils/constances.dart';
+import 'package:jobseque/core/utils/functions/pick_cv_file.dart';
 import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
+import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dart';
 part 'compelete_job_application_state.dart';
 
 class CompeleteJobApplicationCubit extends Cubit<CompeleteJobApplicationState> {
-  ApplyJobEntity applyJobEntity;
-  CompeleteJobApplicationCubit()
-      : applyJobEntity = ApplyJobEntity(),
-        super(CompeleteJobApplicationInitial());
+  ApplyJobEntity applyJobEntity = ApplyJobEntity();
+
+  CompeleteJobApplicationCubit() : super(CompeleteJobApplicationInitial());
 
   void bioInformationStep() {
     if (applyJobEntity.name == null ||
@@ -20,17 +26,56 @@ class CompeleteJobApplicationCubit extends Cubit<CompeleteJobApplicationState> {
 
   void typeOfWorkStep() {
     if (applyJobEntity.workType == null) {
-      emit(EmptyWorkTypeState());
+      emit(WorkTypeNotChoosenState());
     } else {
-      emit(CompleteWorkTypeState());
+      emit(WorkTypeHasChoosenState());
     }
+  }
+
+  List<PortfolioEntity> _getPortofolios() {
+    var box = Hive.box<PortfolioEntity>(kPortfolioBox);
+    var portfoliosList = box.values.toList();
+    return portfoliosList;
+  }
+
+  List<String> getTypeOfWorkList() {
+    var listOfPortfolios = _getPortofolios();
+    var listOfCVs = listOfPortfolios
+        .map((portfolio) => portfolio.cvFile!.split('_').first)
+        .toList();
+    return listOfCVs;
   }
 
   void otherFileStep() {
     if (applyJobEntity.otherFile == null) {
-      emit(EmptyOtherFileState());
+      emit(OtherFileNotChoosen());
     } else {
-      emit(CompleteOtherFileState());
+      emit(OtherFileHasChoosen());
+    }
+  }
+
+  Future<void> addOtherFile() async {
+    try {
+      var plateformFile = await pickCvFile();
+
+      var filePath = plateformFile!.path;
+      var fileName = plateformFile.name;
+      emit(
+        AddOtherFileSucces(
+          otherFilePath: filePath!,
+          otherFileName: fileName,
+        ),
+      );
+    } on CanceldExeption {
+      emit(CancelAddingOtherFileState());
+    } on Exception catch (e) {
+      log(e.toString());
+      emit(
+        AddOtherFileFailure(
+          errorMsg: e.toString(),
+          // 'Some thig went wrong, please try again',
+        ),
+      );
     }
   }
 }

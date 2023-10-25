@@ -41,7 +41,7 @@ class _OnboardingScreenBodyState extends State<OnboardingScreenBody> {
 
   void getStarted(BuildContext context) {
     context.router.pushAndPopUntil(
-      const WhichWillLaunchWidgetRoute(),
+      const WhichWillLaunchRoute(),
       predicate: (route) => false,
     );
   }

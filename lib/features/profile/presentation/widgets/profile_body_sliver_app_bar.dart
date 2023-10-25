@@ -9,6 +9,7 @@ class ProfileBodySliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SliverAppBar(
+      automaticallyImplyLeading: false,
       pinned: false,
       snap: false,
       floating: false,

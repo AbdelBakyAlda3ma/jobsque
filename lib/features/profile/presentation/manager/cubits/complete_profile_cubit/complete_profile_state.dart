@@ -4,20 +4,29 @@ sealed class CompleteProfileState {}
 
 final class CompleteProfileCubitInitial extends CompleteProfileState {}
 
-final class CompletionState extends CompleteProfileState {
+final class CompleteProfileCubitLoading extends CompleteProfileState {}
+
+final class CompleteProfileCubitFailure extends CompleteProfileState {
+  String errorMsg;
+  CompleteProfileCubitFailure({
+    required this.errorMsg,
+  });
+}
+
+final class CompletedProfile extends CompleteProfileState {
   bool completionState;
 
-  CompletionState({
+  CompletedProfile({
     required this.completionState,
   });
 }
 
-final class InCompletionState extends CompleteProfileState {
+final class InCompletedProfileState extends CompleteProfileState {
   bool educationCompletion;
   bool experienceCompletion;
   bool personalDetailsCompletion;
   bool portfolioCompletion;
-  InCompletionState({
+  InCompletedProfileState({
     required this.educationCompletion,
     required this.experienceCompletion,
     required this.personalDetailsCompletion,

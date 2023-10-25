@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/features/portfolio/presentation/manager/blocs/portfolio_operation_bloc/portfolio_operation_bloc.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/widgets/upload_file_area.dart';
@@ -21,7 +23,12 @@ class PortfolioUploadSection extends StatelessWidget {
           ),
         ),
         const VerticalSpace(space: 16),
-        const UploadFileArea(),
+        UploadFileArea(
+          onPressed: () {
+            BlocProvider.of<PortfolioOperationBloc>(context)
+                .add(AddPortfolioEvent());
+          },
+        ),
       ],
     );
   }

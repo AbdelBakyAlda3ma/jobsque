@@ -28,7 +28,6 @@ class _CreateAccountScreenBodyFormTextFormFieldOfUserNameState
         setState(() {
           name = value;
         });
-        log(name.toString());
       },
       onFieldSubmitted: (value) {
         setState(() {

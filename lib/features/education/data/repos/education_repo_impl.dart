@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-
 import 'package:jobseque/core/errors/failure.dart';
 import 'package:jobseque/features/education/data/data_sources/education_remote_data_source.dart';
 import 'package:jobseque/features/education/data/models/education_model.dart';
@@ -22,12 +20,18 @@ class EducationRepoImpl extends EducationRepo {
       {required EducationModel education}) async {
     try {
       var profileEntity = _profileLocalDataSource.getProfile();
-      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
-      var profileWithEducation = profile.copyWith(education: education);
-      var updatedProfile = await educationRemoteDataSource.addEducation(
-          profileWitheducation: profileWithEducation);
+
+      var profileWithEducation = profileEntity!.copyWith(education: education);
+
+      var profileModelWithEducation =
+          ProfileModel.downCasting(profileEntity: profileWithEducation);
+      // var updatedProfile =
+      await educationRemoteDataSource.addEducation(
+          profileWitheducation: profileModelWithEducation);
+
       await _profileLocalDataSource.saveProfile(
-          profileToCached: updatedProfile);
+        profileToCached: profileWithEducation,
+      );
       return const Right(unit);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));

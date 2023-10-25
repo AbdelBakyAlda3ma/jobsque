@@ -6,6 +6,7 @@ import 'package:jobseque/features/portfolio/presentation/manager/blocs/get_portf
 import 'package:jobseque/features/portfolio/presentation/manager/blocs/portfolio_operation_bloc/portfolio_operation_bloc.dart';
 import 'package:jobseque/features/portfolio/presentation/widgets/portfolio_screen_scaffold.dart';
 import 'package:jobseque/features/profile/presentation/manager/cubits/complete_profile_cubit/complete_profile_cubit.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class PortfolioScreenSafeArea extends StatelessWidget {
   const PortfolioScreenSafeArea({
@@ -20,40 +21,49 @@ class PortfolioScreenSafeArea extends StatelessWidget {
         return true;
       },
       child: SafeArea(
-        child: BlocListener<PortfolioOperationBloc, PortFolioOperationState>(
-          listener: (context, state) {
-            if (state is AddPortfolioFailure) {
-              showErrorSnackBar(
-                context: context,
-                message: state.errorMsg,
+        child: BlocConsumer<PortfolioOperationBloc, PortFolioOperationState>(
+          listener: mappingBlocLisntener,
+          builder: (context, state) {
+            if (state is AddingPortfolioState) {
+              return const ModalProgressHUD(
+                inAsyncCall: true,
+                child: PortfolioScreenScaffold(),
               );
-            }
-            if (state is AddPortfolioSuccess) {
-              showSuccessSnackBar(
-                context: context,
-                message: ADD_SUSCESS_MESSAGE,
-              );
-              BlocProvider.of<GetPortfoliosBloc>(context)
-                  .add(GetPortfoliosEvent());
-            }
-            if (state is DeletePortfolioFailure) {
-              showErrorSnackBar(
-                context: context,
-                message: state.errorMsg,
-              );
-            }
-            if (state is DeletePortfolioSuccess) {
-              showSuccessSnackBar(
-                context: context,
-                message: DELETE_SUSCESS_MESSAGE,
-              );
-              BlocProvider.of<GetPortfoliosBloc>(context)
-                  .add(GetPortfoliosEvent());
+            } else {
+              return const PortfolioScreenScaffold();
             }
           },
-          child: const PortfolioScreenScaffold(),
         ),
       ),
     );
+  }
+
+  void mappingBlocLisntener(context, state) {
+    if (state is AddPortfolioFailure) {
+      showErrorSnackBar(
+        context: context,
+        message: state.errorMsg,
+      );
+    }
+    if (state is AddPortfolioSuccess) {
+      showSuccessSnackBar(
+        context: context,
+        message: ADD_SUSCESS_MESSAGE,
+      );
+      BlocProvider.of<GetPortfoliosBloc>(context).add(GetPortfoliosEvent());
+    }
+    if (state is DeletePortfolioFailure) {
+      showErrorSnackBar(
+        context: context,
+        message: state.errorMsg,
+      );
+    }
+    if (state is DeletePortfolioSuccess) {
+      showSuccessSnackBar(
+        context: context,
+        message: DELETE_SUSCESS_MESSAGE,
+      );
+      BlocProvider.of<GetPortfoliosBloc>(context).add(GetPortfoliosEvent());
+    }
   }
 }

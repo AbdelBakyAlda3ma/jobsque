@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
 
 class ApplyJobModel extends ApplyJobEntity {
@@ -43,7 +44,9 @@ class ApplyJobModel extends ApplyJobEntity {
         'email': email,
         'mobile': mobile,
         'work_type': workType,
-        'other_file': otherFile,
+        'other_file': MultipartFile.fromFile(
+          otherFile!,
+        ),
         'jobs_id': jobsId,
         'user_id': userId,
         'reviewed': reviewed,
@@ -91,6 +94,23 @@ class ApplyJobModel extends ApplyJobEntity {
       updatedAt: updatedAt ?? super.updatedAt,
       createdAt: createdAt ?? super.createdAt,
       id: id ?? super.id,
+    );
+  }
+
+  factory ApplyJobModel.downCasting({required ApplyJobEntity applyJobEntity}) {
+    return ApplyJobModel(
+      cvFile: applyJobEntity.cvFile,
+      name: applyJobEntity.name,
+      email: applyJobEntity.email,
+      mobile: applyJobEntity.mobile,
+      workType: applyJobEntity.workType,
+      otherFile: applyJobEntity.otherFile,
+      jobsId: applyJobEntity.jobsId,
+      userId: applyJobEntity.userId,
+      reviewed: applyJobEntity.reviewed,
+      updatedAt: applyJobEntity.updatedAt,
+      createdAt: applyJobEntity.createdAt,
+      id: applyJobEntity.id,
     );
   }
 }

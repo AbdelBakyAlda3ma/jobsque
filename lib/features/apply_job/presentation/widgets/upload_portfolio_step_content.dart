@@ -16,7 +16,7 @@ class UploadPortfolioStepContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               UploadPortfolioStepContentHeader(),
-              VerticalSpace(space: 28),
+              VerticalSpace(space: 16),
               UploadPortfolioStepContentUploadedCV(),
               VerticalSpace(space: 20),
               UploadPortfolioStepContentUploadOtherFile(),

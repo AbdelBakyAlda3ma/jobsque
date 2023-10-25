@@ -13,22 +13,20 @@ class HasCurrentUserWidgetBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GetCurrentUserBloc, GetCurrentUserState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is GetCurrentUserSuccess) {
-          Future.delayed(
+          await Future.delayed(
             const Duration(milliseconds: 2000),
             () {
               context.router.pushAndPopUntil(
-                HomeRoute(
-                  user: state.user,
-                ),
+                const HomeRoute(),
                 predicate: (route) => false,
               );
             },
           );
         }
         if (state is GetCurrentUserFailure) {
-          Future.delayed(
+          await Future.delayed(
             const Duration(milliseconds: 2000),
             () {
               context.router.pushAndPopUntil(

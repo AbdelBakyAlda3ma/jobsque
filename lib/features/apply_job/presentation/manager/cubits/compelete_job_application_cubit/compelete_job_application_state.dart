@@ -9,10 +9,30 @@ final class EmptyBioFieldState extends CompeleteJobApplicationState {}
 
 final class CompleteBioFildsState extends CompeleteJobApplicationState {}
 
-final class EmptyWorkTypeState extends CompeleteJobApplicationState {}
+final class WorkTypeNotChoosenState extends CompeleteJobApplicationState {}
 
-final class CompleteWorkTypeState extends CompeleteJobApplicationState {}
+final class WorkTypeHasChoosenState extends CompeleteJobApplicationState {}
 
-final class EmptyOtherFileState extends CompeleteJobApplicationState {}
+final class OtherFileNotChoosen extends CompeleteJobApplicationState {}
 
-final class CompleteOtherFileState extends CompeleteJobApplicationState {}
+final class OtherFileHasChoosen extends CompeleteJobApplicationState {}
+
+final class AddOtherFileLodingState extends CompeleteJobApplicationState {}
+
+final class CancelAddingOtherFileState extends CompeleteJobApplicationState {}
+
+final class AddOtherFileFailure extends CompeleteJobApplicationState {
+  String errorMsg;
+  AddOtherFileFailure({
+    required this.errorMsg,
+  });
+}
+
+final class AddOtherFileSucces extends CompeleteJobApplicationState {
+  String otherFilePath;
+  String otherFileName;
+  AddOtherFileSucces({
+    required this.otherFilePath,
+    required this.otherFileName,
+  });
+}

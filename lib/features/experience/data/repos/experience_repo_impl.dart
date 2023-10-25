@@ -19,12 +19,17 @@ class ExperienceRepoImpl extends ExperienceRepo {
       {required ExperienceModel experience}) async {
     try {
       var profileEntity = _profileLocalDataSource.getProfile();
-      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
-      var profileWithExperience = profile.copyWith(experience: experience);
-      var updatedProfile = await experienceRemoteDataSource.addExperience(
-          profileWithExperience: profileWithExperience);
+
+      var profileEntityWithExperience =
+          profileEntity!.copyWith(experience: experience);
+      var profileModelWithExperience = ProfileModel.downCasting(
+        profileEntity: profileEntityWithExperience,
+      );
+
+      await experienceRemoteDataSource.addExperience(
+          profileWithExperience: profileModelWithExperience);
       await _profileLocalDataSource.saveProfile(
-          profileToCached: updatedProfile);
+          profileToCached: profileEntityWithExperience);
       return const Right(unit);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));

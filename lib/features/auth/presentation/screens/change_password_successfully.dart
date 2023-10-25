@@ -47,7 +47,7 @@ class ChangePasswordSuccessfullyScreen extends StatelessWidget {
                 text: 'Continue',
                 onPressed: () {
                   context.router.pushAndPopUntil(
-                    const WhichWillLaunchWidgetRoute(),
+                    const WhichWillLaunchRoute(),
                     predicate: (route) => false,
                   );
                 },

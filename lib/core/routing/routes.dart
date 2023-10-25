@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'routes.gr.dart';
 
-@AutoRouterConfig()
+@AutoRouterConfig(replaceInRouteName: 'Page|Screen|Widget,Route')
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          page: WhichWillLaunchWidgetRoute.page,
+          page: WhichWillLaunchRoute.page,
           initial: true,
         ),
         AutoRoute(
@@ -50,10 +50,19 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: NotificationRoute.page),
         AutoRoute(page: NotificationsProfileRoute.page),
         AutoRoute(page: OnboardingRoute.page),
-        AutoRoute(page: SplashRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: HasCurrenUserRoute.page),
         AutoRoute(page: JobDetailRoute.page),
         AutoRoute(page: InitialSearchRoute.page),
+        AutoRoute(page: SplashRoute.page),
+        AutoRoute(page: ChattingRoute.page),
+        AutoRoute(page: NotRecievedMessagesRoute.page),
+        AutoRoute(page: UnreadedMessagesRoute.page),
+        AutoRoute(page: HomeRoute.page),
+        AutoRoute(page: MessagesRoute.page),
+        AutoRoute(page: AppliedJobsRoute.page),
+        AutoRoute(page: SavedJobsRoute.page),
+        AutoRoute(page: ProfileRoute.page),
+        AutoRoute(page: InProgressAppliedJobRoute.page),
       ];
 }

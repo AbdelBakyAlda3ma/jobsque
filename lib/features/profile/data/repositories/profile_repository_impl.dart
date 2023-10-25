@@ -26,14 +26,18 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }) async {
     try {
       var profileEntity = profileLocalDataSource.getProfile();
-      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
-      profile = ProfileModel().copyWith(
+      var profileEntityWithPersonalDetails = profileEntity!.copyWith(
         personalDetailed: jsonEncode(personalDetails),
       );
+      var profile = ProfileModel.downCasting(
+          profileEntity: profileEntityWithPersonalDetails);
+
       var updatedProfile = await profileRemoteDataSource.addPresonalDetails(
         profileWithPersonalDetails: profile,
       );
-      profileLocalDataSource.saveProfile(profileToCached: updatedProfile);
+      profileLocalDataSource.saveProfile(
+        profileToCached: profileEntityWithPersonalDetails,
+      );
       return Right(updatedProfile);
     } on NoProfileExistException {
       return Left(NoProfileExistFailure());
@@ -47,17 +51,20 @@ class ProfileRepositoryImpl extends ProfileRepository {
       {required String language}) async {
     try {
       var profileEntity = profileLocalDataSource.getProfile();
-      var profile = ProfileModel.downCasting(profileEntity: profileEntity);
-      profile = ProfileModel().copyWith(
+      var profileEntityWithPersonalDetails = profileEntity!.copyWith(
         language: language,
       );
+      var profile = ProfileModel.downCasting(
+        profileEntity: profileEntityWithPersonalDetails,
+      );
+
       var updatedProfile = await profileRemoteDataSource.addPresonalDetails(
         profileWithPersonalDetails: profile,
       );
-      profileLocalDataSource.saveProfile(profileToCached: updatedProfile);
+      profileLocalDataSource.saveProfile(
+        profileToCached: profileEntityWithPersonalDetails,
+      );
       return Right(updatedProfile);
-    } on NoProfileExistException {
-      return Left(NoProfileExistFailure());
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
     }
@@ -81,7 +88,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
   @override
   Future<Either<Failure, ProfileEntity>> getProfile() async {
     try {
-      var profile = await profileRemoteDataSource.getProfile();
+      var profile = profileLocalDataSource.getProfile() ??
+          await profileRemoteDataSource.getProfile();
       await profileLocalDataSource.saveProfile(profileToCached: profile);
       return Right(profile);
     } on DioException catch (e) {
@@ -94,15 +102,22 @@ class ProfileRepositoryImpl extends ProfileRepository {
     required Map<String, dynamic> workPreferences,
   }) async {
     try {
-      var profile = ProfileModel().copyWith(
+      var profileEntity = profileLocalDataSource.getProfile();
+      var profileEntityWithWorkPrefrences = profileEntity!.copyWith(
         interestedWork: workPreferences['interestedWork'],
         offlinePlace: workPreferences['offlinePlace'] as List<String>,
         remotePlace: workPreferences['remotePlace'] as bool,
       );
+      var profile = ProfileModel.downCasting(
+        profileEntity: profileEntityWithWorkPrefrences,
+      );
+
       var updatedProfile = await profileRemoteDataSource.editProfile(
         profileWithEditData: profile,
       );
-      profileLocalDataSource.saveProfile(profileToCached: updatedProfile);
+      profileLocalDataSource.saveProfile(
+        profileToCached: profileEntityWithWorkPrefrences,
+      );
       return Right(updatedProfile);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
@@ -110,8 +125,13 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  ProfileEntity completeProfile() {
-    var profile = profileLocalDataSource.getProfile();
-    return profile;
+  Future<Either<Failure, ProfileEntity>> completeProfile() async {
+    try {
+      var profile = profileLocalDataSource.getProfile() ??
+          await profileRemoteDataSource.getProfile();
+      return Right(profile);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDio(e));
+    }
   }
 }

@@ -15,7 +15,7 @@ class SimpleBlocObserver extends BlocObserver {
 
     ///We can check, if the BlocBase is a Bloc or a Cubit
     if (bloc is Cubit) {
-      log("This is a Cubit");
+      log("This is a $bloc");
     } else {
       log("This is a Bloc $bloc");
     }

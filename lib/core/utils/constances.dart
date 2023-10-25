@@ -12,3 +12,8 @@ const kProfileImageFilePath = 'PROFILE_IMAGE_FILE_PATh';
 const kCurrentProfile = 'CURRENT_PROFILE';
 const String kPortfolioAddedAndNeedToRefresh =
     'PORTFOLIO_ADDED_AND_NEED_TO_REFRESH';
+const kHomeRouteIndex = 0;
+const kMessageRouteIndex = 1;
+const kAppliedRouteIndex = 2;
+const kSavedRouteIndex = 3;
+const kProfileRouteIndex = 4;

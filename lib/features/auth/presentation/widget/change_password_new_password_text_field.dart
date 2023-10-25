@@ -60,11 +60,7 @@ class _ChangePasswordNewPasswordTextFieldState
               return 'The password does not match';
             }
             BlocProvider.of<ChangePasswordBloc>(context).password = newPassword;
-            log(newPassword.toString());
-            log(confirmedPassword.toString());
-            log(BlocProvider.of<ChangePasswordBloc>(context)
-                .password
-                .toString());
+
             return null;
           },
         ),

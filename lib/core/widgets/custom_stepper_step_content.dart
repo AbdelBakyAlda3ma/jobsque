@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'custom_step.dart';
 
 class CustomStepperStepContent extends StatelessWidget {
@@ -21,7 +20,7 @@ class CustomStepperStepContent extends StatelessWidget {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: customSteps.map((step) {
-          return step.content;
+          return step.content!;
         }).toList(),
       ),
     );

@@ -5,8 +5,8 @@ import 'package:jobseque/features/jobs/presentation/widgets/set_filter_bottom_sh
 import 'package:jobseque/features/jobs/presentation/widgets/set_filter_modal_bottom_sheet_body.dart';
 
 @RoutePage()
-class SetFilterModalBottomSheet extends StatelessWidget {
-  const SetFilterModalBottomSheet({super.key});
+class SetFilterModalBottomSheetWidget extends StatelessWidget {
+  const SetFilterModalBottomSheetWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

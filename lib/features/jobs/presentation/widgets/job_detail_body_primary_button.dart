@@ -2,10 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/functions/is_profile_completed.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import '../../../../core/widgets/primary_button.dart';
 
 class JobDetailBodyBrimaryButton extends StatelessWidget {
-  const JobDetailBodyBrimaryButton({super.key});
+  final JobEntity job;
+
+  const JobDetailBodyBrimaryButton({
+    super.key,
+    required this.job,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +30,17 @@ class JobDetailBodyBrimaryButton extends StatelessWidget {
       child: PrimaryButton.large(
         onPressed: () {
           if (isProfileCompleted()) {
-            context.router.push(const ApplyJobStepperRoute());
+            context.router.push(
+              ApplyJobStepperRoute(
+                job: job,
+              ),
+            );
           } else {
-            context.router.push(const CompleteProfileRoute());
+            context.router.push(
+              CompleteProfileRoute(
+                job: job,
+              ),
+            );
           }
         },
         text: 'Apply now',

@@ -9,11 +9,13 @@ import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dar
 import '../utils/global/app_colors.dart';
 
 class UploadedFileListTile extends StatelessWidget {
-  final PortfolioEntity portfolio;
+  final String? cvTitle;
+  final PortfolioEntity? portfolio;
 
   const UploadedFileListTile({
     super.key,
-    required this.portfolio,
+    this.cvTitle,
+    this.portfolio,
   });
 
   @override
@@ -36,7 +38,8 @@ class UploadedFileListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UploadPortfolioListTileTitle(
-                    name: portfolio.cvFile!.split('_').first),
+                  name: cvTitle ?? portfolio!.cvFile!.split('_').first,
+                ),
                 const VerticalSpace(space: 4),
                 const UploadPortfolioListTileSubTitle(),
               ],

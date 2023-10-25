@@ -27,11 +27,13 @@ class JobDetailBody extends StatelessWidget {
               JobDetailBodyToggelSection(job: job),
             ],
           ),
-          const Positioned(
+          Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: JobDetailBodyBrimaryButton(),
+            child: JobDetailBodyBrimaryButton(
+              job: job,
+            ),
           ),
         ],
       ),

@@ -8,14 +8,20 @@ import 'custom_stepper_step_content.dart';
 
 class CustomStepper extends StatefulWidget {
   final List<CustomStep> customSteps;
+  final bool withContent;
   final int currentStep;
+  final PageController pageController;
   final void Function(int) onStepTapped;
+  final VoidCallback onStepContinue;
 
   const CustomStepper({
     super.key,
     required this.customSteps,
     required this.onStepTapped,
     this.currentStep = 0,
+    required this.onStepContinue,
+    required this.pageController,
+    this.withContent = true,
   }) : assert(0 <= currentStep && currentStep < customSteps.length);
 
   @override
@@ -23,19 +29,6 @@ class CustomStepper extends StatefulWidget {
 }
 
 class _CustomStepperState extends State<CustomStepper> {
-  late PageController _pageController;
-  @override
-  void initState() {
-    _pageController = PageController(initialPage: 0);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   bool _isLastStep() {
     return widget.currentStep == widget.customSteps.length - 1;
   }
@@ -49,22 +42,25 @@ class _CustomStepperState extends State<CustomStepper> {
         CustomStepProgress(
           onStepTapped: (step) {
             widget.onStepTapped(step);
-            if (_pageController.hasClients) {
-              _pageController.jumpToPage(step);
+            if (widget.pageController.hasClients) {
+              widget.pageController.jumpToPage(step);
             }
           },
           currentIndex: widget.currentStep,
           stepsList: widget.customSteps,
         ),
         const VerticalSpace(space: 32),
-        CustomStepperStepContent(
-          pageController: _pageController,
-          customSteps: widget.customSteps,
-          currentStep: widget.currentStep,
-        ),
+        widget.withContent
+            ? CustomStepperStepContent(
+                pageController: widget.pageController,
+                customSteps: widget.customSteps,
+                currentStep: widget.currentStep,
+              )
+            : const SizedBox(),
         const VerticalSpace(space: 9),
         CustomStepperControlButton(
-          pageController: _pageController,
+          pageController: widget.pageController,
+          onStepContinue: widget.onStepContinue,
           isLastStep: _isLastStep(),
         ),
         const VerticalSpace(space: 9),

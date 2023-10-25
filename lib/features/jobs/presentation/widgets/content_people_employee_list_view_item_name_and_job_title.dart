@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobseque/models/employee_model.dart';
-
+import 'package:jobseque/core/dummy/list_of_company_jobs_employees.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/widgets/vertical_space.dart';

@@ -14,6 +14,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      notificationPredicate: (ScrollNotification notification) {
+        return notification.depth != 0;
+      },
       leading: GestureDetector(
         onTap: () {
           context.router.pop(true);

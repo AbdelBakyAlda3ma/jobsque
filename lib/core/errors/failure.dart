@@ -113,7 +113,6 @@ class ServerFailure extends Failure {
         errorMessage: 'Max size is 300 KB, the file is too large!',
       );
     } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      log(response.toString());
       return ServerFailure(
         errorMessage: response['massege']?['email']?[0] ??
             response['massage'] ??

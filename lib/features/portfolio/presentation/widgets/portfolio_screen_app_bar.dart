@@ -17,7 +17,7 @@ class PortFolioScreenAppBar extends StatelessWidget
     return AppBar(
       leading: GestureDetector(
         onTap: () {
-          context.router.pop(true);
+          context.router.pop();
           BlocProvider.of<CompleteProfileCubit>(context).getProfileCompletion();
         },
         child: const Icon(

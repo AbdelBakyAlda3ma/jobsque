@@ -1,5 +1,4 @@
-import 'package:jobseque/models/work_type_model.dart';
-
+import 'package:flutter/material.dart';
 import '../utils/global/icons_jobeque_icons.dart';
 
 List<WorkTypeModel> workType = [
@@ -28,3 +27,14 @@ List<WorkTypeModel> workType = [
       unselectedIcon: IconsJobeque.cloudadd,
       selectedIcon: IconsJobeque.cloudaddbold),
 ];
+
+class WorkTypeModel {
+  String work;
+  IconData unselectedIcon;
+  IconData selectedIcon;
+  WorkTypeModel({
+    required this.work,
+    required this.unselectedIcon,
+    required this.selectedIcon,
+  });
+}

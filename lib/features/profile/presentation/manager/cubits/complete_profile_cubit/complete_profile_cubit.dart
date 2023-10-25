@@ -6,49 +6,56 @@ part 'complete_profile_state.dart';
 
 class CompleteProfileCubit extends Cubit<CompleteProfileState> {
   CompleteProfileUseCase completeProfileUseCase;
-  ProfileEntity _profile;
   int completionProgeressIndicator;
 
   CompleteProfileCubit({
     required this.completeProfileUseCase,
-  })  : _profile = completeProfileUseCase(),
-        completionProgeressIndicator = 0,
+  })  : completionProgeressIndicator = 0,
         super(CompleteProfileCubitInitial());
 
-  getProfileCompletion() {
-    _profile = completeProfileUseCase();
-    completionProgeressIndicator = _completionProgress();
-
-    if (_profile.isCompleted) {
-      emit(
-        CompletionState(
-          completionState: true,
-        ),
-      );
-    } else {
-      log('Education  ${_profile.education != null}');
-      log('Personal Details  ${_profile.personalDetailed != null}');
-      log('Experiece  ${_profile.experience != null}');
-      log('Portfolio  ${_profile.numbersOfPortfolios != 0}');
-      log('Progress Indicator $completionProgeressIndicator');
-      emit(
-        InCompletionState(
-          educationCompletion: _profile.education != null,
-          experienceCompletion: _profile.experience != null,
-          personalDetailsCompletion: _profile.personalDetailed != null,
-          portfolioCompletion: _profile.numbersOfPortfolios != 0,
-        ),
-      );
-    }
+  getProfileCompletion() async {
+    emit(CompleteProfileCubitLoading());
+    var result = await completeProfileUseCase();
+    result.fold(
+        (failure) => emit(
+              CompleteProfileCubitFailure(
+                errorMsg: failure.errorMessage,
+              ),
+            ), (profile) {
+      completionProgeressIndicator = _completionProgress(profile);
+      if (profile.isCompleted) {
+        emit(
+          CompletedProfile(
+            completionState: true,
+          ),
+        );
+      } else {
+        // log('Education  ${profile.education != null}');
+        // log('Personal Details  ${profile.personalDetailed != null}');
+        // log('Experiece  ${profile.experience != null}');
+        log('Portfolio  ${profile.numbersOfPortfolios}');
+        // log('Portfolio  ${profile.numbersOfPortfolios != 0}');
+        // log('Portfolio  ${profile.numbersOfPortfolios != 0}');
+        log('Progress Indicator $completionProgeressIndicator');
+        emit(
+          InCompletedProfileState(
+            educationCompletion: profile.education != null,
+            experienceCompletion: profile.experience != null,
+            personalDetailsCompletion: profile.personalDetailed != null,
+            portfolioCompletion: profile.numbersOfPortfolios != 0,
+          ),
+        );
+      }
+    });
   }
 
-  int _completionProgress() {
+  int _completionProgress(ProfileEntity profile) {
     int progressIndicator = 0;
     List<bool> completionItemsList = [
-      _profile.experience != null,
-      _profile.personalDetailed != null,
-      _profile.numbersOfPortfolios != 0,
-      _profile.education != null,
+      profile.experience != null,
+      profile.personalDetailed != null,
+      profile.numbersOfPortfolios != 0,
+      profile.education != null,
     ];
     for (var completionItem in completionItemsList) {
       if (completionItem) {

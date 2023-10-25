@@ -1,5 +1,8 @@
-// ignore_for_file: missing_required_param
+// ignore_for_file:applyJobModel. missing_required_param, missing_required_param
 
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:jobseque/core/utils/api_services.dart';
 import 'package:jobseque/core/utils/constances.dart';
 import 'package:jobseque/core/utils/user_data_using_shared_preferences.dart';
@@ -21,10 +24,27 @@ class ApplyJobRemoteDataSourceImpl extends ApplyJobRemoteDataSource {
     required ApplyJobEntity applyJobEntity,
   }) async {
     var userId = JobsqueSharedPrefrences.getInt(kUserID);
-    applyJobEntity as ApplyJobModel;
+    ApplyJobModel applyJobModel =
+        ApplyJobModel.downCasting(applyJobEntity: applyJobEntity);
+    final payload = FormData.fromMap(
+        // applyJobModel.copyWith(userId:applyJobModel. userId.toString()).toMap(),
+        {
+          'cv_file': applyJobModel.cvFile,
+          'name': applyJobModel.name,
+          'email': applyJobModel.email,
+          'mobile': applyJobModel.mobile,
+          'work_type': applyJobModel.workType,
+          'other_file': await MultipartFile.fromFile(
+            applyJobModel.otherFile!,
+          ),
+          'jobs_id': 1,
+          'user_id': userId,
+        });
+    log(applyJobEntity.toString());
+    print(applyJobModel.toString());
     await apiService.post(
-      path: '/apply/$userId',
-      body: applyJobEntity.copyWith(userId: userId.toString()).toMap(),
+      path: '/apply',
+      body: payload,
     );
   }
 }
