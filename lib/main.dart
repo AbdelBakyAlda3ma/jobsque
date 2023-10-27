@@ -30,7 +30,8 @@ void main() async {
   await Hive.openBox<ProfileEntity>(kProfileBox);
   await Hive.openBox<PortfolioEntity>(kPortfolioBox);
   await Hive.openBox<ApplyJobEntity>(kApplyJobBox);
-  await Hive.openBox<JobEntity>(kJoBBox);
+  await Hive.openBox<JobEntity>(kJoBsBox);
+  await Hive.openBox<JobEntity>(kFavoriteJoBsBox);
   await Hive.openBox<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
 
   Bloc.observer = SimpleBlocObserver();

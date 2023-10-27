@@ -24,6 +24,11 @@ class NoJobsYetFailure extends Failure {
   NoJobsYetFailure() : super(errorMessage: NO_JOBS_POSTED_YET_FAILURE_MESSAGE);
 }
 
+class NoFavoriteJobsFailure extends Failure {
+  NoFavoriteJobsFailure()
+      : super(errorMessage: NO_JOBS_POSTED_YET_FAILURE_MESSAGE);
+}
+
 class SearchNotFoundlFailure extends Failure {
   SearchNotFoundlFailure()
       : super(errorMessage: SEARCH_NOT_FOUND_FAILURE_MESSAGE);

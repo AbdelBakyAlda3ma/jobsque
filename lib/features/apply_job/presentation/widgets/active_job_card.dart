@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
@@ -35,7 +33,6 @@ class _ActiveJobCardState extends State<ActiveJobCard> {
             activeAppliedJob: widget.activeAppliedJob,
           ),
         );
-        log(widget.activeAppliedJob.toString());
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,

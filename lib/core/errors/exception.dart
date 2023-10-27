@@ -14,6 +14,8 @@ class FilterSearchInvalidInputException implements Exception {}
 
 class NoJobsYetException implements Exception {}
 
+class NoFavoriteJobsException implements Exception {}
+
 class NoProfileExistException implements Exception {}
 
 class NoProfileImageYetException implements Exception {}

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/add_favorite_bloc/add_favorite_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/delete_favorite_bloc/delete_favorite_bloc.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import '../utils/global/app_colors.dart';
 import '../utils/global/custom_text_styles.dart';
@@ -57,6 +60,20 @@ class _JobCardTitleAndImageAndSavedIconState
             onTap: () {
               setState(() {
                 widget.job.isSaved = !widget.job.isSaved;
+                if (widget.job.isSaved) {
+                  BlocProvider.of<AddFavoriteBloc>(context).add(
+                    AddFavoriteEvent(
+                      job: widget.job,
+                    ),
+                  );
+                }
+                if (!widget.job.isSaved) {
+                  BlocProvider.of<DeleteFavoriteBloc>(context).add(
+                    DeleteFavoriteEvent(
+                      job: widget.job,
+                    ),
+                  );
+                }
               });
             },
             child: widget.job.isSaved

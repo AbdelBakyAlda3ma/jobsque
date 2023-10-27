@@ -17,6 +17,14 @@ import 'package:jobseque/features/experience/data/data_sources/experience_remote
 import 'package:jobseque/features/experience/data/repos/experience_repo_impl.dart';
 import 'package:jobseque/features/experience/domain/use_cases/add_experience_use_case.dart';
 import 'package:jobseque/features/experience/presentation/manager/add_experience_bloc/add_experience_bloc.dart';
+import 'package:jobseque/features/favorites/data/data_source/favorite_local_data_source.dart';
+import 'package:jobseque/features/favorites/data/repo/favorites_repo_impl.dart';
+import 'package:jobseque/features/favorites/domain/use_cases/add_favorite_use_case.dart';
+import 'package:jobseque/features/favorites/domain/use_cases/delete_favorite_use_case.dart';
+import 'package:jobseque/features/favorites/domain/use_cases/get_favorite_jobs_use_case.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/add_favorite_bloc/add_favorite_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/delete_favorite_bloc/delete_favorite_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
 import 'package:jobseque/features/jobs/data/data_sources/remote_data_source/job_remote_data_source.dart';
 import 'package:jobseque/features/jobs/data/repositories/job_repository_impl.dart';
 import 'package:jobseque/features/jobs/domain/use_cases/filter_jobs_use_case.dart';
@@ -57,6 +65,11 @@ final sL = GetIt.instance;
 
 void setUpServiceLocator() {
   sL.registerSingleton<ApiService>(ApiService());
+  sL.registerSingleton<FavoritesRepoImpl>(
+    FavoritesRepoImpl(
+      favoriteLocalDataSource: FavoriteLocalDataSourceImpl(),
+    ),
+  );
   sL.registerSingleton<ApplyJobRepoImpl>(
     ApplyJobRepoImpl(
       applyJobLocalDataSource: ApplyJobLocalDataSourceImpl(),
@@ -249,6 +262,28 @@ void setUpServiceLocator() {
     () => ApplyJobBloc(
       applyJobUseCase: ApplyJobUseCase(
         applyJobRepo: sL.get<ApplyJobRepoImpl>(),
+      ),
+    ),
+  );
+
+  sL.registerFactory<AddFavoriteBloc>(
+    () => AddFavoriteBloc(
+      addFavoriteUseCase: AddFavoriteUseCase(
+        favoritesRepo: sL.get<FavoritesRepoImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<DeleteFavoriteBloc>(
+    () => DeleteFavoriteBloc(
+      deleteFavoriteUseCase: DeleteFavoriteUseCase(
+        favoritesRepo: sL.get<FavoritesRepoImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<GetFavoriteJobsBloc>(
+    () => GetFavoriteJobsBloc(
+      getFavoriteJobsUseCase: GetFavoriteJobsUseCase(
+        favoritesRepo: sL.get<FavoritesRepoImpl>(),
       ),
     ),
   );

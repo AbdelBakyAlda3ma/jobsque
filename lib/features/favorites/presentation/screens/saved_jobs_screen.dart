@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
-import 'package:jobseque/core/widgets/custom_app_bar.dart';
-import 'package:jobseque/core/widgets/custom_bottom_navigation_bar.dart';
-import 'package:jobseque/features/favorites/presentation/widgets/saved_jobs_body.dart';
+import 'package:jobseque/core/utils/service_locator.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/widgets/saved_jobs_screen_safe_area.dart';
 
 @RoutePage()
 class SavedJobsScreen extends StatelessWidget {
@@ -13,14 +14,8 @@ class SavedJobsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const CustomAppBar(title: 'Saved'),
-        body: const SavedJobsScreenBody(),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          routeName: routeName,
-        ),
-      ),
+    return SavedJobsScreenSafeArea(
+      routeName: routeName,
     );
   }
 }

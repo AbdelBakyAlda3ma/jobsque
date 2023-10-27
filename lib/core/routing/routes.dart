@@ -61,7 +61,13 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: MessagesRoute.page),
         AutoRoute(page: AppliedJobsRoute.page),
-        AutoRoute(page: SavedJobsRoute.page),
+        AutoRoute(
+          page: SavedWrapperRoute.page,
+          children: [
+            AutoRoute(page: SavedJobsRoute.page),
+            AutoRoute(page: SavedJobBottomSheetRoute.page),
+          ],
+        ),
         AutoRoute(page: ProfileRoute.page),
         AutoRoute(page: InProgressAppliedJobRoute.page),
       ];

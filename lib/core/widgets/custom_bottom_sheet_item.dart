@@ -7,10 +7,12 @@ import 'package:jobseque/core/widgets/horizontal_space.dart';
 class CustomBottomSheetItem extends StatelessWidget {
   final IconData? icon;
   final String text;
+  final Function()? onTap;
   const CustomBottomSheetItem({
     super.key,
     this.icon,
     required this.text,
+    this.onTap,
   });
 
   @override
@@ -45,10 +47,13 @@ class CustomBottomSheetItem extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Icon(
-            IconsJobeque.arrowrighoutlinet,
-            size: 20,
-            color: AppColors.neutral[900],
+          GestureDetector(
+            onTap: onTap,
+            child: Icon(
+              IconsJobeque.arrowrighoutlinet,
+              size: 20,
+              color: AppColors.neutral[900],
+            ),
           ),
         ],
       ),

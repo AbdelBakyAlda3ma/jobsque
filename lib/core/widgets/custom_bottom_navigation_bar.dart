@@ -67,7 +67,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     setState(() {
       _selectedIndex = _getSelectedIndex(widget.routeName);
     });
-    handlingNavigation(index);
+    if (_selectedIndex != index) {
+      handlingNavigation(index);
+    }
   }
 
   @override
