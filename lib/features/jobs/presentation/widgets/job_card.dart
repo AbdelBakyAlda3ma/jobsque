@@ -18,7 +18,7 @@ class JobCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.router.push(JobDetailRoute(job: job));
+        context.router.navigate(JobDetailRoute(job: job));
       },
       child: Column(
         children: [

@@ -5,7 +5,7 @@ import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/custom_bottom_sheet_item.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/favorites/presentation/manager/blocs/delete_favorite_bloc/delete_favorite_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/favorite_operation_bloc/favorite_operation_bloc.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 
 class SavedJobBottomSheetWidgetChild extends StatelessWidget {
@@ -44,7 +44,7 @@ class SavedJobBottomSheetWidgetChild extends StatelessWidget {
             icon: IconsJobeque.archiveminus,
             text: 'Cancel save',
             onTap: () {
-              BlocProvider.of<DeleteFavoriteBloc>(context).add(
+              BlocProvider.of<FavoriteOperationBloc>(context).add(
                 DeleteFavoriteEvent(
                   job: job,
                 ),

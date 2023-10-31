@@ -22,16 +22,8 @@ import 'package:jobseque/features/favorites/data/repo/favorites_repo_impl.dart';
 import 'package:jobseque/features/favorites/domain/use_cases/add_favorite_use_case.dart';
 import 'package:jobseque/features/favorites/domain/use_cases/delete_favorite_use_case.dart';
 import 'package:jobseque/features/favorites/domain/use_cases/get_favorite_jobs_use_case.dart';
-import 'package:jobseque/features/favorites/presentation/manager/blocs/add_favorite_bloc/add_favorite_bloc.dart';
-import 'package:jobseque/features/favorites/presentation/manager/blocs/delete_favorite_bloc/delete_favorite_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/favorite_operation_bloc/favorite_operation_bloc.dart';
 import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
-import 'package:jobseque/features/jobs/data/data_sources/remote_data_source/job_remote_data_source.dart';
-import 'package:jobseque/features/jobs/data/repositories/job_repository_impl.dart';
-import 'package:jobseque/features/jobs/domain/use_cases/filter_jobs_use_case.dart';
-import 'package:jobseque/features/jobs/domain/use_cases/get_all_jobs_use_case.dart';
-import 'package:jobseque/features/jobs/domain/use_cases/search_jobs_use_case.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 import 'package:jobseque/features/portfolio/data/data_sources/portfolio_local_data_source.dart';
 import 'package:jobseque/features/portfolio/data/data_sources/portfolio_remote_data_source.dart';
 import 'package:jobseque/features/portfolio/data/repos/portfolio_repo_impl.dart';
@@ -58,6 +50,14 @@ import '../../features/auth/data/data_sources/auth_remote_data_source.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/use_cases/get_curren_user_use_case.dart';
 import '../../features/auth/presentation/manager/blocs/get_current_user_bloc/get_current_user_bloc.dart';
+import '../../features/jobs/data/data_sources/job_local_data_source.dart';
+import '../../features/jobs/data/data_sources/job_remote_data_source.dart';
+import '../../features/jobs/data/repositories/job_repository_impl.dart';
+import '../../features/jobs/domain/use_cases/filter_jobs_use_case.dart';
+import '../../features/jobs/domain/use_cases/get_all_jobs_use_case.dart';
+import '../../features/jobs/domain/use_cases/search_jobs_use_case.dart';
+import '../../features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
+import '../../features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 import '../network/network_info.dart';
 import 'api_services.dart';
 
@@ -138,6 +138,7 @@ void setUpServiceLocator() {
 
   sL.registerSingleton<JobRepositoryImpl>(
     JobRepositoryImpl(
+      jobLocalDataSource: JobLocalDataSourceImpl(),
       jobRemoteDataSource: sL.get<JobRemoteDataSourceImpl>(),
       networkInfo: sL.get<NetworkInfoImpl>(),
     ),
@@ -163,8 +164,9 @@ void setUpServiceLocator() {
 
   sL.registerFactory<JobBloc>(
     () => JobBloc(
-      getAllJobsUseCase:
-          GetAllJobsUseCase(jobRepo: sL.get<JobRepositoryImpl>()),
+      getAllJobsUseCase: GetAllJobsUseCase(
+        jobRepo: sL.get<JobRepositoryImpl>(),
+      ),
     ),
   );
 
@@ -266,20 +268,17 @@ void setUpServiceLocator() {
     ),
   );
 
-  sL.registerFactory<AddFavoriteBloc>(
-    () => AddFavoriteBloc(
+  sL.registerFactory<FavoriteOperationBloc>(
+    () => FavoriteOperationBloc(
+      deleteFavoriteUseCase: DeleteFavoriteUseCase(
+        favoritesRepo: sL.get<FavoritesRepoImpl>(),
+      ),
       addFavoriteUseCase: AddFavoriteUseCase(
         favoritesRepo: sL.get<FavoritesRepoImpl>(),
       ),
     ),
   );
-  sL.registerFactory<DeleteFavoriteBloc>(
-    () => DeleteFavoriteBloc(
-      deleteFavoriteUseCase: DeleteFavoriteUseCase(
-        favoritesRepo: sL.get<FavoritesRepoImpl>(),
-      ),
-    ),
-  );
+
   sL.registerFactory<GetFavoriteJobsBloc>(
     () => GetFavoriteJobsBloc(
       getFavoriteJobsUseCase: GetFavoriteJobsUseCase(

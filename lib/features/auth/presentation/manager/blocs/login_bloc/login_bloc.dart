@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:jobseque/features/auth/domain/entities/user_entity.dart';
 import 'package:jobseque/features/auth/domain/use_cases/login_use_case.dart';
-import 'package:meta/meta.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

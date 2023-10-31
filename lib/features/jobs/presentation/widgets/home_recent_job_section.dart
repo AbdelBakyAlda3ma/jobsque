@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/widgets/home_error_widget.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_recent_job_section_heading.dart';
-import 'package:jobseque/features/jobs/presentation/widgets/home_shimmer_loding.dart';
+import 'package:jobseque/features/jobs/presentation/widgets/home_recent_job_section_list_view.dart';
 
-import 'home_error_widget.dart';
-import 'home_recent_job_section_list_view.dart';
+// import '../manager/blocs/job_bloc/job_bloc.dart';
+
+// import '../manager/blocs/Job_bloc/job_bloc.dart';
+
+import 'package:jobseque/features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
+
+import 'home_shimmer_loding.dart';
+// import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
 
 class HomeRecentJobSection extends StatelessWidget {
   const HomeRecentJobSection({super.key});

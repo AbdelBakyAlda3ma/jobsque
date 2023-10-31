@@ -31,9 +31,8 @@ class CreateAccountScreen extends StatelessWidget {
                 context: context,
                 message: REGISTER_SUCCESS_MESSAGE,
               );
-              context.router.pushAndPopUntil(
+              context.router.popAndPush(
                 const WorkTypeRoute(),
-                predicate: (route) => false,
               );
             } else if (state is RegisterFailure) {
               showErrorSnackBar(

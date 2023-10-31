@@ -67,36 +67,6 @@ class ApplyJobModel extends ApplyJobEntity {
   /// Converts [ApplyJobModel] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  ApplyJobModel copyWith({
-    String? cvFile,
-    String? name,
-    String? email,
-    String? mobile,
-    String? workType,
-    String? otherFile,
-    String? jobsId,
-    String? userId,
-    bool? reviewed,
-    DateTime? updatedAt,
-    DateTime? createdAt,
-    int? id,
-  }) {
-    return ApplyJobModel(
-      cvFile: cvFile ?? super.cvFile,
-      name: name ?? super.name,
-      email: email ?? super.email,
-      mobile: mobile ?? super.mobile,
-      workType: workType ?? super.workType,
-      otherFile: otherFile ?? super.otherFile,
-      jobsId: jobsId ?? super.jobsId,
-      userId: userId ?? super.userId,
-      reviewed: reviewed ?? super.reviewed,
-      updatedAt: updatedAt ?? super.updatedAt,
-      createdAt: createdAt ?? super.createdAt,
-      id: id ?? super.id,
-    );
-  }
-
   factory ApplyJobModel.downCasting({required ApplyJobEntity applyJobEntity}) {
     return ApplyJobModel(
       cvFile: applyJobEntity.cvFile,

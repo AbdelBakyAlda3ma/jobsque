@@ -112,4 +112,48 @@ class JobEntity extends HiveObject {
         updatedAt.hashCode ^
         isSaved.hashCode;
   }
+
+  JobEntity copyWith({
+    String? name,
+    String? image,
+    String? jobTimeType,
+    String? jobType,
+    String? jobLevel,
+    String? jobDescription,
+    String? jobSkill,
+    String? compName,
+    String? compEmail,
+    String? compWebsite,
+    String? aboutCompany,
+    String? location,
+    String? salary,
+    int? id,
+    int? favorites,
+    int? expired,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    bool? isSaved,
+  }) {
+    return JobEntity(
+      name: name ?? this.name,
+      image: image ?? this.image,
+      jobTimeType: jobTimeType ?? this.jobTimeType,
+      jobType: jobType ?? this.jobType,
+      jobLevel: jobLevel ?? this.jobLevel,
+      jobDescription: jobDescription ?? this.jobDescription,
+      jobSkill: jobSkill ?? this.jobSkill,
+      compName: compName ?? this.compName,
+      compEmail: compEmail ?? this.compEmail,
+      compWebsite: compWebsite ?? this.compWebsite,
+      aboutCompany: aboutCompany ?? this.aboutCompany,
+      location: location ?? this.location,
+      salary: salary ?? this.salary,
+      id: id ?? this.id,
+      favorites: favorites ?? this.favorites,
+      expired: expired ?? this.expired,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      isSaved: isSaved ?? this.isSaved,
+    );
+  }
 }

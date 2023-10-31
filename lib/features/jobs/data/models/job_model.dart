@@ -80,46 +80,4 @@ class JobModel extends JobEntity {
   ///
   /// Converts [JobModel] to a JSON string.
   String toJson() => json.encode(toMap());
-
-  JobModel copyWith({
-    int? id,
-    String? name,
-    String? image,
-    String? jobTimeType,
-    String? jobType,
-    String? jobLevel,
-    String? jobDescription,
-    String? jobSkill,
-    String? compName,
-    String? compEmail,
-    String? compWebsite,
-    String? aboutComp,
-    String? location,
-    String? salary,
-    int? favorites,
-    int? expired,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  }) {
-    return JobModel(
-      id: id ?? super.id,
-      name: name ?? super.name,
-      image: image ?? super.image,
-      jobTimeType: jobTimeType ?? jobType,
-      jobType: jobType ?? super.jobType,
-      jobLevel: jobLevel ?? super.jobLevel,
-      jobDescription: jobDescription ?? super.jobDescription,
-      jobSkill: jobSkill ?? super.jobSkill,
-      compName: compName ?? super.compName,
-      compEmail: compEmail ?? super.compEmail,
-      compWebsite: compWebsite ?? super.compWebsite,
-      aboutCompany: aboutComp ?? super.aboutCompany,
-      location: location ?? super.location,
-      salary: salary ?? super.salary,
-      favorites: favorites ?? super.favorites,
-      expired: expired ?? super.expired,
-      createdAt: createdAt ?? super.createdAt,
-      updatedAt: updatedAt ?? super.updatedAt,
-    );
-  }
 }

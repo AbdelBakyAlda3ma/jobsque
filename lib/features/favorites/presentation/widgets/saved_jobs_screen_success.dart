@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/favorites/presentation/widgets/saved_jobs_body_deader.dart';
@@ -16,8 +14,6 @@ class SavedJobsBodySuccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('Saved job success build');
-    print('Saved job success build');
     return Column(
       children: [
         SavdedJobsBodyHeader(

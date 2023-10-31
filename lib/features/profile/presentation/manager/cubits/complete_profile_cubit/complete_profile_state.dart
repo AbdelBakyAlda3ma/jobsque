@@ -2,18 +2,18 @@ part of 'complete_profile_cubit.dart';
 
 sealed class CompleteProfileState {}
 
-final class CompleteProfileCubitInitial extends CompleteProfileState {}
+class CompleteProfileCubitInitial extends CompleteProfileState {}
 
-final class CompleteProfileCubitLoading extends CompleteProfileState {}
+class CompleteProfileCubitLoading extends CompleteProfileState {}
 
-final class CompleteProfileCubitFailure extends CompleteProfileState {
+class CompleteProfileCubitFailure extends CompleteProfileState {
   String errorMsg;
   CompleteProfileCubitFailure({
     required this.errorMsg,
   });
 }
 
-final class CompletedProfile extends CompleteProfileState {
+class CompletedProfile extends CompleteProfileState {
   bool completionState;
 
   CompletedProfile({
@@ -21,7 +21,7 @@ final class CompletedProfile extends CompleteProfileState {
   });
 }
 
-final class InCompletedProfileState extends CompleteProfileState {
+class InCompletedProfileState extends CompleteProfileState {
   bool educationCompletion;
   bool experienceCompletion;
   bool personalDetailsCompletion;
@@ -33,3 +33,7 @@ final class InCompletedProfileState extends CompleteProfileState {
     required this.portfolioCompletion,
   });
 }
+
+class ProfileIsAlreadyCompleted extends CompleteProfileState {}
+
+class ProfileIsNotCompleted extends CompleteProfileState {}

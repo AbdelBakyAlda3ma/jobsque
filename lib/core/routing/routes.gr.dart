@@ -12,8 +12,7 @@ import 'package:auto_route/auto_route.dart' as _i52;
 import 'package:flutter/material.dart' as _i53;
 import 'package:jobseque/core/routing/wrappers/complete_profile_wrapper.dart'
     as _i9;
-import 'package:jobseque/core/routing/wrappers/saved_wrapper_widget.dart'
-    as _i40;
+import 'package:jobseque/core/routing/wrappers/saved_wrapper.dart' as _i40;
 import 'package:jobseque/core/routing/wrappers/search_wrapper.dart' as _i42;
 import 'package:jobseque/core/routing/wrappers/work_preferences_wrapper.dart'
     as _i50;
@@ -377,10 +376,10 @@ abstract class $AppRouter extends _i52.RootStackRouter {
         child: const _i39.SavedJobsScreen(),
       );
     },
-    SavedWrapperRoute.name: (routeData) {
+    SavedWrapper.name: (routeData) {
       return _i52.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i40.SavedWrapperWidget(),
+        child: const _i40.SavedWrapper(),
       );
     },
     SearchRoute.name: (routeData) {
@@ -1147,15 +1146,15 @@ class SavedJobsRoute extends _i52.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i40.SavedWrapperWidget]
-class SavedWrapperRoute extends _i52.PageRouteInfo<void> {
-  const SavedWrapperRoute({List<_i52.PageRouteInfo>? children})
+/// [_i40.SavedWrapper]
+class SavedWrapper extends _i52.PageRouteInfo<void> {
+  const SavedWrapper({List<_i52.PageRouteInfo>? children})
       : super(
-          SavedWrapperRoute.name,
+          SavedWrapper.name,
           initialChildren: children,
         );
 
-  static const String name = 'SavedWrapperRoute';
+  static const String name = 'SavedWrapper';
 
   static const _i52.PageInfo<void> page = _i52.PageInfo<void>(name);
 }

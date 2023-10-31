@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-
 import 'type_of_work_step_content_list_tile_radio.dart';
 import 'type_of_work_step_content_list_tile_sub_title.dart';
 import 'type_of_work_step_content_list_tile_title.dart';

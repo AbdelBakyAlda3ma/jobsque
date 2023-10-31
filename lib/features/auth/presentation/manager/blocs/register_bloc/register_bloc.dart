@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:jobseque/features/auth/domain/use_cases/register_use_case.dart';
-import 'package:meta/meta.dart';
-
 import '../../../../domain/entities/user_entity.dart';
-
 part 'register_event.dart';
 part 'register_state.dart';
 

@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jobseque/core/routing/routes.gr.dart';
-import 'package:jobseque/core/utils/functions/is_profile_completed.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
+import 'package:jobseque/features/profile/presentation/manager/cubits/complete_profile_cubit/complete_profile_cubit.dart';
 import '../../../../core/widgets/primary_button.dart';
 
 class JobDetailBodyBrimaryButton extends StatelessWidget {
@@ -29,19 +28,8 @@ class JobDetailBodyBrimaryButton extends StatelessWidget {
       ),
       child: PrimaryButton.large(
         onPressed: () {
-          if (isProfileCompleted()) {
-            context.router.push(
-              ApplyJobStepperRoute(
-                job: job,
-              ),
-            );
-          } else {
-            context.router.push(
-              CompleteProfileRoute(
-                job: job,
-              ),
-            );
-          }
+          BlocProvider.of<CompleteProfileCubit>(context)
+              .checkIfProfileCompleted();
         },
         text: 'Apply now',
       ),

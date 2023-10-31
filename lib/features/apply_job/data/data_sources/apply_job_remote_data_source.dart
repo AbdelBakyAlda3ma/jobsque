@@ -41,7 +41,6 @@ class ApplyJobRemoteDataSourceImpl extends ApplyJobRemoteDataSource {
           'user_id': userId,
         });
     log(applyJobEntity.toString());
-    print(applyJobModel.toString());
     await apiService.post(
       path: '/apply',
       body: payload,

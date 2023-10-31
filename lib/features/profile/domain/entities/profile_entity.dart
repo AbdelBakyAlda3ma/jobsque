@@ -1,11 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
-
 import 'package:hive/hive.dart';
-
 import 'package:jobseque/features/education/domain/entities/education_entity.dart';
 import 'package:jobseque/features/experience/domain/entities/experience_entity.dart';
-
 part 'profile_entity.g.dart';
 
 @HiveType(typeId: 0)

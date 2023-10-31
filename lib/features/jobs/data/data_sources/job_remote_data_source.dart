@@ -3,7 +3,7 @@
 import 'package:jobseque/core/errors/exception.dart';
 import 'package:jobseque/core/utils/api_services.dart';
 import 'package:jobseque/features/jobs/data/models/job_model.dart';
-import '../../../domain/entities/job_entity.dart';
+import '../../domain/entities/job_entity.dart';
 
 abstract class JobRemoteDataSource {
   Future<List<JobEntity>> getAllJobs();

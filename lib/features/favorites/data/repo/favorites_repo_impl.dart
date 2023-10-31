@@ -11,13 +11,13 @@ class FavoritesRepoImpl extends FavoritesRepo {
     required this.favoriteLocalDataSource,
   });
   @override
-  Future<void> addFavorite({required JobEntity job}) async {
-    await favoriteLocalDataSource.addFavorite(job: job);
+  void addFavorite({required JobEntity job}) {
+    favoriteLocalDataSource.addFavorite(job: job);
   }
 
   @override
-  Future<void> deleteFavorite({required JobEntity job}) async {
-    await favoriteLocalDataSource.deleteFacvorite(job: job);
+  void deleteFavorite({required JobEntity job}) {
+    favoriteLocalDataSource.deleteFacvorite(job: job);
   }
 
   @override

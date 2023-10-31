@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/core/widgets/disabled_button.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
-import 'package:jobseque/features/apply_job/presentation/manager/cubits/compelete_job_application_cubit/compelete_job_application_cubit.dart';
 
 class CustomStepperControlButton extends StatelessWidget {
   final bool isLastStep;

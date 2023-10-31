@@ -6,7 +6,7 @@ class DeleteFavoriteUseCase {
   DeleteFavoriteUseCase({
     required this.favoritesRepo,
   });
-  Future<void> call({required JobEntity job}) async {
-    await favoritesRepo.deleteFavorite(job: job);
+  void call({required JobEntity job}) {
+    favoritesRepo.deleteFavorite(job: job);
   }
 }

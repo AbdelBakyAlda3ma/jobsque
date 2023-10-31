@@ -17,7 +17,6 @@ import 'features/profile/domain/entities/profile_entity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await JobsqueSharedPrefrences.init();
   await Hive.initFlutter();
   Hive.registerAdapter(JobEntityAdapter());
@@ -31,9 +30,7 @@ void main() async {
   await Hive.openBox<PortfolioEntity>(kPortfolioBox);
   await Hive.openBox<ApplyJobEntity>(kApplyJobBox);
   await Hive.openBox<JobEntity>(kJoBsBox);
-  await Hive.openBox<JobEntity>(kFavoriteJoBsBox);
   await Hive.openBox<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
-
   Bloc.observer = SimpleBlocObserver();
   setUpServiceLocator();
   runApp(Jobsque());
@@ -50,8 +47,15 @@ class Jobsque extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary[500]!),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primary[500]!,
+        ),
         useMaterial3: true,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          },
+        ),
       ),
       routerDelegate: _router.delegate(),
       routeInformationParser: _router.defaultRouteParser(),

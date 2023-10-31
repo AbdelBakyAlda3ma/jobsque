@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
-
-import 'job_card.dart';
-import '../../../../core/widgets/vertical_space.dart';
+import 'package:jobseque/features/jobs/presentation/widgets/job_card.dart';
 
 class HomeRecentJobSectionListView extends StatelessWidget {
   final List<JobEntity> allJobList;

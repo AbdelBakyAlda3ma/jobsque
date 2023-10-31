@@ -1,6 +1,5 @@
 part of 'get_current_user_bloc.dart';
 
-@immutable
 sealed class GetCurrentUserState {}
 
 final class GetCurrentUserInitial extends GetCurrentUserState {}

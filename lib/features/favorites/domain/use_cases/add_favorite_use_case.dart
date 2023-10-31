@@ -6,7 +6,7 @@ class AddFavoriteUseCase {
   AddFavoriteUseCase({
     required this.favoritesRepo,
   });
-  Future<void> call({required JobEntity job}) async {
-    await favoritesRepo.addFavorite(job: job);
+  void call({required JobEntity job}) {
+    favoritesRepo.addFavorite(job: job);
   }
 }

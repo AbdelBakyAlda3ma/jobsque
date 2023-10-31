@@ -1,41 +1,75 @@
-import 'dart:developer';
-
 import 'package:hive/hive.dart';
 import 'package:jobseque/core/errors/exception.dart';
 import 'package:jobseque/core/utils/constances.dart';
+import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 
 abstract class FavoriteLocalDataSource {
-  Future<void> addFavorite({required JobEntity job});
-  Future<void> deleteFacvorite({required JobEntity job});
+  void addFavorite({required JobEntity job});
+  void deleteFacvorite({required JobEntity job});
   List<JobEntity> getFavoriteJobs();
 }
 
 class FavoriteLocalDataSourceImpl extends FavoriteLocalDataSource {
   @override
   Future<void> addFavorite({required JobEntity job}) async {
-    var box = Hive.box<JobEntity>(kFavoriteJoBsBox);
+    var boxOfJobs = Hive.box<JobEntity>(kJoBsBox);
+    var boxOfActiveApplied =
+        Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
+    boxOfJobs.put(
+      job.id,
+      job.copyWith(
+        isSaved: true,
+      ),
+    );
 
-    await box.put(job.id, job);
-    print(box.values.toList().toString());
-    log(box.values.toList().length.toString());
+    if (boxOfActiveApplied.isNotEmpty) {
+      if (boxOfActiveApplied.containsKey(job.id)) {
+        var jobFromActiveAppJob = boxOfActiveApplied.values.singleWhere(
+          (activeAppliedJob) => activeAppliedJob.job!.id == job.id,
+        );
+        boxOfActiveApplied.put(
+          jobFromActiveAppJob.job!.id,
+          jobFromActiveAppJob.copyWith(
+              job: jobFromActiveAppJob.job!.copyWith(isSaved: true)),
+        );
+      }
+    }
   }
 
   @override
-  Future<void> deleteFacvorite({required JobEntity job}) async {
-    var box = Hive.box<JobEntity>(kFavoriteJoBsBox);
-    await box.delete(job.id);
-    box.clear();
-
-    print(box.values.toList().toString());
-    log(box.values.toList().toString());
-    log(box.values.toList().length.toString());
+  void deleteFacvorite({required JobEntity job}) {
+    var boxOfJobs = Hive.box<JobEntity>(kJoBsBox);
+    var boxOfActiveApplied =
+        Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
+    boxOfJobs.put(
+      job.id,
+      job.copyWith(
+        isSaved: false,
+      ),
+    );
+    if (boxOfActiveApplied.isNotEmpty) {
+      if (boxOfActiveApplied.containsKey(job.id)) {
+        var jobFromActiveAppJob = boxOfActiveApplied.values.singleWhere(
+          (activeAppliedJob) => activeAppliedJob.job!.id == job.id,
+        );
+        boxOfActiveApplied.put(
+          jobFromActiveAppJob.job!.id,
+          jobFromActiveAppJob.copyWith(
+              job: jobFromActiveAppJob.job!.copyWith(isSaved: false)),
+        );
+      }
+    }
   }
 
   @override
   List<JobEntity> getFavoriteJobs() {
-    var box = Hive.box<JobEntity>(kFavoriteJoBsBox);
-    var listOfFavoriteJobs = box.values.toList();
+    var boxOfJobs = Hive.box<JobEntity>(kJoBsBox);
+    var listOfFavoriteJobs = boxOfJobs.values
+        .where(
+          (job) => job.isSaved == true,
+        )
+        .toList();
     if (listOfFavoriteJobs.isNotEmpty) {
       return listOfFavoriteJobs;
     } else {

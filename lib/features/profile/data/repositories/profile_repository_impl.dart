@@ -51,18 +51,18 @@ class ProfileRepositoryImpl extends ProfileRepository {
       {required String language}) async {
     try {
       var profileEntity = profileLocalDataSource.getProfile();
-      var profileEntityWithPersonalDetails = profileEntity!.copyWith(
+      var profileEntityWithLanguage = profileEntity!.copyWith(
         language: language,
       );
       var profile = ProfileModel.downCasting(
-        profileEntity: profileEntityWithPersonalDetails,
+        profileEntity: profileEntityWithLanguage,
       );
 
-      var updatedProfile = await profileRemoteDataSource.addPresonalDetails(
-        profileWithPersonalDetails: profile,
+      var updatedProfile = await profileRemoteDataSource.addProfileLanguage(
+        profileWithLanguage: profile,
       );
       profileLocalDataSource.saveProfile(
-        profileToCached: profileEntityWithPersonalDetails,
+        profileToCached: profileEntityWithLanguage,
       );
       return Right(updatedProfile);
     } on DioException catch (e) {
@@ -88,8 +88,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
   @override
   Future<Either<Failure, ProfileEntity>> getProfile() async {
     try {
-      var profile = profileLocalDataSource.getProfile() ??
-          await profileRemoteDataSource.getProfile();
+      var profile = profileLocalDataSource.getProfile();
+      profile ??= await profileRemoteDataSource.getProfile();
       await profileLocalDataSource.saveProfile(profileToCached: profile);
       return Right(profile);
     } on DioException catch (e) {

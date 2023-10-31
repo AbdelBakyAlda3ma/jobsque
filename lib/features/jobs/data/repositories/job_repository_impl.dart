@@ -2,19 +2,21 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:jobseque/core/errors/exception.dart';
-
 import 'package:jobseque/core/errors/failure.dart';
 import 'package:jobseque/core/network/network_info.dart';
-import 'package:jobseque/features/jobs/data/data_sources/remote_data_source/job_remote_data_source.dart';
+import 'package:jobseque/features/jobs/data/data_sources/job_local_data_source.dart';
+import 'package:jobseque/features/jobs/data/data_sources/job_remote_data_source.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 
 import '../../domain/repositories/job_repository.dart';
 
 class JobRepositoryImpl extends JobRepository {
   JobRemoteDataSource jobRemoteDataSource;
+  JobLocalDataSource jobLocalDataSource;
   NetworkInfo networkInfo;
   JobRepositoryImpl({
     required this.jobRemoteDataSource,
+    required this.jobLocalDataSource,
     required this.networkInfo,
   });
 
@@ -45,7 +47,14 @@ class JobRepositoryImpl extends JobRepository {
   Future<Either<Failure, List<JobEntity>>> getAllJobs() async {
     if (await networkInfo.isConnected) {
       try {
-        List<JobEntity> allJobsList = await jobRemoteDataSource.getAllJobs();
+        List<JobEntity> allJobsList = [];
+        allJobsList = jobLocalDataSource.getAllJobs();
+        if (allJobsList.isEmpty) {
+          allJobsList = await jobRemoteDataSource.getAllJobs();
+          jobLocalDataSource.saveListOfJobs(
+            listOfChachedJobs: allJobsList,
+          );
+        }
         return Right(allJobsList);
       } on NoJobsYetException {
         return Left(NoJobsYetFailure());
