@@ -5,6 +5,7 @@ import 'package:jobseque/core/widgets/custom_bottom_navigation_bar.dart';
 import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/applied_job_screen_body.dart';
 import 'package:jobseque/features/favorites/presentation/manager/blocs/favorite_operation_bloc/favorite_operation_bloc.dart';
+import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
 import 'package:jobseque/features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
 
 class AppliedJobScreenScaffold extends StatelessWidget {
@@ -22,6 +23,9 @@ class AppliedJobScreenScaffold extends StatelessWidget {
       listener: (context, state) {
         if (state is AddFavoriteDone || state is DeleteFavoriteDone) {
           BlocProvider.of<JobBloc>(context).add(GetAllJobsEvent());
+          BlocProvider.of<GetFavoriteJobsBloc>(context).add(
+            GetFavoriteJobsEvent(),
+          );
         }
       },
       child: Scaffold(

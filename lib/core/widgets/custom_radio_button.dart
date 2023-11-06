@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/global/app_colors.dart';
+import '../utils/global/app_colors.dart';
 
-class TypeOfWorkStepContentListTileRadio extends StatelessWidget {
-  const TypeOfWorkStepContentListTileRadio({
+class CustomRadioButton extends StatelessWidget {
+  const CustomRadioButton({
     super.key,
     required this.isSelected,
   });

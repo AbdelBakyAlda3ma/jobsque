@@ -19,15 +19,16 @@ class ChangePasswordProfileScreenSafeArea extends StatelessWidget {
       child: BlocConsumer<ChangePasswordBloc, ChangePasswordState>(
         listener: (context, state) {
           if (state is ChangePasswordSuccess) {
-            showSuccessSnackBar(
-              context: context,
-              message: CHANGE_PASSWORD_SUSCESS_MESSAGE,
-            );
-
             context.router.pushAndPopUntil(
               const ChangePasswordSuccessfullyRoute(),
               predicate: (route) => false,
             );
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              showSuccessSnackBar(
+                context: context,
+                message: CHANGE_PASSWORD_SUSCESS_MESSAGE,
+              );
+            });
           }
           if (state is ChangePasswordFailure) {
             showErrorSnackBar(

@@ -33,6 +33,22 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: WorkLocationRoute.page),
           ],
         ),
+        AutoRoute(
+          page: SavedWrapper.page,
+          children: [
+            AutoRoute(page: HomeRoute.page),
+            AutoRoute(page: SavedJobsRoute.page),
+            AutoRoute(page: SavedJobBottomSheetRoute.page),
+            AutoRoute(page: AppliedJobsRoute.page),
+          ],
+        ),
+        AutoRoute(
+          page: SearchWrapperRoute.page,
+          children: [
+            AutoRoute(page: SearchRoute.page),
+            AutoRoute(page: SetFilterModalBottomSheetRoute.page),
+          ],
+        ),
         AutoRoute(page: JobDetailRoute.page),
         AutoRoute(page: ApplyJobStepperRoute.page),
         AutoRoute(page: DataSentSuccessfulyRoute.page),
@@ -58,16 +74,12 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: NotRecievedMessagesRoute.page),
         AutoRoute(page: UnreadedMessagesRoute.page),
         AutoRoute(page: MessagesRoute.page),
-        AutoRoute(
-          page: SavedWrapper.page,
-          children: [
-            AutoRoute(page: HomeRoute.page),
-            AutoRoute(page: SavedJobsRoute.page),
-            AutoRoute(page: SavedJobBottomSheetRoute.page),
-            AutoRoute(page: AppliedJobsRoute.page),
-          ],
-        ),
+        AutoRoute(page: LanguageRoute.page),
+        AutoRoute(page: HelpCenterRoute.page),
+        AutoRoute(page: PrivacyPolicyRoute.page),
+        AutoRoute(page: TermsAndConditinosRoute.page),
         AutoRoute(page: ProfileRoute.page),
         AutoRoute(page: InProgressAppliedJobRoute.page),
+        AutoRoute(page: PhoneNumberProfileRoute.page),
       ];
 }

@@ -123,8 +123,7 @@ class ServerFailure extends Failure {
       );
     } else {
       return ServerFailure(
-        errorMessage: statusCode.toString(),
-        // 'There was an error , please try again',
+        errorMessage: 'There was an error , please try again',
       );
     }
   }

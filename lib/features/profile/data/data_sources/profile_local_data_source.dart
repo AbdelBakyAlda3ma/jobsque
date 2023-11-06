@@ -13,7 +13,7 @@ abstract class ProfileLocalDataSource {
   Future<bool> saveProfileImage({
     required String imageFilePath,
   });
-  String? getProfileImagePath();
+  String getProfileImagePath();
 }
 
 class ProfileLocalDataSourceImpl extends ProfileLocalDataSource {
@@ -38,7 +38,7 @@ class ProfileLocalDataSourceImpl extends ProfileLocalDataSource {
   }
 
   @override
-  String? getProfileImagePath() {
+  String getProfileImagePath() {
     var profileImageFilePath =
         JobsqueSharedPrefrences.getString(kProfileImageFilePath);
     if (profileImageFilePath != null) {

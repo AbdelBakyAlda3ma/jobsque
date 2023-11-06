@@ -38,11 +38,13 @@ import 'package:jobseque/features/profile/data/repositories/profile_repository_i
 import 'package:jobseque/features/profile/domain/use_cases/add_personal_details_use_case.dart';
 import 'package:jobseque/features/profile/domain/use_cases/change_profile_image_use_case.dart';
 import 'package:jobseque/features/profile/domain/use_cases/complete_profile_use_case.dart';
+import 'package:jobseque/features/profile/domain/use_cases/get_profile_image_use_case.dart';
 import 'package:jobseque/features/profile/domain/use_cases/get_profile_use_case.dart';
 import 'package:jobseque/features/profile/domain/use_cases/work_prefrences_use_case.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/add_personal_details_bloc/add_personal_details_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/change_profile_image_bloc/change_profile_image_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_bloc/get_profile_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_image_bloc/get_profile_image_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/cubits/complete_profile_cubit/complete_profile_cubit.dart';
 import '../../features/auth/data/data_sources/auth_local_data_source.dart';
@@ -161,7 +163,13 @@ void setUpServiceLocator() {
           GetCurrenUserUseCase(authRepository: sL.get<AuthRepositoryImpl>()),
     ),
   );
-
+  sL.registerFactory<GetProfileImageBloc>(
+    () => GetProfileImageBloc(
+      getProfileImageUseCase: GetProfileImageUseCase(
+        profileRepository: sL.get<ProfileRepositoryImpl>(),
+      ),
+    ),
+  );
   sL.registerFactory<JobBloc>(
     () => JobBloc(
       getAllJobsUseCase: GetAllJobsUseCase(

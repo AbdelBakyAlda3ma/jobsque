@@ -1,3 +1,5 @@
+// ignore_for_file: missing_required_param
+
 import 'package:jobseque/core/utils/api_services.dart';
 import 'package:jobseque/core/utils/constances.dart';
 import 'package:jobseque/core/utils/user_data_using_shared_preferences.dart';
@@ -18,7 +20,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<UserModel> loginUser({required Map loginData}) async {
-    // ignore: missing_required_param
     final userData = await apiService.post(
       path: '/auth/login',
       body: loginData,
@@ -30,7 +31,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<UserModel> registerUser({required Map registerData}) async {
-    // ignore: missing_required_param
     final userData = await apiService.post(
       path: '/auth/register',
       body: registerData,
@@ -47,7 +47,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         'name': JobsqueSharedPrefrences.getString(kUserName),
         'password': password,
       },
-      token: JobsqueSharedPrefrences.getString(kToken),
       contentType: 'multipart/form-data',
     );
     final UserModel userModel = UserModel.fromServerForChangePassword(userData);

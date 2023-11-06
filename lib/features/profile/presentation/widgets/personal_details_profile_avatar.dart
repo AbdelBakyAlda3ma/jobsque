@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_image_bloc/get_profile_image_bloc.dart';
 import '../../../../core/utils/global/assets_images.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 
@@ -14,7 +16,17 @@ class PersonalDetailsProfileAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return imagePath != null
         ? ChoosenAvatar(imagePath: imagePath!)
-        : const DefualtAvatar();
+        : BlocBuilder<GetProfileImageBloc, GetProfileImageState>(
+            builder: (context, state) {
+              if (state is GetProfileImageSuccess) {
+                return ChoosenAvatar(
+                  imagePath: state.imagePath,
+                );
+              } else {
+                return const DefualtAvatar();
+              }
+            },
+          );
   }
 }
 
@@ -27,7 +39,7 @@ class DefualtAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 45,
-      backgroundImage: AssetImage(AssetsImages.imageProfile1),
+      backgroundImage: AssetImage(AssetsImages.defaultProfileImage),
       child: CircleAvatar(
         radius: 45,
         backgroundColor: Colors.black.withOpacity(0.2),

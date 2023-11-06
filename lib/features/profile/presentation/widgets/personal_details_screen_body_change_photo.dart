@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/utils/functions/snackbar_message.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/change_profile_image_bloc/change_profile_image_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_image_bloc/get_profile_image_bloc.dart';
 import 'package:jobseque/features/profile/presentation/widgets/personal_details_screen_body_change_photo_text_button.dart';
 import '../../../../core/widgets/vertical_space.dart';
 import 'personal_details_profile_avatar.dart';
@@ -25,6 +26,9 @@ class _PersonalDetailsScreenBodyChangePhotoState
         listener: (context, state) {
       if (state is ChangeProfileImageSuccess) {
         avatarImagePath = state.profileImage;
+        BlocProvider.of<GetProfileImageBloc>(context).add(
+          GetProfileImageEvent(),
+        );
       }
       if (state is ChangeProfileImageFailure) {
         showErrorSnackBar(

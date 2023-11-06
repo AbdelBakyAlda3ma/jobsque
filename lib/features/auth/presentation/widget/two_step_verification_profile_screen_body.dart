@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/auth/presentation/widget/two_step_verification_enter_pin_code_body.dart';
+import 'package:jobseque/features/auth/presentation/widget/two_step_verification_screen_body_page_view.dart';
 
 class TwoStepVerificationProfileScreenBody extends StatelessWidget {
   const TwoStepVerificationProfileScreenBody({super.key});
@@ -12,7 +12,8 @@ class TwoStepVerificationProfileScreenBody extends StatelessWidget {
       child: Column(
         children: [
           VerticalSpace(space: 16),
-          TwoStepVerificationEnterPinCodeBody(),
+          TwoStepVerificationScreenBodyPageView(),
+          VerticalSpace(space: 9),
         ],
       ),
     );

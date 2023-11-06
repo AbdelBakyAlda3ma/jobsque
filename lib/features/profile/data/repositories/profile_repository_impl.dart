@@ -102,8 +102,10 @@ class ProfileRepositoryImpl extends ProfileRepository {
     required Map<String, dynamic> workPreferences,
   }) async {
     try {
-      var profileEntity = profileLocalDataSource.getProfile();
-      var profileEntityWithWorkPrefrences = profileEntity!.copyWith(
+      ProfileEntity? profileEntity;
+      profileEntity = profileLocalDataSource.getProfile();
+      profileEntity ??= await profileRemoteDataSource.getProfile();
+      var profileEntityWithWorkPrefrences = profileEntity.copyWith(
         interestedWork: workPreferences['interestedWork'],
         offlinePlace: workPreferences['offlinePlace'] as List<String>,
         remotePlace: workPreferences['remotePlace'] as bool,
@@ -132,6 +134,16 @@ class ProfileRepositoryImpl extends ProfileRepository {
       return Right(profile);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDio(e));
+    }
+  }
+
+  @override
+  Either<Failure, String> getProfileImage() {
+    try {
+      var imagePath = profileLocalDataSource.getProfileImagePath();
+      return Right(imagePath);
+    } on NoProfileImageYetException {
+      return Left(NoProfileImageYetFailure());
     }
   }
 }

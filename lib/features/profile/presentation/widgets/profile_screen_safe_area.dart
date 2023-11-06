@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:jobseque/core/widgets/custom_app_bar.dart';
 import 'package:jobseque/core/widgets/custom_bottom_navigation_bar.dart';
-import 'package:jobseque/features/favorites/presentation/widgets/saved_jobs_body.dart';
+import 'package:jobseque/features/profile/presentation/widgets/profile_screen_app_bar.dart';
+import 'package:jobseque/features/profile/presentation/widgets/profile_screen_body.dart';
 
-class SavedJobsScreenSafeArea extends StatelessWidget {
-  const SavedJobsScreenSafeArea({
+class ProfileScreenSafeArea extends StatelessWidget {
+  const ProfileScreenSafeArea({
     super.key,
     required this.routeName,
   });
+
   final String routeName;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const CustomAppBar(title: 'Saved'),
-        body: const SavedJobsScreenBody(),
+        appBar: const ProfileScreenAppBar(),
+        body: const ProfileScreenBody(),
         bottomNavigationBar: CustomBottomNavigationBar(
           routeName: routeName,
         ),

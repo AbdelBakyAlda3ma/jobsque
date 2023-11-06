@@ -15,4 +15,5 @@ abstract class ProfileRepository {
 
   Future<Either<Failure, ProfileEntity>> getProfile();
   Future<Either<Failure, ProfileEntity>> completeProfile();
+  Either<Failure, String> getProfileImage();
 }

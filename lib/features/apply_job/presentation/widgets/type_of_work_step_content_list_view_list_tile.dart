@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'type_of_work_step_content_list_tile_radio.dart';
+import '../../../../core/widgets/custom_radio_button.dart';
 import 'type_of_work_step_content_list_tile_sub_title.dart';
 import 'type_of_work_step_content_list_tile_title.dart';
 
@@ -47,7 +47,7 @@ class _TypeOfWorkStepContentListViewListTileState
             ],
           ),
           const Spacer(),
-          TypeOfWorkStepContentListTileRadio(isSelected: widget.isSelect)
+          CustomRadioButton(isSelected: widget.isSelect)
         ],
       ),
     );

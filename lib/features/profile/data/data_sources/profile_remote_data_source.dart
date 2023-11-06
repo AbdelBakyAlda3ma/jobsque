@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: missing_required_param
 
+import 'dart:developer';
+
 import 'package:jobseque/core/utils/api_services.dart';
 import 'package:jobseque/features/profile/data/models/profile_model.dart';
 import '../../domain/entities/profile_entity.dart';
@@ -72,6 +74,7 @@ class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
   Future<ProfileEntity> editProfile({
     required ProfileModel profileWithEditData,
   }) async {
+    log('edit profile triggered');
     var updatedProfileData = await apiService.put(
       path: '/user/profile/edit',
       queryParameters: profileWithEditData.toMap(),
@@ -83,6 +86,8 @@ class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
 
   @override
   Future<ProfileEntity> getProfile() async {
+    log('get profile triggered');
+
     var profileData = await apiService.get(
       path: '/user/profile/portofolios',
     );

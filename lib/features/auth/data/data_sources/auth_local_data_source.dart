@@ -1,3 +1,10 @@
+import 'package:hive_flutter/adapters.dart';
+import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
+import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
+import 'package:jobseque/features/portfolio/domain/entities/portfolio_entity.dart';
+import 'package:jobseque/features/profile/domain/entities/profile_entity.dart';
+
 import '../../../../core/errors/exception.dart';
 import '../../../../core/utils/constances.dart';
 import '../../../../core/utils/user_data_using_shared_preferences.dart';
@@ -38,8 +45,13 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   }
 
   @override
-  Future<bool> logOut() {
-    final isDone = JobsqueSharedPrefrences.remove(kCachedUser);
+  Future<bool> logOut() async {
+    await Hive.box<ProfileEntity>(kProfileBox).clear();
+    await Hive.box<PortfolioEntity>(kPortfolioBox).clear();
+    await Hive.box<ApplyJobEntity>(kApplyJobBox).clear();
+    await Hive.box<JobEntity>(kJoBsBox).clear();
+    await Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox).clear();
+    final isDone = await JobsqueSharedPrefrences.remove(kCachedUser);
     return isDone;
   }
 }

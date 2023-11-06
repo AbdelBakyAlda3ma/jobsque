@@ -1,6 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
+import 'package:jobseque/core/utils/constances.dart';
+import 'package:jobseque/core/utils/user_data_using_shared_preferences.dart';
 import 'package:jobseque/core/widgets/custom_header.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/auth/presentation/widget/login_and_security_profile_item.dart';
@@ -19,22 +20,23 @@ class LoginAndSecurityScreenBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const LoginAndSecuriryProfileItem(
+              LoginAndSecuriryProfileItem(
                 text: 'Email address',
-                valueText: 'rafifdian12@gmail.com',
+                valueText: JobsqueSharedPrefrences.getString(kUserEmail),
+                route: const EmailAddressProfileRoute(),
               ),
               const LoginAndSecuriryProfileItem(
                 text: 'Phone number',
+                route: PhoneNumberProfileRoute(),
               ),
-              LoginAndSecuriryProfileItem(
+              const LoginAndSecuriryProfileItem(
                 text: 'Change password',
-                onTap: () {
-                  context.router.push(const ChangePasswordProfileRoute());
-                },
+                route: ChangePasswordProfileRoute(),
               ),
               const LoginAndSecuriryProfileItem(
                 text: 'Two-step verification',
                 valueText: 'Non active',
+                route: TwoStepVerificationProfileRoute(),
               ),
               const LoginAndSecuriryProfileItem(
                 text: 'Face ID',

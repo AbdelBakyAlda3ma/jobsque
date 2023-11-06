@@ -31,4 +31,5 @@ class AssetsImages {
   static String imageProfile3 = 'assets/images/imageProfile3.png';
   static String imageProfile4 = 'assets/images/imageProfile4.png';
   static String countryFlag = 'assets/images/countryFlag.png';
+  static String defaultProfileImage = 'assets/images/defaultProfileImage.png';
 }

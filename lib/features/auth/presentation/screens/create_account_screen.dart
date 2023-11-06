@@ -27,12 +27,15 @@ class CreateAccountScreen extends StatelessWidget {
         child: BlocConsumer<RegisterBloc, RegisterState>(
           listener: (context, state) {
             if (state is RegisterSuccess) {
-              showSuccessSnackBar(
-                context: context,
-                message: REGISTER_SUCCESS_MESSAGE,
-              );
-              context.router.popAndPush(
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                showSuccessSnackBar(
+                  context: context,
+                  message: REGISTER_SUCCESS_MESSAGE,
+                );
+              });
+              context.router.pushAndPopUntil(
                 const WorkTypeRoute(),
+                predicate: (route) => false,
               );
             } else if (state is RegisterFailure) {
               showErrorSnackBar(

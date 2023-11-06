@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../core/utils/global/assets_images.dart';
 
 class SplashScreenBody extends StatelessWidget {

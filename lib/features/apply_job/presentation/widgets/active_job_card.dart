@@ -8,8 +8,8 @@ import 'package:jobseque/core/widgets/job_card_title_and_image_and_saved_icon.da
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/applied_job_category_and_posted_time.dart';
+import 'package:jobseque/features/apply_job/presentation/widgets/applied_job_step_progerss.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/apply_job_stepper_custom_steps_label.dart';
-import 'package:jobseque/test_screen.dart';
 
 class ActiveJobCard extends StatefulWidget {
   const ActiveJobCard({

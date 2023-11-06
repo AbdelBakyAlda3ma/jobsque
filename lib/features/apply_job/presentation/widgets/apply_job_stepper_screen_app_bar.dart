@@ -23,8 +23,8 @@ class ApplyJobStepperScreenAppBar extends StatelessWidget
         return notification.depth != 0;
       },
       leading: GestureDetector(
-        onTap: () async {
-          await context.router.pop();
+        onTap: () {
+          context.router.pop();
           if (context.mounted) {
             BlocProvider.of<AddActiveApplicationBloc>(context).add(
               AddActiveApplicationEvent(

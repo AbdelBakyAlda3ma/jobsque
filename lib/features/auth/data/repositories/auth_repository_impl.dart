@@ -39,7 +39,6 @@ class AuthRepositoryImpl implements AuthRepository {
       try {
         final UserModel user =
             await remoteDataSource.loginUser(loginData: loginData);
-
         localDataSource.saveUser(user);
         return Right(user);
       } on DioException catch (e) {
@@ -57,7 +56,6 @@ class AuthRepositoryImpl implements AuthRepository {
       try {
         final user =
             await remoteDataSource.registerUser(registerData: registerData);
-
         localDataSource.saveUser(user);
         return Right(user);
       } on DioException catch (e) {

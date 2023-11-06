@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/features/profile/presentation/widgets/other_settings_item.dart';
 
 class OtherSettingsList extends StatelessWidget {
@@ -13,9 +14,18 @@ class OtherSettingsList extends StatelessWidget {
       child: Column(
         children: [
           OtherSettingsItem(text: 'Accesibility'),
-          OtherSettingsItem(text: 'Help Center'),
-          OtherSettingsItem(text: 'Terms & Conditions'),
-          OtherSettingsItem(text: 'Privacy Policy'),
+          OtherSettingsItem(
+            text: 'Help Center',
+            route: HelpCenterRoute(),
+          ),
+          OtherSettingsItem(
+            text: 'Terms & Conditions',
+            route: TermsAndConditinosRoute(),
+          ),
+          OtherSettingsItem(
+            text: 'Privacy Policy',
+            route: PrivacyPolicyRoute(),
+          ),
         ],
       ),
     );

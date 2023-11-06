@@ -10,10 +10,8 @@ class ProfileScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScrollView(
-      slivers: <Widget>[
-        //2
+      slivers: [
         ProfileBodySliverAppBar(),
-        //3
         ProfileSettings(),
       ],
     );

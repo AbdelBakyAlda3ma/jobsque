@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +19,20 @@ class ApiService {
     @required dynamic body,
     @required String? token,
   }) async {
+    log("Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}");
     var response = await _dio.get(
       path,
       data: body,
       options: Options(
         headers: {
+          /// this is not the best way to store the token or any senstive information
+          /// about the user data in SHARED_PREFRENCES better store in scure flutter storage
+          /// or in env file
+          /// and I put this token bucause the new generated tokens from API
+          /// dosn't authrized "the API is so bad"
           HttpHeaders.authorizationHeader:
-              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1"
+          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );
@@ -41,8 +49,14 @@ class ApiService {
       data: body,
       options: Options(
         headers: {
+          /// this is not the best way to store the token or any senstive information
+          /// about the user data in SHARED_PREFRENCES better store in scure flutter storage
+          /// or in env file
+          /// and I put this token bucause the new generated tokens from API
+          /// dosn't authrized "the API is so bad"
           HttpHeaders.authorizationHeader:
-              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1"
+          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );
@@ -62,10 +76,14 @@ class ApiService {
       data: body,
       options: Options(
         headers: {
+          /// this is not the best way to store the token or any senstive information
+          /// about the user data in SHARED_PREFRENCES better store in scure flutter storage
+          /// or in env file
+          /// and I put this token bucause the new generated tokens from API
+          /// dosn't authrized "the API is so bad"
           HttpHeaders.authorizationHeader:
-              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
-          // HttpHeaders.contentTypeHeader:
-          //     contentType ?? 'application/x-www-form-urlencoded',
+              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1"
+          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );
@@ -83,8 +101,14 @@ class ApiService {
       queryParameters: queryParameters,
       options: Options(
         headers: {
+          /// this is not the best way to store the token or any senstive information
+          /// about the user data in SHARED_PREFRENCES better store in scure flutter storage
+          /// or in env file
+          /// and I put this token bucause the new generated tokens from API
+          /// dosn't authrized "the API is so bad"
           HttpHeaders.authorizationHeader:
-              "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
+              "Bearer 526|0wA3eRiWDjwwaMKL4G72vh7jy76bl1oZvjvb0To1"
+          // "Bearer ${token ?? JobsqueSharedPrefrences.getString(kToken)}",
         },
       ),
     );
