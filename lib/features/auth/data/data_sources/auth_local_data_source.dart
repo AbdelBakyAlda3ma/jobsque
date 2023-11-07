@@ -51,7 +51,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     await Hive.box<ApplyJobEntity>(kApplyJobBox).clear();
     await Hive.box<JobEntity>(kJoBsBox).clear();
     await Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox).clear();
-    final isDone = await JobsqueSharedPrefrences.remove(kCachedUser);
+    final isDone = await JobsqueSharedPrefrences.clear();
     return isDone;
   }
 }

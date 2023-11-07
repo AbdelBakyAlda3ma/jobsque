@@ -36,9 +36,23 @@ class ApplyJobStepperScreen extends StatelessWidget {
           create: (context) => sL.get<DeleteSuccessedAppliedJobBloc>(),
         ),
       ],
-      child: ApplyJobStepperScreenSafeArea(
-        job: job,
-      ),
+      child: Builder(builder: (context) {
+        return WillPopScope(
+          onWillPop: () async {
+            if (context.mounted) {
+              BlocProvider.of<AddActiveApplicationBloc>(context).add(
+                AddActiveApplicationEvent(
+                  job: job,
+                ),
+              );
+            }
+            return true;
+          },
+          child: ApplyJobStepperScreenSafeArea(
+            job: job,
+          ),
+        );
+      }),
     );
   }
 }
