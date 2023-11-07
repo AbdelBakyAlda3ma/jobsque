@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
+import 'package:jobseque/features/auth/presentation/manager/blocs/log_out_bloc/log_out_bloc.dart';
 
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
@@ -36,9 +38,14 @@ class ProfileScreenAppBar extends StatelessWidget
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Icon(
-            IconsJobeque.logout,
-            color: AppColors.danger[500],
+          child: GestureDetector(
+            onTap: () {
+              BlocProvider.of<LogOutBloc>(context).add(LogOutEvent());
+            },
+            child: Icon(
+              IconsJobeque.logout,
+              color: AppColors.danger[500],
+            ),
           ),
         ),
       ],

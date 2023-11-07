@@ -11,6 +11,8 @@ import 'package:jobseque/features/apply_job/presentation/manager/blocs/add_activ
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/delete_successed_applied_job_bloc/delete_successed_applied_job_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/get_active_applied_jobs_bloc/get_active_applied_jobs_bloc.dart';
+import 'package:jobseque/features/auth/domain/use_cases/log_out_use_case.dart';
+import 'package:jobseque/features/auth/presentation/manager/blocs/log_out_bloc/log_out_bloc.dart';
 import 'package:jobseque/features/education/data/data_sources/education_remote_data_source.dart';
 import 'package:jobseque/features/education/data/repos/education_repo_impl.dart';
 import 'package:jobseque/features/education/domain/use_cases/add_education_use_case.dart';
@@ -195,6 +197,13 @@ void setUpServiceLocator() {
     () => DeleteSuccessedAppliedJobBloc(
       deleteSuccessedAppliedJobUseCase: DeleteSuccessedAppliedJobUseCase(
         applyJobRepo: sL.get<ApplyJobRepoImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<LogOutBloc>(
+    () => LogOutBloc(
+      logOutUseCase: LogOutUseCase(
+        authRepository: sL.get<AuthRepositoryImpl>(),
       ),
     ),
   );

@@ -41,6 +41,7 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: SavedJobBottomSheetRoute.page),
             AutoRoute(page: AppliedJobsRoute.page),
             AutoRoute(page: InProgressAppliedJobRoute.page),
+            AutoRoute(page: ApplyJobStepperRoute.page),
           ],
         ),
         AutoRoute(
@@ -51,7 +52,6 @@ class AppRouter extends $AppRouter {
           ],
         ),
         AutoRoute(page: JobDetailRoute.page),
-        AutoRoute(page: ApplyJobStepperRoute.page),
         AutoRoute(page: DataSentSuccessfulyRoute.page),
         AutoRoute(page: AccountHasBeenSetUpRoute.page),
         AutoRoute(page: ChangePasswordProfileRoute.page),
