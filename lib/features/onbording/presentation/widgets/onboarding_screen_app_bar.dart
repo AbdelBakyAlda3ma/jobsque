@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/utils/global/app_colors.dart';
-import '../../../../core/utils/global/assets_logos.dart';
+import '../../../../core/utils/global/app_logos.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 
 class OnboardingScreenAppBar extends StatelessWidget
@@ -16,7 +16,7 @@ class OnboardingScreenAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       title: SvgPicture.asset(
-        AssetsLogos.jobsequLogo,
+        AppLogos.jobsequLogo,
         width: 81,
         height: 19,
       ),

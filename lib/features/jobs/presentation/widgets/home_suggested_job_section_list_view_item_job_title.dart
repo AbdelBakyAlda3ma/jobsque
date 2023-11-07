@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/utils/global/app_colors.dart';
-import '../../../../core/utils/global/assets_logos.dart';
+import '../../../../core/utils/global/app_logos.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 import '../../../../core/widgets/horizontal_space.dart';
@@ -18,7 +18,7 @@ class HomeSuggestedJobSectionListViewItemJobTitle extends StatelessWidget {
       child: Row(
         children: [
           SvgPicture.asset(
-            AssetsLogos.zoomLogo,
+            AppLogos.zoomLogo,
             height: 40,
             width: 40,
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/utils/global/assets_images.dart';
+import '../../../../core/utils/global/app_images.dart';
 
 class SplashScreenBody extends StatelessWidget {
   const SplashScreenBody({
@@ -11,7 +11,7 @@ class SplashScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SvgPicture.asset(
-        AssetsImages.splashScreenBackground,
+        AppImages.splashScreenBackground,
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/utils/global/app_colors.dart';
-import '../../../../core/utils/global/assets_images.dart';
+import '../../../../core/utils/global/app_images.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/widgets/vertical_space.dart';
 
@@ -17,7 +17,7 @@ class SearchScreenBodyNotFound extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(flex: 1),
-          SvgPicture.asset(AssetsImages.searchNotFoundBackground),
+          SvgPicture.asset(AppImages.searchNotFoundBackground),
           const VerticalSpace(space: 24),
           Text(
             'Search not found',

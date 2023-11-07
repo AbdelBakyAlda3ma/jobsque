@@ -4,7 +4,7 @@ import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/horizontal_space.dart';
 
-import '../../../../core/utils/global/assets_logos.dart';
+import '../../../../core/utils/global/app_logos.dart';
 import 'chatting_show_bottom_sheet_button.dart';
 
 class ChattingAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -25,7 +25,7 @@ class ChattingAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           CircleAvatar(
             radius: 18,
-            backgroundImage: AssetImage(AssetsLogos.danaLogo),
+            backgroundImage: AssetImage(AppLogos.danaLogoPng),
           ),
           const HorizontalSpace(space: 20),
           Text(

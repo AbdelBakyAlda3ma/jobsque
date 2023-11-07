@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobseque/core/utils/global/assets_images.dart';
+import 'package:jobseque/core/utils/global/app_images.dart';
 import 'package:jobseque/features/onbording/presentation/widgets/onboarding_custom_step.dart';
 
 class OnboardingStepOne extends StatelessWidget {
@@ -8,7 +8,7 @@ class OnboardingStepOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OnboardingCustomStep(
-        backgroundImage: AssetsImages.onboardingStepOneBackground,
+        backgroundImage: AppImages.onboardingStepOneBackground,
         beginingOfText: 'Find a job, and ',
         differentText: 'start building ',
         endOfText: 'your career from now on',

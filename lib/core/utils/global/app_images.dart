@@ -1,4 +1,4 @@
-class AssetsImages {
+class AppImages {
   static String splashScreenBackground =
       'assets/images/SplashScreenBackground.svg';
   static String onboardingStepOneBackground =

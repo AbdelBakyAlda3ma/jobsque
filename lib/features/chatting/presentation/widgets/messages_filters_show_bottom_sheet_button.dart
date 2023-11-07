@@ -16,7 +16,7 @@ class MessagesFiltersShowBottomSheetButton extends StatelessWidget {
       onTap: () {
         showAppCustomBottomSheet(
           context,
-          bottomSheetView: const MessagesFiltersBottomSheet(),
+          bottomSheetView: const MessagesFiltersBottomSheetWidget(),
           borderRadius: 16,
         );
       },

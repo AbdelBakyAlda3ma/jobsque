@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/utils/global/assets_logos.dart';
+import '../../../../core/utils/global/app_logos.dart';
 
 class LoginScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LoginScreenAppBar({
@@ -15,7 +15,7 @@ class LoginScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: SvgPicture.asset(AssetsLogos.jobsequLogo),
+          child: SvgPicture.asset(AppLogos.jobsequLogo),
         ),
       ],
     );
