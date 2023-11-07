@@ -36,6 +36,11 @@ class SearchNotFoundlFailure extends Failure {
       : super(errorMessage: SEARCH_NOT_FOUND_FAILURE_MESSAGE);
 }
 
+class NoSubmittedJobsFailure extends Failure {
+  NoSubmittedJobsFailure()
+      : super(errorMessage: NO_SUBMITTED_JOBS_FAILURE_MESSAGE);
+}
+
 class FilteredSearchNotFoundlFailure extends Failure {
   FilteredSearchNotFoundlFailure()
       : super(errorMessage: FILTERED_SEARCH_FAILURE_MESSAGE);

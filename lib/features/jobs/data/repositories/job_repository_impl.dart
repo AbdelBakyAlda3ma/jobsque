@@ -7,7 +7,6 @@ import 'package:jobseque/core/network/network_info.dart';
 import 'package:jobseque/features/jobs/data/data_sources/job_local_data_source.dart';
 import 'package:jobseque/features/jobs/data/data_sources/job_remote_data_source.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
-
 import '../../domain/repositories/job_repository.dart';
 
 class JobRepositoryImpl extends JobRepository {
@@ -83,6 +82,23 @@ class JobRepositoryImpl extends JobRepository {
       }
     } else {
       return Left(OfflineFailure());
+    }
+  }
+
+  @override
+  Future<void> addSubmittedJob({required JobEntity job}) async {
+    await jobLocalDataSource.addSubmittedJob(
+      job: job,
+    );
+  }
+
+  @override
+  Either<Failure, List<JobEntity>> showSubmittedJobs() {
+    try {
+      var submittedJobs = jobLocalDataSource.showSubmittedJobs();
+      return Right(submittedJobs);
+    } on NoSubmittedJobsException {
+      return Left(NoSubmittedJobsFailure());
     }
   }
 }

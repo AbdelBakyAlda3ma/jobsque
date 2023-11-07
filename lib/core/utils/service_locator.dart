@@ -24,6 +24,10 @@ import 'package:jobseque/features/favorites/domain/use_cases/delete_favorite_use
 import 'package:jobseque/features/favorites/domain/use_cases/get_favorite_jobs_use_case.dart';
 import 'package:jobseque/features/favorites/presentation/manager/blocs/favorite_operation_bloc/favorite_operation_bloc.dart';
 import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
+import 'package:jobseque/features/jobs/domain/use_cases/add_submitted_job_use_case.dart';
+import 'package:jobseque/features/jobs/domain/use_cases/show_submitted_jobs.dart';
+import 'package:jobseque/features/jobs/presentation/manager/add_submitted_job_bloc/add_submitted_job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/show_submitted_jobs_bloc/show_submitted_jobs_bloc.dart';
 import 'package:jobseque/features/portfolio/data/data_sources/portfolio_local_data_source.dart';
 import 'package:jobseque/features/portfolio/data/data_sources/portfolio_remote_data_source.dart';
 import 'package:jobseque/features/portfolio/data/repos/portfolio_repo_impl.dart';
@@ -167,6 +171,20 @@ void setUpServiceLocator() {
     () => GetProfileImageBloc(
       getProfileImageUseCase: GetProfileImageUseCase(
         profileRepository: sL.get<ProfileRepositoryImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<ShowSubmittedJobsBloc>(
+    () => ShowSubmittedJobsBloc(
+      showSubmittedJobsUseCase: ShowSubmittedJobsUseCase(
+        jobRepository: sL.get<JobRepositoryImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<AddSubmittedJobBloc>(
+    () => AddSubmittedJobBloc(
+      addSubmittedJobUseCase: AddSubmittedJobUseCase(
+        jobRepository: sL.get<JobRepositoryImpl>(),
       ),
     ),
   );

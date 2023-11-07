@@ -34,7 +34,7 @@ class AppRouter extends $AppRouter {
           ],
         ),
         AutoRoute(
-          page: SavedWrapper.page,
+          page: JobsWrapper.page,
           children: [
             AutoRoute(page: HomeRoute.page),
             AutoRoute(page: SavedJobsRoute.page),

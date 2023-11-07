@@ -376,10 +376,10 @@ abstract class $AppRouter extends _i52.RootStackRouter {
         child: const _i39.SavedJobsScreen(),
       );
     },
-    SavedWrapper.name: (routeData) {
+    JobsWrapper.name: (routeData) {
       return _i52.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i40.SavedWrapper(),
+        child: const _i40.JobsWrapper(),
       );
     },
     SearchRoute.name: (routeData) {
@@ -1146,11 +1146,11 @@ class SavedJobsRoute extends _i52.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i40.SavedWrapper]
-class SavedWrapper extends _i52.PageRouteInfo<void> {
-  const SavedWrapper({List<_i52.PageRouteInfo>? children})
+/// [_i40.JobsWrapper]
+class JobsWrapper extends _i52.PageRouteInfo<void> {
+  const JobsWrapper({List<_i52.PageRouteInfo>? children})
       : super(
-          SavedWrapper.name,
+          JobsWrapper.name,
           initialChildren: children,
         );
 

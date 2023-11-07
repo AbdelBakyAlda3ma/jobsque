@@ -18,6 +18,8 @@ class NoFavoriteJobsException implements Exception {}
 
 class NoActiveJobsException implements Exception {}
 
+class NoSubmittedJobsException implements Exception {}
+
 class NoProfileExistException implements Exception {}
 
 class NoProfileImageYetException implements Exception {}

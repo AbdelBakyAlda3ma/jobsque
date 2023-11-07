@@ -43,6 +43,8 @@ class JobEntity extends HiveObject {
   DateTime? updatedAt;
   @HiveField(18)
   bool isSaved;
+  @HiveField(18)
+  bool isSubmitted;
   JobEntity({
     this.name,
     this.image,
@@ -63,6 +65,7 @@ class JobEntity extends HiveObject {
     this.updatedAt,
     this.expired,
     this.isSaved = false,
+    this.isSubmitted = false,
   });
 
   @override
@@ -87,7 +90,8 @@ class JobEntity extends HiveObject {
         other.expired == expired &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt &&
-        other.isSaved == isSaved;
+        other.isSaved == isSaved &&
+        other.isSubmitted == isSubmitted;
   }
 
   @override
@@ -110,7 +114,8 @@ class JobEntity extends HiveObject {
         expired.hashCode ^
         createdAt.hashCode ^
         updatedAt.hashCode ^
-        isSaved.hashCode;
+        isSaved.hashCode ^
+        isSubmitted.hashCode;
   }
 
   JobEntity copyWith({
@@ -133,6 +138,7 @@ class JobEntity extends HiveObject {
     DateTime? createdAt,
     DateTime? updatedAt,
     bool? isSaved,
+    bool? isSubmitted,
   }) {
     return JobEntity(
       name: name ?? this.name,
@@ -154,6 +160,7 @@ class JobEntity extends HiveObject {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       isSaved: isSaved ?? this.isSaved,
+      isSubmitted: isSubmitted ?? this.isSubmitted,
     );
   }
 }
