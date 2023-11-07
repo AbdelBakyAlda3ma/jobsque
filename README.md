@@ -1,16 +1,20 @@
-# jobsque
+# JOBSQUE: Job Finder Application
 
-A new Flutter project.
+JOBSQUE is a job finder application that helps users search for job opportunities. This README provides an overview of the tools and technologies used in the development of the application.
 
-## Getting Started
+## Used Tools and Technologies
 
-This project is a starting point for a Flutter application.
+### Application Architecture and Management
+- Clean Architecture & SOLID Principles Implementation
+- BLoC & Cubit State Management Integration
 
-A few resources to get you started if this is your first Flutter project:
+### Data Integration and Customization
+- RESTful API Integration
+- Hive and Shared Preferences as Local Data Storage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### User Interface and Experience Enhancement
+- Advanced Widget Customization
+- Custom Data Icons for Figma Designs
+- Performance-Optimized Navigation System using Auto_route Package
+- Seamless Management of Complicated Nested Scrolls
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
