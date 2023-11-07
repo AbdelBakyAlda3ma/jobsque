@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_recent_job_section.dart';
+import 'package:jobseque/features/jobs/presentation/widgets/home_submitted_jobs_section.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_suggested_job_section.dart';
 import 'home_screen_search_text_field.dart';
 
@@ -19,7 +20,12 @@ class HomeScreenBody extends StatelessWidget {
               headerSliverBuilder: ((context, innerBoxIsScrolled) {
                 return [
                   const SliverToBoxAdapter(
-                    child: HomeSuggestedJobSection(),
+                    child: Column(
+                      children: [
+                        HomeSubmittedJobsSection(),
+                        HomeSuggestedJobSection(),
+                      ],
+                    ),
                   ),
                 ];
               }),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
+import 'package:jobseque/core/widgets/job_image.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import '../../../../core/utils/global/app_colors.dart';
-import '../../../../core/utils/global/assets_logos.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/widgets/horizontal_space.dart';
 import '../../../../core/widgets/vertical_space.dart';
 
 class HomeSubmitedAcceptedItem extends StatelessWidget {
-  final bool isAccepted = true;
+  final JobEntity job;
+  final bool isAccepted = false;
 
-  const HomeSubmitedAcceptedItem({super.key});
+  const HomeSubmitedAcceptedItem({super.key, required this.job});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,16 @@ class HomeSubmitedAcceptedItem extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(16),
       child: SizedBox(
-        height: 61,
+        width: 288,
         child: Row(
           children: [
             Column(
               children: [
-                SvgPicture.asset(AssetsLogos.twitterLogo),
+                JobImage(
+                  imageUrl: job.image ?? '',
+                  height: 40,
+                  width: 40,
+                ),
               ],
             ),
             const HorizontalSpace(space: 12),
@@ -35,7 +39,7 @@ class HomeSubmitedAcceptedItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Twitter',
+                    job.name!,
                     overflow: TextOverflow.ellipsis,
                     style: CustomTextStyles.textLMedium.copyWith(
                       color: AppColors.neutral[900],
@@ -50,7 +54,7 @@ class HomeSubmitedAcceptedItem extends StatelessWidget {
                           child: Text(
                             isAccepted
                                 ? 'You have been accepted for the selection interview'
-                                : 'Waiting to be selected by the twitter team',
+                                : 'Waiting to be selected by the ${job.compName} team',
                             maxLines: 2,
                             softWrap: true,
                             overflow: TextOverflow.ellipsis,
@@ -71,8 +75,8 @@ class HomeSubmitedAcceptedItem extends StatelessWidget {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 14),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     backgroundColor: isAccepted
                         ? AppColors.success[300]
                         : AppColors.primary[200],

@@ -12,5 +12,8 @@ abstract class JobRepository {
     String? jobLocation,
     String? jobSalary,
   });
-  // List<JobEntity> showSubmittedJobs();
+  Either<Failure, List<JobEntity>> showSubmittedJobs();
+  Future<void> addSubmittedJob({
+    required JobEntity job,
+  });
 }

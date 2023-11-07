@@ -8,8 +8,8 @@ import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favor
 import 'package:jobseque/features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
 
 @RoutePage()
-class SavedWrapper extends StatelessWidget {
-  const SavedWrapper({super.key});
+class JobsWrapper extends StatelessWidget {
+  const JobsWrapper({super.key});
 
   @override
   Widget build(BuildContext context) {

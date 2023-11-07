@@ -7,6 +7,7 @@ import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job
 import 'package:jobseque/features/apply_job/presentation/manager/cubits/compelete_job_application_cubit/compelete_job_application_cubit.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/apply_job_stepper_screen_safe_area.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
+import 'package:jobseque/features/jobs/presentation/manager/add_submitted_job_bloc/add_submitted_job_bloc.dart';
 
 @RoutePage()
 class ApplyJobStepperScreen extends StatelessWidget {
@@ -26,6 +27,9 @@ class ApplyJobStepperScreen extends StatelessWidget {
             create: (context) => sL.get<AddActiveApplicationBloc>()),
         BlocProvider<ApplyJobBloc>(
           create: (context) => sL.get<ApplyJobBloc>(),
+        ),
+        BlocProvider<AddSubmittedJobBloc>(
+          create: (context) => sL.get<AddSubmittedJobBloc>(),
         ),
       ],
       child: ApplyJobStepperScreenSafeArea(
