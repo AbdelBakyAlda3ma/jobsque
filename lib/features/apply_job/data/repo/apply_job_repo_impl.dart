@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:jobseque/core/errors/exception.dart';
 import 'package:jobseque/core/errors/failure.dart';
 import 'package:jobseque/features/apply_job/data/data_sources/apply_job_local_data_source.dart';
 import 'package:jobseque/features/apply_job/data/data_sources/apply_job_remote_data_source.dart';
@@ -15,10 +16,10 @@ class ApplyJobRepoImpl extends ApplyJobRepo {
     required this.applyJobRemoteDataSource,
   });
   @override
-  void addActiveApplication({
+  Future<void> addActiveApplication({
     required ActiveAppliedJobEntity activeAppliedJob,
-  }) {
-    applyJobLocalDataSource.addActiveApplication(
+  }) async {
+    await applyJobLocalDataSource.addActiveApplication(
       activeAppliedJobEntity: activeAppliedJob,
     );
   }
@@ -35,9 +36,13 @@ class ApplyJobRepoImpl extends ApplyJobRepo {
   }
 
   @override
-  List<ActiveAppliedJobEntity> showActiveAppliedJobs() {
-    var listOfActiveAppliedJobs =
-        applyJobLocalDataSource.getActiveAppliedJobs();
-    return listOfActiveAppliedJobs;
+  Either<Failure, List<ActiveAppliedJobEntity>> showActiveAppliedJobs() {
+    try {
+      var listOfActiveAppliedJobs =
+          applyJobLocalDataSource.getActiveAppliedJobs();
+      return Right(listOfActiveAppliedJobs);
+    } on NoActiveJobsException {
+      return Left(NoActiveJobsFailure());
+    }
   }
 }

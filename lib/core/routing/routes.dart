@@ -40,6 +40,7 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: SavedJobsRoute.page),
             AutoRoute(page: SavedJobBottomSheetRoute.page),
             AutoRoute(page: AppliedJobsRoute.page),
+            AutoRoute(page: InProgressAppliedJobRoute.page),
           ],
         ),
         AutoRoute(
@@ -79,7 +80,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: PrivacyPolicyRoute.page),
         AutoRoute(page: TermsAndConditinosRoute.page),
         AutoRoute(page: ProfileRoute.page),
-        AutoRoute(page: InProgressAppliedJobRoute.page),
         AutoRoute(page: PhoneNumberProfileRoute.page),
       ];
 }

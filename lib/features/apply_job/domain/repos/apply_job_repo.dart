@@ -7,8 +7,8 @@ abstract class ApplyJobRepo {
   Future<Either<Failure, Unit>> applyJob({
     required ApplyJobEntity applyJobEntity,
   });
-  List<ActiveAppliedJobEntity> showActiveAppliedJobs();
-  void addActiveApplication({
+  Either<Failure, List<ActiveAppliedJobEntity>> showActiveAppliedJobs();
+  Future<void> addActiveApplication({
     required ActiveAppliedJobEntity activeAppliedJob,
   });
 }

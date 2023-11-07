@@ -5,8 +5,8 @@ import 'package:jobseque/core/utils/global/assets_images.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 
-class NoApplicationWereRejected extends StatelessWidget {
-  const NoApplicationWereRejected({super.key});
+class NoApplicationWereRejectedContent extends StatelessWidget {
+  const NoApplicationWereRejectedContent({super.key});
 
   @override
   Widget build(BuildContext context) {

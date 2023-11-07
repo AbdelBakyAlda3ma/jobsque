@@ -1,39 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
-import 'package:jobseque/features/apply_job/presentation/widgets/active_job_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobseque/core/widgets/loding_widget.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/get_active_applied_jobs_bloc/get_active_applied_jobs_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/applied_job_no_added_jobs.dart';
-import 'package:jobseque/features/apply_job/presentation/widgets/applied_job_screen_body_active_jobs_content_header.dart';
+import 'package:jobseque/features/apply_job/presentation/widgets/get_active_jobs_succes_widget.dart';
 
 class AppliedJobScreenBodyActiveJobsContent extends StatelessWidget {
-  final List<ActiveAppliedJobEntity> listOfActiveAppliedJobs;
   const AppliedJobScreenBodyActiveJobsContent({
     super.key,
-    required this.listOfActiveAppliedJobs,
   });
 
   @override
   Widget build(BuildContext context) {
-    return listOfActiveAppliedJobs.isNotEmpty
-        ? Column(
-            children: [
-              AppliedJobScreenBodyActiveJobsContentHeader(
-                listOfJobs: listOfActiveAppliedJobs,
-              ),
-              const VerticalSpace(space: 24),
-              Expanded(
-                child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  itemBuilder: (context, index) => ActiveJobCard(
-                    activeAppliedJob: listOfActiveAppliedJobs[index],
-                  ),
-                  separatorBuilder: ((context, index) =>
-                      const VerticalSpace(space: 20)),
-                  itemCount: listOfActiveAppliedJobs.length,
-                ),
-              ),
-            ],
-          )
-        : const AppliedJobNoAddedJobs();
+    return BlocBuilder<GetActiveAppliedJobsBloc, GetActiveAppliedJobsState>(
+      builder: (context, state) {
+        if (state is GetActiveAppliedJobsSuccess) {
+          return GetActiveJobsSuccesWidget(
+            listOfActiveAppliedJobs: state.listOfactiveJobs,
+          );
+        }
+        if (state is NoActiveAppliedJobs) {
+          return const AppliedJobNoAddedJobs();
+        } else {
+          return const LoadingWidget();
+        }
+      },
+    );
   }
 }

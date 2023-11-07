@@ -6,7 +6,7 @@ class AddActiveApplicationUseCase {
   ApplyJobRepo applyJobRepo;
   AddActiveApplicationUseCase({required this.applyJobRepo});
   Future<Unit> call({required ActiveAppliedJobEntity activeAppliedJob}) async {
-    applyJobRepo.addActiveApplication(
+    await applyJobRepo.addActiveApplication(
       activeAppliedJob: activeAppliedJob,
     );
     return Future.value(unit);

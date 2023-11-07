@@ -5,10 +5,10 @@ import 'package:jobseque/features/apply_job/data/data_sources/apply_job_remote_d
 import 'package:jobseque/features/apply_job/data/repo/apply_job_repo_impl.dart';
 import 'package:jobseque/features/apply_job/domain/use_cases/add_active_application_use_case.dart';
 import 'package:jobseque/features/apply_job/domain/use_cases/apply_job_use_case.dart';
-import 'package:jobseque/features/apply_job/domain/use_cases/show_active_applied_jobs_use_case.dart';
+import 'package:jobseque/features/apply_job/domain/use_cases/get_active_applied_jobs_use_case.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/add_active_application_bloc/add_active_application_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
-import 'package:jobseque/features/apply_job/presentation/manager/blocs/show_active_applied_jobs_bloc/show_active_applied_jobs_bloc.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/get_active_applied_jobs_bloc/get_active_applied_jobs_bloc.dart';
 import 'package:jobseque/features/education/data/data_sources/education_remote_data_source.dart';
 import 'package:jobseque/features/education/data/repos/education_repo_impl.dart';
 import 'package:jobseque/features/education/domain/use_cases/add_education_use_case.dart';
@@ -261,9 +261,9 @@ void setUpServiceLocator() {
       ),
     ),
   );
-  sL.registerFactory<ShowActiveAppliedJobsBloc>(
-    () => ShowActiveAppliedJobsBloc(
-      showActiveAppliedJobsUseCase: ShowActiveAppliedJobsUseCase(
+  sL.registerFactory<GetActiveAppliedJobsBloc>(
+    () => GetActiveAppliedJobsBloc(
+      getActiveAppliedJobsUseCase: GetActiveAppliedJobsUseCase(
         applyJobRepo: sL.get<ApplyJobRepoImpl>(),
       ),
     ),

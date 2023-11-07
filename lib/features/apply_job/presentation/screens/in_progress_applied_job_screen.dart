@@ -22,19 +22,31 @@ class InProgressAppliedJobScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<CompeleteJobApplicationCubit>(
-          lazy: false,
           create: (context) => CompeleteJobApplicationCubit(),
         ),
         BlocProvider<AddActiveApplicationBloc>(
-            lazy: false,
             create: (context) => sL.get<AddActiveApplicationBloc>()),
         BlocProvider<ApplyJobBloc>(
           create: (context) => sL.get<ApplyJobBloc>(),
         ),
       ],
-      child: InProgressAppliedScreenSafeArea(
-        activeAppliedJob: activeAppliedJob,
-      ),
+      child: Builder(builder: (context) {
+        return WillPopScope(
+          onWillPop: () async {
+            if (context.mounted) {
+              BlocProvider.of<AddActiveApplicationBloc>(context).add(
+                AddActiveApplicationEvent(
+                  job: activeAppliedJob.job!,
+                ),
+              );
+            }
+            return true;
+          },
+          child: InProgressAppliedScreenSafeArea(
+            activeAppliedJob: activeAppliedJob,
+          ),
+        );
+      }),
     );
   }
 }
