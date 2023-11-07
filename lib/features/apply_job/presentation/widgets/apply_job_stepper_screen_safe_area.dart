@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/functions/snackbar_message.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/delete_successed_applied_job_bloc/delete_successed_applied_job_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/apply_job_stepper_screen_scaffold.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import 'package:jobseque/features/jobs/presentation/manager/add_submitted_job_bloc/add_submitted_job_bloc.dart';
@@ -29,6 +30,11 @@ class ApplyJobStepperScreenSafeArea extends StatelessWidget {
             BlocProvider.of<AddSubmittedJobBloc>(context).add(
               AddSubmittedJobEvent(
                 job: job,
+              ),
+            );
+            BlocProvider.of<DeleteSuccessedAppliedJobBloc>(context).add(
+              DeleteSuccessedAppliedJobEvent(
+                successedAppliedJob: job,
               ),
             );
           });

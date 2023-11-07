@@ -7,6 +7,7 @@ import 'package:jobseque/features/apply_job/data/data_sources/apply_job_remote_d
 import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
 import 'package:jobseque/features/apply_job/domain/entities/apply_job_entity.dart';
 import 'package:jobseque/features/apply_job/domain/repos/apply_job_repo.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 
 class ApplyJobRepoImpl extends ApplyJobRepo {
   ApplyJobLocalDataSource applyJobLocalDataSource;
@@ -48,10 +49,10 @@ class ApplyJobRepoImpl extends ApplyJobRepo {
 
   @override
   Future<void> deleteSuccessedAppliedJob({
-    required ActiveAppliedJobEntity activeAppliedJob,
+    required JobEntity successedAppliedJob,
   }) async {
     await applyJobLocalDataSource.deleteSuccessedAppliedJob(
-      activeAppliedJobEntity: activeAppliedJob,
+      successedAppliedJob: successedAppliedJob,
     );
   }
 }
