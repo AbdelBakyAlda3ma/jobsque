@@ -29,7 +29,9 @@ class HasCurrenUserScreen extends StatelessWidget {
             ),
         ),
       ],
-      child: const HasCurrentUserWidgetBlocConsumer(),
+      child: const Scaffold(
+        body: HasCurrentUserWidgetBlocConsumer(),
+      ),
     );
   }
 }

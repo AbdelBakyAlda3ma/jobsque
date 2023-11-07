@@ -5,6 +5,7 @@ import 'package:jobseque/core/utils/service_locator.dart';
 import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/add_active_application_bloc/add_active_application_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/delete_successed_applied_job_bloc/delete_successed_applied_job_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/cubits/compelete_job_application_cubit/compelete_job_application_cubit.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/in_progress_applied_job_screen_safe_area.dart';
 import 'package:jobseque/features/jobs/presentation/manager/add_submitted_job_bloc/add_submitted_job_bloc.dart';
@@ -32,6 +33,9 @@ class InProgressAppliedJobScreen extends StatelessWidget {
         ),
         BlocProvider<AddSubmittedJobBloc>(
           create: (context) => sL.get<AddSubmittedJobBloc>(),
+        ),
+        BlocProvider<DeleteSuccessedAppliedJobBloc>(
+          create: (context) => sL.get<DeleteSuccessedAppliedJobBloc>(),
         ),
       ],
       child: Builder(builder: (context) {

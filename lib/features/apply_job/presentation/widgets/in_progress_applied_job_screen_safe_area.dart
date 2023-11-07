@@ -5,6 +5,7 @@ import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/functions/snackbar_message.dart';
 import 'package:jobseque/features/apply_job/domain/entities/active_applied_job_entity.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/apply_job_bloc/apply_job_bloc.dart';
+import 'package:jobseque/features/apply_job/presentation/manager/blocs/delete_successed_applied_job_bloc/delete_successed_applied_job_bloc.dart';
 import 'package:jobseque/features/apply_job/presentation/widgets/in_progress_applied_job_screen_scaffold.dart';
 import 'package:jobseque/features/jobs/presentation/manager/add_submitted_job_bloc/add_submitted_job_bloc.dart';
 
@@ -29,6 +30,11 @@ class InProgressAppliedScreenSafeArea extends StatelessWidget {
             BlocProvider.of<AddSubmittedJobBloc>(context).add(
               AddSubmittedJobEvent(
                 job: activeAppliedJob.job!,
+              ),
+            );
+            BlocProvider.of<DeleteSuccessedAppliedJobBloc>(context).add(
+              DeleteSuccessedAppliedJobEvent(
+                successedAppliedJob: activeAppliedJob.job!,
               ),
             );
           });
