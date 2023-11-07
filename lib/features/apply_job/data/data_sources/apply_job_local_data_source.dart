@@ -7,6 +7,9 @@ abstract class ApplyJobLocalDataSource {
   Future<void> addActiveApplication({
     required ActiveAppliedJobEntity activeAppliedJobEntity,
   });
+  Future<void> deleteSuccessedAppliedJob({
+    required ActiveAppliedJobEntity activeAppliedJobEntity,
+  });
   List<ActiveAppliedJobEntity> getActiveAppliedJobs();
 }
 
@@ -32,5 +35,15 @@ class ApplyJobLocalDataSourceImpl extends ApplyJobLocalDataSource {
     } else {
       throw NoActiveJobsException();
     }
+  }
+
+  @override
+  Future<void> deleteSuccessedAppliedJob({
+    required ActiveAppliedJobEntity activeAppliedJobEntity,
+  }) async {
+    var box = Hive.box<ActiveAppliedJobEntity>(kActiveAppliedJobBox);
+    await box.delete(
+      activeAppliedJobEntity.job!.id,
+    );
   }
 }

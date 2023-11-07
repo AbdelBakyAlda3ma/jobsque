@@ -45,4 +45,13 @@ class ApplyJobRepoImpl extends ApplyJobRepo {
       return Left(NoActiveJobsFailure());
     }
   }
+
+  @override
+  Future<void> deleteSuccessedAppliedJob({
+    required ActiveAppliedJobEntity activeAppliedJob,
+  }) async {
+    await applyJobLocalDataSource.deleteSuccessedAppliedJob(
+      activeAppliedJobEntity: activeAppliedJob,
+    );
+  }
 }

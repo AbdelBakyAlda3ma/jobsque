@@ -11,4 +11,7 @@ abstract class ApplyJobRepo {
   Future<void> addActiveApplication({
     required ActiveAppliedJobEntity activeAppliedJob,
   });
+  Future<void> deleteSuccessedAppliedJob({
+    required ActiveAppliedJobEntity activeAppliedJob,
+  });
 }
