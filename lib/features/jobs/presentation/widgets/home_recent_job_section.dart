@@ -25,13 +25,8 @@ class HomeRecentJobSection extends StatelessWidget {
               return HomeRecentJobSectionListView(
                 allJobList: state.allJobsList,
               );
-            }
-            if (state is JobLoading) {
-              return const HomeShimmerLoding();
             } else {
-              return HomeRecentJobSectionListView(
-                allJobList: BlocProvider.of<JobBloc>(context).allJobsList ?? [],
-              );
+              return const HomeShimmerLoding();
             }
           },
         ),

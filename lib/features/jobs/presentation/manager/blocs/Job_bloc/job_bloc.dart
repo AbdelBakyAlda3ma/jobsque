@@ -8,7 +8,6 @@ part 'job_state.dart';
 
 class JobBloc extends Bloc<JobEvent, JobState> {
   GetAllJobsUseCase getAllJobsUseCase;
-  List<JobEntity>? allJobsList;
 
   JobBloc({
     required this.getAllJobsUseCase,
@@ -21,7 +20,6 @@ class JobBloc extends Bloc<JobEvent, JobState> {
           GetAllJobsFailure(errorMessage: failure.errorMessage),
         ),
         (allJobsList) {
-          this.allJobsList = allJobsList;
           emit(
             GetAllJobsSuccess(allJobsList: allJobsList),
           );
