@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import '../../../../core/utils/global/app_colors.dart';
-import '../../../../core/utils/global/assets_images.dart';
+import '../../../../core/utils/global/app_images.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 import '../../../../core/widgets/primary_button.dart';
@@ -33,7 +33,7 @@ class AccountHasBeenSetUpScreen extends StatelessWidget {
             const Spacer(
               flex: 3,
             ),
-            SvgPicture.asset(AssetsImages.accountHasBeenSetUpBackground),
+            SvgPicture.asset(AppImages.accountHasBeenSetUpBackground),
             Text(
               'Your account has been set up!',
               textAlign: TextAlign.center,

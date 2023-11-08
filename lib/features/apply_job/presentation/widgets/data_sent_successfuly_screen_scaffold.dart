@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
-import 'package:jobseque/core/utils/global/assets_images.dart';
+import 'package:jobseque/core/utils/global/app_images.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
@@ -38,7 +38,7 @@ class DataSentSuccessfulyScreenScaffold extends StatelessWidget {
             const Spacer(
               flex: 3,
             ),
-            SvgPicture.asset(AssetsImages.dataSentSuccessfullyBackground),
+            SvgPicture.asset(AppImages.dataSentSuccessfullyBackground),
             Text(
               'Your data has been successfully sent',
               textAlign: TextAlign.center,

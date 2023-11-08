@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
-import 'package:jobseque/core/utils/global/assets_logos.dart';
+import 'package:jobseque/core/utils/global/app_logos.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/horizontal_space.dart';
@@ -22,7 +22,7 @@ class EducationScreenBodyShowingUniversityContainer extends StatelessWidget {
         CircleAvatar(
           radius: 22,
           backgroundImage: AssetImage(
-            AssetsLogos.universityLogo,
+            AppLogos.universityLogo,
           ),
         ),
         const HorizontalSpace(space: 12),

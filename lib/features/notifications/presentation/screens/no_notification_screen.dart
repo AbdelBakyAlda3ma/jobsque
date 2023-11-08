@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
-import 'package:jobseque/core/utils/global/assets_images.dart';
+import 'package:jobseque/core/utils/global/app_images.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/utils/global/icons_jobeque_icons.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
@@ -34,7 +34,7 @@ class NoNotificationScreen extends StatelessWidget {
               const Spacer(
                 flex: 3,
               ),
-              SvgPicture.asset(AssetsImages.noNotificationBackground),
+              SvgPicture.asset(AppImages.noNotificationBackground),
               const VerticalSpace(space: 24),
               Text(
                 'No new notifications yet',

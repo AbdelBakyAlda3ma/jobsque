@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
-import 'package:jobseque/core/utils/global/assets_images.dart';
+import 'package:jobseque/core/utils/global/app_images.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/chatting/presentation/widgets/custom_messages_app_bar.dart';
@@ -28,7 +28,7 @@ class NotRecievedMessagesScreen extends StatelessWidget {
               const Spacer(
                 flex: 3,
               ),
-              SvgPicture.asset(AssetsImages.noMessagesRecievedBackground),
+              SvgPicture.asset(AppImages.noMessagesRecievedBackground),
               const VerticalSpace(space: 24),
               Text(
                 'You have not received any messages',

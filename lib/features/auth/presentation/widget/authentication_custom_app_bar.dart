@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/utils/global/app_colors.dart';
-import '../../../../core/utils/global/assets_logos.dart';
+import '../../../../core/utils/global/app_logos.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
 
 class AuthenticationCustomAppBar extends StatelessWidget {
@@ -26,7 +26,7 @@ class AuthenticationCustomAppBar extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: SvgPicture.asset(AssetsLogos.jobsequLogo),
+          child: SvgPicture.asset(AppLogos.jobsequLogo),
         ),
       ],
     );

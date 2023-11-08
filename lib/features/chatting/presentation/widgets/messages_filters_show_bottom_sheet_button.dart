@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobseque/features/chatting/presentation/widgets/messages_filters_bottom_sheet.dart';
+import 'package:jobseque/features/chatting/presentation/widgets/messages_filters_bottom_sheet_widget.dart';
 
 import '../../../../core/utils/functions/show_filter_modal_bottom_sheet.dart';
 import '../../../../core/utils/global/app_colors.dart';
@@ -16,7 +16,7 @@ class MessagesFiltersShowBottomSheetButton extends StatelessWidget {
       onTap: () {
         showAppCustomBottomSheet(
           context,
-          bottomSheetView: const MessagesFiltersBottomSheet(),
+          bottomSheetView: const MessagesFiltersBottomSheetWidget(),
           borderRadius: 16,
         );
       },

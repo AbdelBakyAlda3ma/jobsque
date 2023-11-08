@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobseque/core/widgets/account_custom_button.dart';
 
-import '../utils/global/assets_logos.dart';
+import '../utils/global/app_logos.dart';
 import 'horizontal_space.dart';
 
 class GoogleAndFacebookButtons extends StatelessWidget {
@@ -19,13 +19,13 @@ class GoogleAndFacebookButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AccountCustomButton(
-          logo: AssetsLogos.googelLogo,
+          logo: AppLogos.googelLogo,
           text: 'Google',
           onTap: gooleOnTap,
         ),
         const HorizontalSpace(space: 19),
         AccountCustomButton(
-          logo: AssetsLogos.facebookLogo,
+          logo: AppLogos.facebookLogo,
           text: 'Facebook',
           onTap: facebookOnTap,
         ),

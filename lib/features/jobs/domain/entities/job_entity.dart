@@ -43,7 +43,7 @@ class JobEntity extends HiveObject {
   DateTime? updatedAt;
   @HiveField(18)
   bool isSaved;
-  @HiveField(18)
+  @HiveField(19)
   bool isSubmitted;
   JobEntity({
     this.name,

@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:jobseque/core/utils/global/assets_logos.dart';
+import 'package:jobseque/core/utils/global/app_logos.dart';
 
 class NotificationModel {
   String image;
@@ -18,28 +18,28 @@ class NotificationModel {
 
 List<NotificationModel> notificationDummyList = [
   NotificationModel(
-    image: AssetsLogos.danaLogo,
+    image: AppLogos.danaLogoPng,
     name: 'Dana',
     overView: 'Posted new design jobs',
     receivedTime: '10.00AM',
     isReaded: false,
   ),
   NotificationModel(
-    image: AssetsLogos.shoopeLogo,
+    image: AppLogos.shoopeLogoPng,
     name: 'Shoope',
     overView: 'Posted new design jobs',
     receivedTime: '10.00AM',
     isReaded: false,
   ),
   NotificationModel(
-    image: AssetsLogos.slackLogo,
+    image: AppLogos.slackLogoPng,
     name: 'Slack',
     overView: 'Posted new design jobs',
     receivedTime: '10.00AM',
     isReaded: false,
   ),
   NotificationModel(
-    image: AssetsLogos.facebooknotifiacationLogo,
+    image: AppLogos.facebooknotifiacationLogo,
     name: 'Facebook',
     overView: 'Posted new design jobs',
     receivedTime: '10.00AM',
@@ -49,7 +49,7 @@ List<NotificationModel> notificationDummyList = [
 
 List<NotificationModel> notificationAppDummyList = [
   NotificationModel(
-    image: AssetsLogos.emailNotification,
+    image: AppLogos.emailNotification,
     name: 'Email setup successful',
     overView:
         'Your email setup was successful with the following details: Your new email is rafifdianganz@gmail.com.',
@@ -57,7 +57,7 @@ List<NotificationModel> notificationAppDummyList = [
     isReaded: false,
   ),
   NotificationModel(
-    image: AssetsLogos.jobSqueNotification,
+    image: AppLogos.jobSqueNotification,
     name: 'Welcome to Jobsque',
     overView:
         'Hello Rafif Dian Axelingga, thank you for registering Jobsque. Enjoy the various features that....',

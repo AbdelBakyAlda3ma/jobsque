@@ -1,4 +1,4 @@
-import 'package:jobseque/core/utils/global/assets_images.dart';
+import 'package:jobseque/core/utils/global/app_images.dart';
 
 List<EmployeeModel> uIUXEmployeesList = [
   EmployeeModel(
@@ -7,7 +7,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Senior',
     workDurationYears: 3,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile1,
+    profileImage: AppImages.imageProfile1,
   ),
   EmployeeModel(
     name: 'Jane Smith',
@@ -15,7 +15,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Lead',
     workDurationYears: 5,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile2,
+    profileImage: AppImages.imageProfile2,
   ),
   EmployeeModel(
     name: 'Michael Johnson',
@@ -23,7 +23,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Senior',
     workDurationYears: 4,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile3,
+    profileImage: AppImages.imageProfile3,
   ),
   EmployeeModel(
     name: 'Emily Brown',
@@ -31,7 +31,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Junior',
     workDurationYears: 2,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile4,
+    profileImage: AppImages.imageProfile4,
   ),
   EmployeeModel(
     name: 'David Lee',
@@ -39,7 +39,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Senior',
     workDurationYears: 6,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile1,
+    profileImage: AppImages.imageProfile1,
   ),
   EmployeeModel(
     name: 'Alex Williams',
@@ -47,7 +47,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Mid-level',
     workDurationYears: 3,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile2,
+    profileImage: AppImages.imageProfile2,
   ),
   EmployeeModel(
     name: 'Samantha Jones',
@@ -55,7 +55,7 @@ List<EmployeeModel> uIUXEmployeesList = [
     position: 'Lead',
     workDurationYears: 7,
     company: 'Twitter',
-    profileImage: AssetsImages.imageProfile3,
+    profileImage: AppImages.imageProfile3,
   ),
 ];
 

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_image_bloc/get_profile_image_bloc.dart';
-import '../../../../core/utils/global/assets_images.dart';
+import '../../../../core/utils/global/app_images.dart';
 
 class ProfileAvatar extends StatelessWidget {
   final double imageRadius = 45;
@@ -43,7 +43,7 @@ class ProfileAvatar extends StatelessWidget {
               child: CircleAvatar(
                 radius: 43,
                 backgroundImage: AssetImage(
-                  AssetsImages.defaultProfileImage,
+                  AppImages.defaultProfileImage,
                 ),
               ),
             ),

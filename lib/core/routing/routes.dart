@@ -74,6 +74,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ChattingRoute.page),
         AutoRoute(page: NotRecievedMessagesRoute.page),
         AutoRoute(page: UnreadedMessagesRoute.page),
+        AutoRoute(page: MessagesFiltersBottomSheetRoute.page),
         AutoRoute(page: MessagesRoute.page),
         AutoRoute(page: LanguageRoute.page),
         AutoRoute(page: HelpCenterRoute.page),

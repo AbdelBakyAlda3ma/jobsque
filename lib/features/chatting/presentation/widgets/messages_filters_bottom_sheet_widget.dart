@@ -1,11 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/core/widgets/custom_bottom_sheet_item.dart';
 
-class MessagesFiltersBottomSheet extends StatelessWidget {
-  const MessagesFiltersBottomSheet({super.key});
+@RoutePage()
+class MessagesFiltersBottomSheetWidget extends StatelessWidget {
+  const MessagesFiltersBottomSheetWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,13 @@ class MessagesFiltersBottomSheet extends StatelessWidget {
             ),
           ),
           const VerticalSpace(space: 16),
-          const CustomBottomSheetItem(
+          CustomBottomSheetItem(
             text: 'Unread',
+            onTap: () {
+              context.router.push(
+                const UnreadedMessagesRoute(),
+              );
+            },
           ),
           const VerticalSpace(space: 12),
           const CustomBottomSheetItem(

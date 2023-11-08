@@ -36,13 +36,14 @@ class JobEntityAdapter extends TypeAdapter<JobEntity> {
       updatedAt: fields[17] as DateTime?,
       expired: fields[15] as int?,
       isSaved: fields[18] as bool,
+      isSubmitted: fields[19] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, JobEntity obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(20)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -80,7 +81,9 @@ class JobEntityAdapter extends TypeAdapter<JobEntity> {
       ..writeByte(17)
       ..write(obj.updatedAt)
       ..writeByte(18)
-      ..write(obj.isSaved);
+      ..write(obj.isSaved)
+      ..writeByte(19)
+      ..write(obj.isSubmitted);
   }
 
   @override

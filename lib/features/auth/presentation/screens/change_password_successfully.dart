@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/global/app_colors.dart';
-import 'package:jobseque/core/utils/global/assets_images.dart';
+import 'package:jobseque/core/utils/global/app_images.dart';
 import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
@@ -24,7 +24,7 @@ class ChangePasswordSuccessfullyScreen extends StatelessWidget {
             const Spacer(
               flex: 3,
             ),
-            SvgPicture.asset(AssetsImages.passwordChangeSuccesfullyBackground),
+            SvgPicture.asset(AppImages.passwordChangeSuccesfullyBackground),
             Text(
               'Password changed succesfully!',
               textAlign: TextAlign.center,

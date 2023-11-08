@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/utils/global/assets_logos.dart';
+import 'package:jobseque/features/chatting/domain/entities/message_entity.dart';
 import 'message_item_image_number_of_unreaded_msessages.dart';
 
 class MessageItemImage extends StatelessWidget {
-  final bool isUnreaded = true;
+  final MessageEntity message;
   const MessageItemImage({
     super.key,
+    required this.message,
   });
 
   @override
@@ -16,11 +16,11 @@ class MessageItemImage extends StatelessWidget {
         // outer container which represent the white radius
         CircleAvatar(
           radius: 20,
-          backgroundImage: AssetImage(AssetsLogos.danaLogo),
+          backgroundImage: AssetImage(message.logo),
         ),
-        isUnreaded
-            ? const MessageItemImageNumberOfUnreadedMessages()
-            : const SizedBox(),
+        message.isReaded
+            ? const SizedBox()
+            : const MessageItemImageNumberOfUnreadedMessages(),
       ],
     );
   }
