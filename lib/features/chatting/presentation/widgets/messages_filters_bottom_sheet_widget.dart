@@ -6,6 +6,7 @@ import 'package:jobseque/core/utils/global/custom_text_styles.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/core/widgets/custom_bottom_sheet_item.dart';
 
+@RoutePage()
 class MessagesFiltersBottomSheetWidget extends StatelessWidget {
   const MessagesFiltersBottomSheetWidget({super.key});
 

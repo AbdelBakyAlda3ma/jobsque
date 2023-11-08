@@ -3,42 +3,42 @@ import 'package:jobseque/features/chatting/domain/entities/message_entity.dart';
 
 List<MessageEntity> messagesList = [
   MessageEntity(
-    logo: AppLogos.twitterLogo,
+    logo: AppLogos.twitterLogoPng,
     lastMsg: 'Here is the link: http://zoom.com/abcdeefg',
     sender: 'Twitter',
     time: '12.39',
     isReaded: false,
   ),
   MessageEntity(
-    logo: AppLogos.gojekLogo,
+    logo: AppLogos.gojekLogoPng,
     lastMsg: 'Let’s keep in touch.',
     sender: 'Gojek Indonesia',
     time: '12.39',
     isReaded: false,
   ),
   MessageEntity(
-    logo: AppLogos.shoopeLogo,
+    logo: AppLogos.shoopeLogoPng,
     lastMsg: 'Thank You David!',
     sender: 'Shoope',
     time: '09.45',
     isReaded: true,
   ),
   MessageEntity(
-    logo: AppLogos.danaLogo,
+    logo: AppLogos.danaLogoPng,
     lastMsg: 'Thank you for your attention!',
     sender: 'Dana',
     time: 'Yesterday',
     isReaded: false,
   ),
   MessageEntity(
-    logo: AppLogos.slackLogo,
+    logo: AppLogos.slackLogoPng,
     lastMsg: 'You: I look forward to hearing from you',
     sender: 'Slack',
     time: '12/8',
     isReaded: true,
   ),
   MessageEntity(
-    logo: AppLogos.facebookLogo,
+    logo: AppLogos.facebookLogoPng,
     lastMsg: 'You: What about the interview stage?',
     sender: 'Facebook',
     time: '12/8',

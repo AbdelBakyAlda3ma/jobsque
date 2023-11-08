@@ -3,9 +3,11 @@ class AppLogos {
   static String zoomLogo = 'assets/logos/Zoom Logo.svg';
   static String twitterLogoSquare = 'assets/logos/Twitter Logo.svg';
   static String twitterLogo = 'assets/logos/Twitter Logo Circle.svg';
+  static String twitterLogoPng = 'assets/logos/Twitter Logo.png';
   static String googelLogo = 'assets/logos/Google Logo.svg';
-  static String gojekLogo = 'assets/logos/Gojek Logo.svg';
+  static String gojekLogoPng = 'assets/logos/Gojek Logo.png';
   static String facebookLogo = 'assets/logos/Facebook Logo.svg';
+  static String facebookLogoPng = 'assets/logos/Facebook Logo Circle.png';
   static String facebooknotifiacationLogo = 'assets/logos/Facebook Logo.png';
   static String behanceLogo = 'assets/logos/Behance Logo.svg';
   static String invisionLogo = 'assets/logos/Invision Logo.svg';
