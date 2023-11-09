@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/widgets/loding_widget.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
-import 'package:jobseque/features/jobs/presentation/widgets/home_error_widget.dart';
 import 'package:jobseque/features/profile/presentation/manager/cubits/check_if_profile_complete_cubit/check_if_profile_complete_cubit.dart';
+import 'package:jobseque/features/profile/presentation/widgets/complete_profile_error_widget.dart';
 
 @RoutePage()
 class CompleteProfileOrApplyJobWidget extends StatefulWidget {
@@ -49,7 +49,7 @@ class _CompleteProfileOrApplyJobWidgetState
       }
     }, builder: (context, state) {
       if (state is CheckIfProfileCompleteFailure) {
-        return AppErrorWidget(
+        return CompleteProfileErrorWidget(
           errorMessage: state.errMsg,
         );
       } else {

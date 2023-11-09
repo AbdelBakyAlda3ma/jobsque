@@ -29,7 +29,7 @@ class HomeScreenScaffold extends StatelessWidget {
           BlocBuilder<GetJobsBloc, GetJobsState>(
             builder: (context, state) {
               if (state is GetAllJobsFailure) {
-                return AppErrorWidget(
+                return HomeErrorWidget(
                   errorMessage: state.errorMessage,
                 );
               }

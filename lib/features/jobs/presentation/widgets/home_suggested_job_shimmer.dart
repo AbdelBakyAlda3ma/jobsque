@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:jobseque/core/widgets/horizontal_space.dart';
 import 'package:jobseque/core/widgets/shimmer_skeleton_component.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_suggested_job_shimmer_item.dart';
@@ -19,23 +19,36 @@ class HomeSuggestedJobShimmer extends StatelessWidget {
         children: [
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
-            child: ShimmerSkeletonComponent(
-              height: 23,
-              width: 350,
-              borderRadius: 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ShimmerSkeletonComponent(
+                  height: 23,
+                  width: 120,
+                  borderRadius: 2,
+                ),
+                ShimmerSkeletonComponent(
+                  height: 20,
+                  width: 47,
+                  borderRadius: 2,
+                ),
+              ],
             ),
           ),
           const VerticalSpace(space: 20),
-          CarouselSlider.builder(
-            itemCount: 3,
-            itemBuilder: (context, index, realIndex) =>
-                const HomeSuggestedJobShimmerItem(),
-            options: CarouselOptions(
-              enableInfiniteScroll: false,
-              padEnds: true,
-              enlargeCenterPage: true,
-              enlargeFactor: 0.2,
-              initialPage: 0,
+          Padding(
+            padding: const EdgeInsets.only(left: 24),
+            child: SizedBox(
+              height: 183,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return const HomeSuggestedJobShimmerItem();
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const HorizontalSpace(space: 16),
+              ),
             ),
           ),
         ],

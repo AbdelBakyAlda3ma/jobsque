@@ -10,19 +10,17 @@ class TwoStepVerificationSelectVerificationMethodBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TwoStepVerificationBodyOnOffSwitchButton(),
-          VerticalSpace(space: 32),
-          TwoStepVerificationSelectVerificationMethodDropDownList(),
-          VerticalSpace(space: 16),
-          TwoStepVerificationInitialBodyExplainText(
-            text: kTwoStepVerificationMethodBodyNote,
-          ),
-        ],
-      ),
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TwoStepVerificationBodyOnOffSwitchButton(),
+        VerticalSpace(space: 32),
+        TwoStepVerificationSelectVerificationMethodDropDownList(),
+        VerticalSpace(space: 16),
+        TwoStepVerificationInitialBodyExplainText(
+          text: kTwoStepVerificationMethodBodyNote,
+        ),
+      ],
     );
   }
 }

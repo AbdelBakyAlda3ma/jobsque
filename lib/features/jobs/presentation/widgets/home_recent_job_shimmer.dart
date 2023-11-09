@@ -18,10 +18,20 @@ class HomeRecentJobShimmer extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const ShimmerSkeletonComponent(
-                height: 23,
-                width: 350,
-                borderRadius: 2,
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ShimmerSkeletonComponent(
+                    height: 23,
+                    width: 120,
+                    borderRadius: 2,
+                  ),
+                  ShimmerSkeletonComponent(
+                    height: 20,
+                    width: 47,
+                    borderRadius: 2,
+                  ),
+                ],
               ),
               const VerticalSpace(space: 24),
               Expanded(
