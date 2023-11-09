@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_suggested_job_section_list_view_item_category.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_suggested_job_section_list_view_item_job_title.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_suggested_job_section_list_view_item_price_and_apply_button.dart';
-
 import '../../../../core/utils/global/app_colors.dart';
 
 class HomeSuggestedJobSectionListViewItem extends StatelessWidget {
+  final JobEntity job;
   const HomeSuggestedJobSectionListViewItem({
     super.key,
+    required this.job,
   });
 
   @override
@@ -20,11 +22,17 @@ class HomeSuggestedJobSectionListViewItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         color: AppColors.primary[900],
       ),
-      child: const Column(
+      child: Column(
         children: [
-          HomeSuggestedJobSectionListViewItemJobTitle(),
-          HomeSuggestedJobSectionListViewItemCategory(),
-          HomeSuggestedJobSectionListViewItemPriceAndApplyButton(),
+          HomeSuggestedJobSectionListViewItemJobTitle(
+            job: job,
+          ),
+          HomeSuggestedJobSectionListViewItemCategory(
+            job: job,
+          ),
+          HomeSuggestedJobSectionListViewItemPriceAndApplyButton(
+            job: job,
+          ),
         ],
       ),
     );

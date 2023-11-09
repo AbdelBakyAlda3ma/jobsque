@@ -6,7 +6,7 @@ import 'package:jobseque/features/favorites/presentation/manager/blocs/favorite_
 import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
 import 'package:jobseque/features/favorites/presentation/widgets/saved_job_botton_sheet_widget_child.dart';
 import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/get_jobs_bloc/get_jobs_bloc.dart';
 
 @RoutePage()
 class SavedJobBottomSheetWidget extends StatelessWidget {
@@ -24,7 +24,7 @@ class SavedJobBottomSheetWidget extends StatelessWidget {
           BlocProvider.of<GetFavoriteJobsBloc>(context).add(
             GetFavoriteJobsEvent(),
           );
-          BlocProvider.of<JobBloc>(context).add(GetAllJobsEvent());
+          BlocProvider.of<GetJobsBloc>(context).add(GetJobsEvent());
           BlocProvider.of<GetActiveAppliedJobsBloc>(context)
               .add(GetActiveAppliedJobsEvent());
 

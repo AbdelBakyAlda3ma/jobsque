@@ -33,7 +33,3 @@ class InCompletedProfileState extends CompleteProfileState {
     required this.portfolioCompletion,
   });
 }
-
-class ProfileIsAlreadyCompleted extends CompleteProfileState {}
-
-class ProfileIsNotCompleted extends CompleteProfileState {}

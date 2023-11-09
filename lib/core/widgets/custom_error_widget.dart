@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
-import '../network/network_info.dart';
-import '../utils/functions/snackbar_message.dart';
 import '../utils/global/app_colors.dart';
 import '../utils/global/custom_text_styles.dart';
-import '../utils/service_locator.dart';
 
 class CustomErrorWidget extends StatelessWidget {
+  final void Function()? onPressed;
   const CustomErrorWidget({
     super.key,
     required this.errorMessage,
+    this.onPressed,
   });
 
   final String errorMessage;
@@ -38,20 +35,7 @@ class CustomErrorWidget extends StatelessWidget {
         const VerticalSpace(space: 40),
         PrimaryButton.large(
           text: 'Try again',
-          onPressed: () async {
-            if (await sL.get<NetworkInfoImpl>().isConnected) {
-              if (context.mounted) {
-                BlocProvider.of<JobBloc>(context).add(GetAllJobsEvent());
-              }
-            } else {
-              if (context.mounted) {
-                showErrorSnackBar(
-                  context: context,
-                  message: "There is no internet connection",
-                );
-              }
-            }
-          },
+          onPressed: onPressed,
         ),
       ],
     );

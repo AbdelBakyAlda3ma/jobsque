@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/search_bloc/search_bloc.dart';
 import '../../../../core/widgets/primary_button.dart';
 
 class SetFilterBottomSheetBodyPrimaryButton extends StatelessWidget {

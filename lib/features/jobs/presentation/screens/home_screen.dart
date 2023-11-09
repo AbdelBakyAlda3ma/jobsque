@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/routing/routes.gr.dart';
 import 'package:jobseque/core/utils/service_locator.dart';
+import 'package:jobseque/features/jobs/presentation/manager/get_jobs_bloc/get_jobs_bloc.dart';
 import 'package:jobseque/features/jobs/presentation/manager/show_submitted_jobs_bloc/show_submitted_jobs_bloc.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_screen_safe_area.dart';
-
-import '../manager/blocs/Job_bloc/job_bloc.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -22,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    BlocProvider.of<JobBloc>(context).add(GetAllJobsEvent());
+    BlocProvider.of<GetJobsBloc>(context).add(GetJobsEvent());
     super.initState();
   }
 

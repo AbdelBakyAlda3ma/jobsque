@@ -5,7 +5,7 @@ import 'package:jobseque/core/utils/service_locator.dart';
 import 'package:jobseque/features/apply_job/presentation/manager/blocs/get_active_applied_jobs_bloc/get_active_applied_jobs_bloc.dart';
 import 'package:jobseque/features/favorites/presentation/manager/blocs/favorite_operation_bloc/favorite_operation_bloc.dart';
 import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favorite_jobs_bloc/get_favorite_jobs_bloc.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/get_jobs_bloc/get_jobs_bloc.dart';
 
 @RoutePage()
 class JobsWrapper extends StatelessWidget {
@@ -15,8 +15,8 @@ class JobsWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<JobBloc>(
-          create: (context) => sL.get<JobBloc>(),
+        BlocProvider<GetJobsBloc>(
+          create: (context) => sL.get<GetJobsBloc>(),
         ),
         BlocProvider<FavoriteOperationBloc>(
           create: (context) => sL.get<FavoriteOperationBloc>(),

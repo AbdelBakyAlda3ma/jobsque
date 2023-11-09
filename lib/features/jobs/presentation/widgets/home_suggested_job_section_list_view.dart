@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:jobseque/features/jobs/domain/entities/job_entity.dart';
 import 'package:jobseque/features/jobs/presentation/widgets/home_suggested_job_section_list_view_item.dart';
 
 import '../../../../core/widgets/horizontal_space.dart';
 
 class HomeSuggestedJobSectionListView extends StatelessWidget {
+  final List<JobEntity> suggestedJobs;
   const HomeSuggestedJobSectionListView({
     super.key,
+    required this.suggestedJobs,
   });
 
   @override
@@ -16,9 +19,11 @@ class HomeSuggestedJobSectionListView extends StatelessWidget {
         height: 183,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
-          itemCount: 10,
+          itemCount: suggestedJobs.length,
           itemBuilder: (context, index) {
-            return const HomeSuggestedJobSectionListViewItem();
+            return HomeSuggestedJobSectionListViewItem(
+              job: suggestedJobs[index],
+            );
           },
           separatorBuilder: (BuildContext context, int index) =>
               const HorizontalSpace(space: 16),

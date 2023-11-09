@@ -8,14 +8,12 @@ class TwoStepVerificationAddPhoneNumberBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
-      child: Column(
-        children: [
-          TwoStepVerificationAddPhoneNumberPhoneTextField(),
-          VerticalSpace(space: 20),
-          TwoStepVerificationAddPhoneNumberPasswordTextField(),
-        ],
-      ),
+    return const Column(
+      children: [
+        TwoStepVerificationAddPhoneNumberPhoneTextField(),
+        VerticalSpace(space: 20),
+        TwoStepVerificationAddPhoneNumberPasswordTextField(),
+      ],
     );
   }
 }
