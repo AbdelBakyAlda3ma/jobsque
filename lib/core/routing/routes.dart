@@ -12,6 +12,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: CompleteProfileWrapperRoute.page,
           children: [
+            AutoRoute(page: CompleteProfileOrApplyJobRoute.page),
             AutoRoute(page: CompleteProfileRoute.page),
             AutoRoute(page: PersonalDetailsRoute.page),
             AutoRoute(page: EducationRoute.page),
@@ -42,6 +43,7 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: AppliedJobsRoute.page),
             AutoRoute(page: InProgressAppliedJobRoute.page),
             AutoRoute(page: ApplyJobStepperRoute.page),
+            AutoRoute(page: JobDetailRoute.page),
           ],
         ),
         AutoRoute(
@@ -51,7 +53,6 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: SetFilterModalBottomSheetRoute.page),
           ],
         ),
-        AutoRoute(page: JobDetailRoute.page),
         AutoRoute(page: DataSentSuccessfulyRoute.page),
         AutoRoute(page: AccountHasBeenSetUpRoute.page),
         AutoRoute(page: ChangePasswordProfileRoute.page),

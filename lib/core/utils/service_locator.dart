@@ -31,6 +31,8 @@ import 'package:jobseque/features/favorites/presentation/manager/blocs/get_favor
 import 'package:jobseque/features/jobs/domain/use_cases/add_submitted_job_use_case.dart';
 import 'package:jobseque/features/jobs/domain/use_cases/show_submitted_jobs.dart';
 import 'package:jobseque/features/jobs/presentation/manager/add_submitted_job_bloc/add_submitted_job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/get_jobs_bloc/get_jobs_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/search_bloc/search_bloc.dart';
 import 'package:jobseque/features/jobs/presentation/manager/show_submitted_jobs_bloc/show_submitted_jobs_bloc.dart';
 import 'package:jobseque/features/portfolio/data/data_sources/portfolio_local_data_source.dart';
 import 'package:jobseque/features/portfolio/data/data_sources/portfolio_remote_data_source.dart';
@@ -54,6 +56,7 @@ import 'package:jobseque/features/profile/presentation/manager/blocs/change_prof
 import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_bloc/get_profile_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/get_profile_image_bloc/get_profile_image_bloc.dart';
 import 'package:jobseque/features/profile/presentation/manager/blocs/work_perfrences_bloc/work_prefrences_bloc.dart';
+import 'package:jobseque/features/profile/presentation/manager/cubits/check_if_profile_complete_cubit/check_if_profile_complete_cubit.dart';
 import 'package:jobseque/features/profile/presentation/manager/cubits/complete_profile_cubit/complete_profile_cubit.dart';
 import '../../features/auth/data/data_sources/auth_local_data_source.dart';
 import '../../features/auth/data/data_sources/auth_remote_data_source.dart';
@@ -66,8 +69,6 @@ import '../../features/jobs/data/repositories/job_repository_impl.dart';
 import '../../features/jobs/domain/use_cases/filter_jobs_use_case.dart';
 import '../../features/jobs/domain/use_cases/get_all_jobs_use_case.dart';
 import '../../features/jobs/domain/use_cases/search_jobs_use_case.dart';
-import '../../features/jobs/presentation/manager/blocs/Job_bloc/job_bloc.dart';
-import '../../features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
 import '../network/network_info.dart';
 import 'api_services.dart';
 
@@ -207,8 +208,8 @@ void setUpServiceLocator() {
       ),
     ),
   );
-  sL.registerFactory<JobBloc>(
-    () => JobBloc(
+  sL.registerFactory<GetJobsBloc>(
+    () => GetJobsBloc(
       getAllJobsUseCase: GetAllJobsUseCase(
         jobRepo: sL.get<JobRepositoryImpl>(),
       ),
@@ -279,6 +280,13 @@ void setUpServiceLocator() {
 
   sL.registerFactory<CompleteProfileCubit>(
     () => CompleteProfileCubit(
+      completeProfileUseCase: CompleteProfileUseCase(
+        profileRepository: sL.get<ProfileRepositoryImpl>(),
+      ),
+    ),
+  );
+  sL.registerFactory<CheckIfProfileCompleteCubit>(
+    () => CheckIfProfileCompleteCubit(
       completeProfileUseCase: CompleteProfileUseCase(
         profileRepository: sL.get<ProfileRepositoryImpl>(),
       ),

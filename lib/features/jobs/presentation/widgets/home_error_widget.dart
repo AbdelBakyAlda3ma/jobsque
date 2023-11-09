@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/custom_error_widget.dart';
 
-class HomeErrorWidget extends StatelessWidget {
+class AppErrorWidget extends StatelessWidget {
   final String errorMessage;
-  const HomeErrorWidget({
+  const AppErrorWidget({
     super.key,
     required this.errorMessage,
   });

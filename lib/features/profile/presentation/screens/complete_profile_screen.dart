@@ -8,12 +8,22 @@ import 'package:jobseque/features/profile/presentation/manager/cubits/complete_p
 import 'package:jobseque/features/profile/presentation/widgets/complete_profile_screen_scaffold.dart';
 
 @RoutePage()
-class CompleteProfileScreen extends StatelessWidget {
+class CompleteProfileScreen extends StatefulWidget {
   final JobEntity job;
   const CompleteProfileScreen({
     super.key,
     required this.job,
   });
+
+  @override
+  State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
+}
+
+class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +32,11 @@ class CompleteProfileScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is CompleteProfileCubitFailure) {
             return ErrorScreen(errorMessage: state.errorMsg);
-          }
-          if (state is CompleteProfileCubitLoading) {
+          } else if (state is CompleteProfileCubitInitial ||
+              state is CompleteProfileCubitLoading) {
             return const LoadingWidget();
           } else {
-            return CompleteProfileScreenScaffold(job: job);
+            return CompleteProfileScreenScaffold(job: widget.job);
           }
         },
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/widgets/primary_button.dart';
 import 'package:jobseque/core/widgets/vertical_space.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/job_bloc/job_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/get_jobs_bloc/get_jobs_bloc.dart';
 import '../network/network_info.dart';
 import '../utils/functions/snackbar_message.dart';
 import '../utils/global/app_colors.dart';
@@ -41,7 +41,7 @@ class CustomErrorWidget extends StatelessWidget {
           onPressed: () async {
             if (await sL.get<NetworkInfoImpl>().isConnected) {
               if (context.mounted) {
-                BlocProvider.of<JobBloc>(context).add(GetAllJobsEvent());
+                BlocProvider.of<GetJobsBloc>(context).add(GetJobsEvent());
               }
             } else {
               if (context.mounted) {

@@ -65,26 +65,4 @@ class CompleteProfileCubit extends Cubit<CompleteProfileState> {
     log("Progress indicator from InComplete State $progressIndicator");
     return progressIndicator;
   }
-
-  void checkIfProfileCompleted() async {
-    emit(CompleteProfileCubitLoading());
-    var result = await completeProfileUseCase();
-    result.fold(
-        (failure) => emit(
-              CompleteProfileCubitFailure(
-                errorMsg: failure.errorMessage,
-              ),
-            ), (profile) {
-      completionProgeressIndicator = _completionProgress(profile);
-      if (profile.isCompleted) {
-        emit(
-          ProfileIsAlreadyCompleted(),
-        );
-      } else {
-        emit(
-          ProfileIsNotCompleted(),
-        );
-      }
-    });
-  }
 }

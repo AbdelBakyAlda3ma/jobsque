@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobseque/core/dummy/salary_list.dart';
 import 'package:jobseque/core/widgets/custom_drop_down_text_field.dart';
-import 'package:jobseque/features/jobs/presentation/manager/blocs/search_bloc/search_bloc.dart';
+import 'package:jobseque/features/jobs/presentation/manager/search_bloc/search_bloc.dart';
 import '../../../../core/utils/global/app_colors.dart';
 import '../../../../core/utils/global/custom_text_styles.dart';
 import '../../../../core/utils/global/icons_jobeque_icons.dart';
